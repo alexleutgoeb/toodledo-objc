@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA14567510A706C600EEB890 /* TDApi.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14567310A706C600EEB890 /* TDApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA14567610A706C600EEB890 /* TDApi.m in Sources */ = {isa = PBXBuildFile; fileRef = FA14567410A706C600EEB890 /* TDApi.m */; };
+		FA1456C310A7192600EEB890 /* TDUserIdParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FA1456C110A7192600EEB890 /* TDUserIdParser.h */; settings = {ATTRIBUTES = (); }; };
+		FA1456C410A7192600EEB890 /* TDUserIdParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1456C210A7192600EEB890 /* TDUserIdParser.m */; };
+		FA14583710A74D3000EEB890 /* TDAuthenticationParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14583510A74D3000EEB890 /* TDAuthenticationParser.h */; settings = {ATTRIBUTES = (); }; };
+		FA14583810A74D3000EEB890 /* TDAuthenticationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA14583610A74D3000EEB890 /* TDAuthenticationParser.m */; };
+		FA145CF910A85E2200EEB890 /* GtdContext.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CF710A85E2200EEB890 /* GtdContext.h */; };
+		FA145CFA10A85E2200EEB890 /* GtdContext.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145CF810A85E2200EEB890 /* GtdContext.m */; };
+		FA145CFD10A85E2B00EEB890 /* GtdFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CFB10A85E2B00EEB890 /* GtdFolder.h */; };
+		FA145CFE10A85E2B00EEB890 /* GtdFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145CFC10A85E2B00EEB890 /* GtdFolder.m */; };
+		FA145D0110A85E3400EEB890 /* GtdNote.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CFF10A85E3400EEB890 /* GtdNote.h */; };
+		FA145D0210A85E3400EEB890 /* GtdNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145D0010A85E3400EEB890 /* GtdNote.m */; };
+		FA6E64A010A8744E004010EB /* TDContextsParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FA6E649E10A8744E004010EB /* TDContextsParser.h */; };
+		FA6E64A110A8744E004010EB /* TDContextsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E649F10A8744E004010EB /* TDContextsParser.m */; };
+		FAA9E6F510A88CAF001925AB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA9E6F410A88CAF001925AB /* SenTestingKit.framework */; };
+		FAA9E70F10A88CDD001925AB /* APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9E70E10A88CDD001925AB /* APITests.m */; };
+		FACC732F10A5B4990079598B /* GtdTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FACC732D10A5B4990079598B /* GtdTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FACC733010A5B4990079598B /* GtdTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC732E10A5B4990079598B /* GtdTask.m */; };
+		FACCD7F710A0CF8D00A36C87 /* TDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FACCD7F510A0CF8D00A36C87 /* TDParser.h */; settings = {ATTRIBUTES = (); }; };
+		FACCD7F810A0CF8D00A36C87 /* TDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FACCD7F610A0CF8D00A36C87 /* TDParser.m */; };
+		FACDE83410A2E97700A50F7A /* GtdApi.h in Headers */ = {isa = PBXBuildFile; fileRef = FACDE83310A2E97700A50F7A /* GtdApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FADA343610A8626400D1B68B /* TDFoldersParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FADA343410A8626400D1B68B /* TDFoldersParser.h */; };
+		FADA343710A8626400D1B68B /* TDFoldersParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA343510A8626400D1B68B /* TDFoldersParser.m */; };
+		FAF874EF10965F5300C4C137 /* TDApiConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF874EE10965F5300C4C137 /* TDApiConstants.h */; settings = {ATTRIBUTES = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FAA9E6F210A88CA6001925AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAF874B21096478600C4C137;
+			remoteInfo = libToodledoAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		FA14567310A706C600EEB890 /* TDApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDApi.h; sourceTree = "<group>"; };
+		FA14567410A706C600EEB890 /* TDApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDApi.m; sourceTree = "<group>"; };
+		FA1456C110A7192600EEB890 /* TDUserIdParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUserIdParser.h; sourceTree = "<group>"; };
+		FA1456C210A7192600EEB890 /* TDUserIdParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUserIdParser.m; sourceTree = "<group>"; };
+		FA14583510A74D3000EEB890 /* TDAuthenticationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAuthenticationParser.h; sourceTree = "<group>"; };
+		FA14583610A74D3000EEB890 /* TDAuthenticationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAuthenticationParser.m; sourceTree = "<group>"; };
+		FA145CF710A85E2200EEB890 /* GtdContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdContext.h; sourceTree = "<group>"; };
+		FA145CF810A85E2200EEB890 /* GtdContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdContext.m; sourceTree = "<group>"; };
+		FA145CFB10A85E2B00EEB890 /* GtdFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdFolder.h; sourceTree = "<group>"; };
+		FA145CFC10A85E2B00EEB890 /* GtdFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdFolder.m; sourceTree = "<group>"; };
+		FA145CFF10A85E3400EEB890 /* GtdNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdNote.h; sourceTree = "<group>"; };
+		FA145D0010A85E3400EEB890 /* GtdNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdNote.m; sourceTree = "<group>"; };
+		FA6E649E10A8744E004010EB /* TDContextsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextsParser.h; sourceTree = "<group>"; };
+		FA6E649F10A8744E004010EB /* TDContextsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextsParser.m; sourceTree = "<group>"; };
+		FAA9E6ED10A88C7C001925AB /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAA9E6EE10A88C7C001925AB /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
+		FAA9E6F410A88CAF001925AB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		FAA9E70E10A88CDD001925AB /* APITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APITests.m; sourceTree = "<group>"; };
+		FACC732D10A5B4990079598B /* GtdTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdTask.h; sourceTree = "<group>"; };
+		FACC732E10A5B4990079598B /* GtdTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdTask.m; sourceTree = "<group>"; };
+		FACCD7F510A0CF8D00A36C87 /* TDParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDParser.h; sourceTree = "<group>"; };
+		FACCD7F610A0CF8D00A36C87 /* TDParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDParser.m; sourceTree = "<group>"; };
+		FACDE83310A2E97700A50F7A /* GtdApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdApi.h; sourceTree = "<group>"; };
+		FADA343410A8626400D1B68B /* TDFoldersParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFoldersParser.h; sourceTree = "<group>"; };
+		FADA343510A8626400D1B68B /* TDFoldersParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFoldersParser.m; sourceTree = "<group>"; };
+		FAF874B31096478600C4C137 /* libToodledoAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToodledoAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAF874EE10965F5300C4C137 /* TDApiConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDApiConstants.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAA9E6EA10A88C7C001925AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAA9E6F510A88CAF001925AB /* SenTestingKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAF874B11096478600C4C137 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* ToodledoAPI */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Classes */,
+				FAA9E7C610A8A36E001925AB /* Test Classes */,
+				08FB779DFE84155DC02AAC07 /* Frameworks */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+				FAA9E6EE10A88C7C001925AB /* UnitTests-Info.plist */,
+			);
+			name = ToodledoAPI;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FACDE83310A2E97700A50F7A /* GtdApi.h */,
+				FA14567310A706C600EEB890 /* TDApi.h */,
+				FA14567410A706C600EEB890 /* TDApi.m */,
+				FAF874DD10965EAE00C4C137 /* Domain Classes */,
+				FACCD7E010A0CECA00A36C87 /* Parser Classes */,
+				FAF874ED10965F1D00C4C137 /* Other Sources */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		08FB779DFE84155DC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAA9E6F410A88CAF001925AB /* SenTestingKit.framework */,
+				08FB779EFE84155DC02AAC07 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAF874B31096478600C4C137 /* libToodledoAPI.a */,
+				FAA9E6ED10A88C7C001925AB /* UnitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAA9E7C610A8A36E001925AB /* Test Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FAA9E70E10A88CDD001925AB /* APITests.m */,
+			);
+			name = "Test Classes";
+			sourceTree = "<group>";
+		};
+		FACCD7E010A0CECA00A36C87 /* Parser Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FACCD7F510A0CF8D00A36C87 /* TDParser.h */,
+				FACCD7F610A0CF8D00A36C87 /* TDParser.m */,
+				FA1456C110A7192600EEB890 /* TDUserIdParser.h */,
+				FA1456C210A7192600EEB890 /* TDUserIdParser.m */,
+				FA14583510A74D3000EEB890 /* TDAuthenticationParser.h */,
+				FA14583610A74D3000EEB890 /* TDAuthenticationParser.m */,
+				FADA343410A8626400D1B68B /* TDFoldersParser.h */,
+				FADA343510A8626400D1B68B /* TDFoldersParser.m */,
+				FA6E649E10A8744E004010EB /* TDContextsParser.h */,
+				FA6E649F10A8744E004010EB /* TDContextsParser.m */,
+			);
+			name = "Parser Classes";
+			sourceTree = "<group>";
+		};
+		FAF874DD10965EAE00C4C137 /* Domain Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FACC732D10A5B4990079598B /* GtdTask.h */,
+				FACC732E10A5B4990079598B /* GtdTask.m */,
+				FA145CF710A85E2200EEB890 /* GtdContext.h */,
+				FA145CF810A85E2200EEB890 /* GtdContext.m */,
+				FA145CFB10A85E2B00EEB890 /* GtdFolder.h */,
+				FA145CFC10A85E2B00EEB890 /* GtdFolder.m */,
+				FA145CFF10A85E3400EEB890 /* GtdNote.h */,
+				FA145D0010A85E3400EEB890 /* GtdNote.m */,
+			);
+			name = "Domain Classes";
+			sourceTree = "<group>";
+		};
+		FAF874ED10965F1D00C4C137 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FAF874EE10965F5300C4C137 /* TDApiConstants.h */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FAF874AF1096478600C4C137 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAF874EF10965F5300C4C137 /* TDApiConstants.h in Headers */,
+				FACCD7F710A0CF8D00A36C87 /* TDParser.h in Headers */,
+				FACDE83410A2E97700A50F7A /* GtdApi.h in Headers */,
+				FACC732F10A5B4990079598B /* GtdTask.h in Headers */,
+				FA14567510A706C600EEB890 /* TDApi.h in Headers */,
+				FA1456C310A7192600EEB890 /* TDUserIdParser.h in Headers */,
+				FA14583710A74D3000EEB890 /* TDAuthenticationParser.h in Headers */,
+				FA145CF910A85E2200EEB890 /* GtdContext.h in Headers */,
+				FA145CFD10A85E2B00EEB890 /* GtdFolder.h in Headers */,
+				FA145D0110A85E3400EEB890 /* GtdNote.h in Headers */,
+				FADA343610A8626400D1B68B /* TDFoldersParser.h in Headers */,
+				FA6E64A010A8744E004010EB /* TDContextsParser.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FAA9E6EC10A88C7C001925AB /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAA9E6F110A88C7D001925AB /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				FAA9E6E810A88C7C001925AB /* Resources */,
+				FAA9E6E910A88C7C001925AB /* Sources */,
+				FAA9E6EA10A88C7C001925AB /* Frameworks */,
+				FAA9E6EB10A88C7C001925AB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAA9E6F310A88CA6001925AB /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = FAA9E6ED10A88C7C001925AB /* UnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		FAF874B21096478600C4C137 /* libToodledoAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAF874B6109647BB00C4C137 /* Build configuration list for PBXNativeTarget "libToodledoAPI" */;
+			buildPhases = (
+				FAF874AF1096478600C4C137 /* Headers */,
+				FAF874B01096478600C4C137 /* Sources */,
+				FAF874B11096478600C4C137 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libToodledoAPI;
+			productName = libToodledoAPI;
+			productReference = FAF874B31096478600C4C137 /* libToodledoAPI.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "ToodledoAPI" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* ToodledoAPI */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAF874B21096478600C4C137 /* libToodledoAPI */,
+				FAA9E6EC10A88C7C001925AB /* UnitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAA9E6E810A88C7C001925AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FAA9E6EB10A88C7C001925AB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAA9E6E910A88C7C001925AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAA9E70F10A88CDD001925AB /* APITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAF874B01096478600C4C137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FACCD7F810A0CF8D00A36C87 /* TDParser.m in Sources */,
+				FACC733010A5B4990079598B /* GtdTask.m in Sources */,
+				FA14567610A706C600EEB890 /* TDApi.m in Sources */,
+				FA1456C410A7192600EEB890 /* TDUserIdParser.m in Sources */,
+				FA14583810A74D3000EEB890 /* TDAuthenticationParser.m in Sources */,
+				FA145CFA10A85E2200EEB890 /* GtdContext.m in Sources */,
+				FA145CFE10A85E2B00EEB890 /* GtdFolder.m in Sources */,
+				FA145D0210A85E3400EEB890 /* GtdNote.m in Sources */,
+				FADA343710A8626400D1B68B /* TDFoldersParser.m in Sources */,
+				FA6E64A110A8744E004010EB /* TDContextsParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FAA9E6F310A88CA6001925AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAF874B21096478600C4C137 /* libToodledoAPI */;
+			targetProxy = FAA9E6F210A88CA6001925AB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB927908733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB927A08733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		FAA9E6EF10A88C7D001925AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FAA9E6F010A88C7D001925AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "UnitTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		FAF874B41096478700C4C137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+				PRODUCT_NAME = ToodledoAPI;
+			};
+			name = Debug;
+		};
+		FAF874B51096478700C4C137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PREBINDING = NO;
+				PRODUCT_NAME = libToodledoAPI;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "ToodledoAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927908733DD40010E9CD /* Debug */,
+				1DEB927A08733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAA9E6F110A88C7D001925AB /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAA9E6EF10A88C7D001925AB /* Debug */,
+				FAA9E6F010A88C7D001925AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAF874B6109647BB00C4C137 /* Build configuration list for PBXNativeTarget "libToodledoAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAF874B41096478700C4C137 /* Debug */,
+				FAF874B51096478700C4C137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
