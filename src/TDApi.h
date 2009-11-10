@@ -29,6 +29,6 @@
 - (NSArray *)getFoldersWithError:(NSError **)error;
 
 // Adds a remote folder
-- (BOOL)addFolder:(GtdFolder *)aFolder error:(NSError **)error;
+- (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
 @end

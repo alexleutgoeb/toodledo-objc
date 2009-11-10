@@ -45,7 +45,7 @@
 			// UserId unknown error (connection ? )
 			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 			[errorDetail setValue:@"Unknown error." forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:@"TDAuthErrorDomain" code:100 userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
 			[self release];
 			return nil;
 		}
@@ -53,7 +53,7 @@
 			// error: empty arguments
 			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 			[errorDetail setValue:@"Missing input parameters." forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:@"TDAuthErrorDomain" code:200 userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingCredentialsError userInfo:errorDetail];
 			[self release];
 			return nil;
 		}
@@ -61,7 +61,7 @@
 			// error: wrong credentials
 			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 			[errorDetail setValue:@"User could not be found, probably wrong credentials" forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:@"TDAuthErrorDomain" code:300 userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiWrongCredentialsError userInfo:errorDetail];
 			[self release];
 			return nil;
 		}
@@ -93,18 +93,53 @@
 			// error while loading request
 			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:@"TDFoldersErrorDomain" code:200 userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
 			return nil;
 		}
 	}
 	else {
+		// TODO: error
 		return nil;
 	}
 }
 
-- (BOOL)addFolder:(GtdFolder *)aFolder error:(NSError **)error {
-	// TODO: implement add folder method
-	return NO;
+- (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error {
+	
+	// TODO: check parameters (if set)
+	
+	if ([self isAuthenticated]) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aFolder.title, @"title", (aFolder.private == NO ? 0 : 1), @"private", nil];
+		NSURLRequest *request = [self authenticatedRequestForURLString:kAddFolderURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"added";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			
+			if ([result count] == 1) {
+				return [[result objectAtIndex:0] intValue];
+			}
+			else {
+				return -1;
+			}
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return -1;
+		}
+	}
+	else {
+		// TODO: error
+		return -1;
+	}
 }
 
 - (void) dealloc {

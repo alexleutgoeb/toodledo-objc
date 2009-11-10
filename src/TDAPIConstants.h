@@ -21,6 +21,8 @@
 // get folders url
 #define kGetFoldersURLFormat @"http://api.toodledo.com/api.php?method=getFolders;"
 
+// add folder url
+#define kAddFolderURLFormat @"http://api.toodledo.com/api.php?method=addFolder;"
 
 
 // log macros

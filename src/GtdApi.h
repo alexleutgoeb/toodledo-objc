@@ -10,6 +10,9 @@
 
 @class GtdFolder;
 
+// This constant defines the GtdApi error domain.
+NSString * const GtdApiErrorDomain;
+
 @protocol GtdApi
 
 @property (readonly) BOOL isAuthenticated;
@@ -21,7 +24,7 @@
 - (NSArray *)getFoldersWithError:(NSError **)error;
 
 // Adds a remote folder
-- (BOOL)addFolder:(GtdFolder *)aFolder error:(NSError **)error;
+- (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
 
 
@@ -54,3 +57,12 @@
 
 
 @end
+
+
+typedef enum {
+	GtdApiNoConnectionError = 10,
+	GtdApiNotReachableError = 20,
+	GtdApiDataError = 30,
+	GtdApiMissingCredentialsError = 110,
+	GtdApiWrongCredentialsError = 120
+} GtdApiError;
