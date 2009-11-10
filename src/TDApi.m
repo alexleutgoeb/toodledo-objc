@@ -10,8 +10,7 @@
 #import "TDApi.h"
 #import "TDApiConstants.h"
 #import "GtdFolder.h"
-#import "TDUserIdParser.h"
-#import "TDAuthenticationParser.h"
+#import "TDSimpleParser.h"
 #import "TDFoldersParser.h"
 
 
@@ -137,7 +136,8 @@
 	[params release];
 	NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 	
-	TDUserIdParser *parser = [[TDUserIdParser alloc] initWithData:responseData];
+	TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+	parser.tagName = @"userid";
 	NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
 	[parser release];
 	
@@ -165,7 +165,8 @@
 		
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 		
-		TDAuthenticationParser *parser = [[TDAuthenticationParser alloc] initWithData:responseData];
+		TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+		parser.tagName = @"token";
 		NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
 		[parser release];
 		

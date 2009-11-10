@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		FA14567510A706C600EEB890 /* TDApi.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14567310A706C600EEB890 /* TDApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA14567610A706C600EEB890 /* TDApi.m in Sources */ = {isa = PBXBuildFile; fileRef = FA14567410A706C600EEB890 /* TDApi.m */; };
-		FA1456C310A7192600EEB890 /* TDUserIdParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FA1456C110A7192600EEB890 /* TDUserIdParser.h */; settings = {ATTRIBUTES = (); }; };
-		FA1456C410A7192600EEB890 /* TDUserIdParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1456C210A7192600EEB890 /* TDUserIdParser.m */; };
-		FA14583710A74D3000EEB890 /* TDAuthenticationParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14583510A74D3000EEB890 /* TDAuthenticationParser.h */; settings = {ATTRIBUTES = (); }; };
-		FA14583810A74D3000EEB890 /* TDAuthenticationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA14583610A74D3000EEB890 /* TDAuthenticationParser.m */; };
 		FA145CF910A85E2200EEB890 /* GtdContext.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CF710A85E2200EEB890 /* GtdContext.h */; };
 		FA145CFA10A85E2200EEB890 /* GtdContext.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145CF810A85E2200EEB890 /* GtdContext.m */; };
 		FA145CFD10A85E2B00EEB890 /* GtdFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CFB10A85E2B00EEB890 /* GtdFolder.h */; };
@@ -21,6 +17,8 @@
 		FA145D0210A85E3400EEB890 /* GtdNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145D0010A85E3400EEB890 /* GtdNote.m */; };
 		FA6E64A010A8744E004010EB /* TDContextsParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FA6E649E10A8744E004010EB /* TDContextsParser.h */; };
 		FA6E64A110A8744E004010EB /* TDContextsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E649F10A8744E004010EB /* TDContextsParser.m */; };
+		FAA6A16E10AA0BD1002D7E2F /* TDSimpleParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6A16C10AA0BD1002D7E2F /* TDSimpleParser.h */; };
+		FAA6A16F10AA0BD1002D7E2F /* TDSimpleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA6A16D10AA0BD1002D7E2F /* TDSimpleParser.m */; };
 		FAA9E6F510A88CAF001925AB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA9E6F410A88CAF001925AB /* SenTestingKit.framework */; };
 		FAA9E70F10A88CDD001925AB /* APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9E70E10A88CDD001925AB /* APITests.m */; };
 		FACC732F10A5B4990079598B /* GtdTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FACC732D10A5B4990079598B /* GtdTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,10 +45,6 @@
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		FA14567310A706C600EEB890 /* TDApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDApi.h; sourceTree = "<group>"; };
 		FA14567410A706C600EEB890 /* TDApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDApi.m; sourceTree = "<group>"; };
-		FA1456C110A7192600EEB890 /* TDUserIdParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUserIdParser.h; sourceTree = "<group>"; };
-		FA1456C210A7192600EEB890 /* TDUserIdParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUserIdParser.m; sourceTree = "<group>"; };
-		FA14583510A74D3000EEB890 /* TDAuthenticationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDAuthenticationParser.h; sourceTree = "<group>"; };
-		FA14583610A74D3000EEB890 /* TDAuthenticationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDAuthenticationParser.m; sourceTree = "<group>"; };
 		FA145CF710A85E2200EEB890 /* GtdContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdContext.h; sourceTree = "<group>"; };
 		FA145CF810A85E2200EEB890 /* GtdContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdContext.m; sourceTree = "<group>"; };
 		FA145CFB10A85E2B00EEB890 /* GtdFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdFolder.h; sourceTree = "<group>"; };
@@ -59,6 +53,8 @@
 		FA145D0010A85E3400EEB890 /* GtdNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdNote.m; sourceTree = "<group>"; };
 		FA6E649E10A8744E004010EB /* TDContextsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextsParser.h; sourceTree = "<group>"; };
 		FA6E649F10A8744E004010EB /* TDContextsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextsParser.m; sourceTree = "<group>"; };
+		FAA6A16C10AA0BD1002D7E2F /* TDSimpleParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSimpleParser.h; sourceTree = "<group>"; };
+		FAA6A16D10AA0BD1002D7E2F /* TDSimpleParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSimpleParser.m; sourceTree = "<group>"; };
 		FAA9E6ED10A88C7C001925AB /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA9E6EE10A88C7C001925AB /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		FAA9E6F410A88CAF001925AB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -149,10 +145,8 @@
 			children = (
 				FACCD7F510A0CF8D00A36C87 /* TDParser.h */,
 				FACCD7F610A0CF8D00A36C87 /* TDParser.m */,
-				FA1456C110A7192600EEB890 /* TDUserIdParser.h */,
-				FA1456C210A7192600EEB890 /* TDUserIdParser.m */,
-				FA14583510A74D3000EEB890 /* TDAuthenticationParser.h */,
-				FA14583610A74D3000EEB890 /* TDAuthenticationParser.m */,
+				FAA6A16C10AA0BD1002D7E2F /* TDSimpleParser.h */,
+				FAA6A16D10AA0BD1002D7E2F /* TDSimpleParser.m */,
 				FADA343410A8626400D1B68B /* TDFoldersParser.h */,
 				FADA343510A8626400D1B68B /* TDFoldersParser.m */,
 				FA6E649E10A8744E004010EB /* TDContextsParser.h */,
@@ -196,13 +190,12 @@
 				FACDE83410A2E97700A50F7A /* GtdApi.h in Headers */,
 				FACC732F10A5B4990079598B /* GtdTask.h in Headers */,
 				FA14567510A706C600EEB890 /* TDApi.h in Headers */,
-				FA1456C310A7192600EEB890 /* TDUserIdParser.h in Headers */,
-				FA14583710A74D3000EEB890 /* TDAuthenticationParser.h in Headers */,
 				FA145CF910A85E2200EEB890 /* GtdContext.h in Headers */,
 				FA145CFD10A85E2B00EEB890 /* GtdFolder.h in Headers */,
 				FA145D0110A85E3400EEB890 /* GtdNote.h in Headers */,
 				FADA343610A8626400D1B68B /* TDFoldersParser.h in Headers */,
 				FA6E64A010A8744E004010EB /* TDContextsParser.h in Headers */,
+				FAA6A16E10AA0BD1002D7E2F /* TDSimpleParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,13 +298,12 @@
 				FACCD7F810A0CF8D00A36C87 /* TDParser.m in Sources */,
 				FACC733010A5B4990079598B /* GtdTask.m in Sources */,
 				FA14567610A706C600EEB890 /* TDApi.m in Sources */,
-				FA1456C410A7192600EEB890 /* TDUserIdParser.m in Sources */,
-				FA14583810A74D3000EEB890 /* TDAuthenticationParser.m in Sources */,
 				FA145CFA10A85E2200EEB890 /* GtdContext.m in Sources */,
 				FA145CFE10A85E2B00EEB890 /* GtdFolder.m in Sources */,
 				FA145D0210A85E3400EEB890 /* GtdNote.m in Sources */,
 				FADA343710A8626400D1B68B /* TDFoldersParser.m in Sources */,
 				FA6E64A110A8744E004010EB /* TDContextsParser.m in Sources */,
+				FAA6A16F10AA0BD1002D7E2F /* TDSimpleParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
