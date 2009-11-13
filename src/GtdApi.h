@@ -12,7 +12,6 @@
 
 // This constant defines the GtdApi error domain.
 extern NSString *const GtdApiErrorDomain;
-NSString *const GtdApiErrorDomain = @"com.welldoneapp.gtdapi.gtdapierrordomain";
 
 @protocol GtdApi
 

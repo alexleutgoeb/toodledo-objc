@@ -29,6 +29,10 @@
 @end
 
 
+// workaroung for error domain initialization
+NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
+
+
 @implementation TDApi
 
 @synthesize userId, key, keyValidity, passwordHash;
