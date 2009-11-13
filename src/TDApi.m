@@ -16,6 +16,7 @@
 
 @interface TDApi ()
 
+- (BOOL)loadServerInfos;
 - (NSString *)getUserIdForUsername:(NSString *)aUsername andPassword:(NSString *)aPassword;
 - (NSURLRequest *)requestForURLString:(NSString *)anUrlString additionalParameters:(NSDictionary *)additionalParameters;
 - (NSURLRequest *)authenticatedRequestForURLString:(NSString *)anUrlString additionalParameters:(NSDictionary *)additionalParameters;
@@ -29,7 +30,7 @@
 @end
 
 
-// workaroung for error domain initialization
+// workaround for error domain initialization
 NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 
 
@@ -73,9 +74,30 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			[self setPasswordHashWithPassword:password];
 			// auth
 			[self key];
+			[self loadServerInfos];
 		}
 	}
 	return self;
+}
+
+- (NSDictionary *)getLastModificationsDates:(NSError **)error {
+	
+	if ([self isAuthenticated]) {
+		
+		NSDictionary *datesDict = [NSDictionary dictionary];
+		
+		// NSError *requestError = nil, *parseError = nil;
+		// NSURLRequest *request = [self authenticatedRequestForURLString:kGetFoldersURLFormat additionalParameters:nil];
+		// NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		// TODO: implementieren
+		
+		return datesDict;
+	}
+	else {
+		return nil;
+	}
+	
 }
 
 - (NSArray *)getFolders:(NSError **)error {
@@ -156,14 +178,45 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 
 
 - (BOOL)isAuthenticated {
-	if (self.key != nil)
-		return YES;
-	else
+	if (key == nil || keyValidity == nil | [keyValidity compare:[NSDate date]] == NSOrderedDescending)
 		return NO;
+	else
+		return YES;
 }
 
 #pragma mark -
 #pragma mark helper methods
+
+// Gets server infos for api
+- (BOOL)loadServerInfos {
+	
+	if ([self isAuthenticated]) {
+		NSError *parseError = nil;
+		NSURLRequest *request = [self authenticatedRequestForURLString:kServerInfoURLFormat additionalParameters:nil];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+		
+		TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+		parser.tagName = @"unixtime";
+		NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+		[parser release];
+		
+		if ([result count] == 1) {
+			NSDate *serverDate = [[NSDate alloc] initWithTimeIntervalSince1970:[[result objectAtIndex:0] doubleValue]];
+			NSLog(@"%@", serverDate);
+			servertimeDifference = [serverDate timeIntervalSinceNow];
+			[serverDate release];
+			DLog(@"Server infos retrieved, servertime difference: %f.", servertimeDifference);
+			return YES;
+		}
+		else {
+			DLog(@"Could not fetch server infos.");
+			return NO;
+		}	
+	}
+	else {
+		return NO;
+	}
+}
 
 // Used for userid lookup. Warning: the pwd is sent unencrypted.
 - (NSString *)getUserIdForUsername:(NSString *)aUsername andPassword:(NSString *)aPassword {

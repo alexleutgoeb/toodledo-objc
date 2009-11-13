@@ -12,6 +12,12 @@
 // authentication url
 #define kAuthenticationURLFormat @"http://api.toodledo.com/api.php?method=getToken;"
 
+// get account info url
+#define kUserAccountInfoURLFormat @"http://api.toodledo.com/api.php?method=getAccountInfo;"
+
+// server info url
+#define kServerInfoURLFormat @"http://api.toodledo.com/api.php?method=getServerInfo;"
+
 // get userid url
 #define kUserIdURLFormat @"http://api.toodledo.com/api.php?method=getUserid;"
 
