@@ -74,7 +74,7 @@
 	return self;
 }
 
-- (NSArray *)getFoldersWithError:(NSError **)error {
+- (NSArray *)getFolders:(NSError **)error {
 
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling

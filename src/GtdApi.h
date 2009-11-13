@@ -11,7 +11,7 @@
 @class GtdFolder;
 
 // This constant defines the GtdApi error domain.
-NSString * const GtdApiErrorDomain;
+extern NSString *const GtdApiErrorDomain;
 
 @protocol GtdApi
 
@@ -21,7 +21,7 @@ NSString * const GtdApiErrorDomain;
 - (id)initWithUsername:(NSString *)username password:(NSString *)password error:(NSError **)error;
 
 // Loads and returns an array with GtdFolder objects.
-- (NSArray *)getFoldersWithError:(NSError **)error;
+- (NSArray *)getFolders:(NSError **)error;
 
 // Adds a remote folder
 - (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error;
