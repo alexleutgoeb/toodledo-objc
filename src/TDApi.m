@@ -168,6 +168,49 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	}
 }
 
+- (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error {
+	
+	// TODO: check parameters (if set)
+	
+	if ([self isAuthenticated]) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.folderId], @"id", nil];
+		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteFolderURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"success";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			if ([result count] == 1) {
+				if ([[result objectAtIndex:0] intValue] == 1)
+					return YES;
+				else
+					return NO;
+				// TODO: error handling, folder not deleted
+			}
+			else {
+				return NO;
+				// TODO: error handling, folder not deleted
+			}
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return -1;
+		}
+	}
+	else {
+		// TODO: error
+		return -1;
+	}
+}
+
 - (void) dealloc {
 	[passwordHash release];
 	[keyValidity release];
@@ -202,7 +245,6 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		
 		if ([result count] == 1) {
 			NSDate *serverDate = [[NSDate alloc] initWithTimeIntervalSince1970:[[result objectAtIndex:0] doubleValue]];
-			NSLog(@"%@", serverDate);
 			servertimeDifference = [serverDate timeIntervalSinceNow];
 			[serverDate release];
 			DLog(@"Server infos retrieved, servertime difference: %f.", servertimeDifference);

@@ -30,6 +30,9 @@
 // add folder url
 #define kAddFolderURLFormat @"http://api.toodledo.com/api.php?method=addFolder;"
 
+// delete folder url
+#define kDeleteFolderURLFormat @"http://api.toodledo.com/api.php?method=deleteFolder;"
+
 
 // log macros
 

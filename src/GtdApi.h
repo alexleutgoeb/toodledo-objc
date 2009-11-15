@@ -20,11 +20,17 @@ extern NSString *const GtdApiErrorDomain;
 // Main initializer, performs authentication.
 - (id)initWithUsername:(NSString *)username password:(NSString *)password error:(NSError **)error;
 
+// Returns the last modifications dates in a dictionary, see doc for details.
+- (NSDictionary *)getLastModificationsDates:(NSError **)error;
+
 // Loads and returns an array with GtdFolder objects.
 - (NSArray *)getFolders:(NSError **)error;
 
 // Adds a remote folder
 - (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error;
+
+// Deletes a remote folder
+- (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
 
 

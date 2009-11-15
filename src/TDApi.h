@@ -35,4 +35,7 @@
 // Adds a remote folder
 - (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
+// Deletes a remote folder
+- (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error;
+
 @end
