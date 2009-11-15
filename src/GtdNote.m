@@ -11,4 +11,18 @@
 
 @implementation GtdNote
 
+
+- (void) dealloc 
+{
+	[title release];
+	[note release];
+	[super dealloc];
+}
+
+- (NSString *)description 
+{
+	return [NSString stringWithFormat:@"<GtdNote noteId='%i' note='%@'>", noteId, note];
+}
+
+
 @end

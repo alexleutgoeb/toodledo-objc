@@ -9,8 +9,12 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface GtdNote : NSObject {
+@interface GtdNote : NSObject 
+{
 
+	NSString *note;
+	int noteId;
+	
 }
 
 @end
