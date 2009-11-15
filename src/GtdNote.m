@@ -14,7 +14,7 @@
 
 - (void) dealloc 
 {
-	[title release];
+	// [title release];
 	[note release];
 	[super dealloc];
 }
