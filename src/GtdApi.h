@@ -32,6 +32,8 @@ extern NSString *const GtdApiErrorDomain;
 // Deletes a remote folder
 - (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
+// Loads and returns an array with GtdContext objects. 
+- (NSArray *)getContexts:(NSError **)error;
 
 
 //
@@ -58,8 +60,6 @@ extern NSString *const GtdApiErrorDomain;
 
 // Adds a context to the gtd service
 - (NSInteger)addContext:(id)aContext;
-
-
 
 
 @end

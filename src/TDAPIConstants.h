@@ -45,6 +45,15 @@
 // delete folder url
 #define kDeleteFolderURLFormat @"http://api.toodledo.com/api.php?method=deleteFolder;"
 
+// add context url
+#define kAddContextURLFormat @"http://api.toodledo.com/api.php?method=addContext;"
+
+// get contexts url
+#define kGetContextsURLFormat @"http://api.toodledo.com/api.php?method=getContexts;"
+
+// delete context url
+#define kDeleteContextURLFormat @"http://api.toodledo.com/api.php?method=deleteContext;"
+
 
 // log macros
 

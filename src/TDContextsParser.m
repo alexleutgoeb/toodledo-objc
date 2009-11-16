@@ -10,5 +10,22 @@
 
 
 @implementation TDContextsParser
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
+	if ([elementName isEqualToString:@"context"]) {
+		currentContext = [[GtdContext alloc] init];
+		currentContext.contextId = [[attributeDict valueForKey:@"id"] intValue];
+	}
+}
 
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+	if ([elementName isEqualToString:@"context"]) {
+		currentContext.title = currentString;
+		[results addObject:currentContext];
+		[currentContext release];
+		currentContext = nil;
+	}
+	
+	[currentString release];
+	currentString = nil;
+}
 @end
