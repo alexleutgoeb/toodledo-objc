@@ -32,12 +32,12 @@
 	NSInteger parentId;
 }
 
-@property (nonatomic) id;
+@property (nonatomic) NSInteger id;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, retain) NSDate *date_created;
 @property (nonatomic, retain) NSDate *date_modified;
 @property (nonatomic, retain) NSDate *date_start;
-@property (nonatomic, retain) NSDate *dueDate;
+@property (nonatomic, retain) NSDate *date_due;
 @property (nonatomic, copy) NSString *tag;
 @property (nonatomic) NSInteger folder;
 @property (nonatomic) NSInteger context;

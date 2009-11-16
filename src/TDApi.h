@@ -46,7 +46,7 @@
 - (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error;
 
 //Edits a remote task
-- (NSInteger)editTask(GtdTask *)aTask error:(NSError **)error;
+- (NSInteger)editTask:(GtdTask *)aTask error:(NSError **)error;
 
 //Deletes a remote task
 - (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error;

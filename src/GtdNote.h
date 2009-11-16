@@ -13,7 +13,7 @@
 {
 
 @private
-	NSInteger id;
+	NSInteger noteId;
 	NSDate *date_created;
 	NSDate *date_modified;
 	NSString *title;
@@ -22,7 +22,7 @@
 	
 }
 
-@property (nonatomic) NSInteger id;
+@property (nonatomic) NSInteger noteId;
 @property (nonatomic, retain) NSDate *date_created;
 @property (nonatomic, retain) NSDate *date_modified;
 @property (nonatomic, copy) NSString *title;

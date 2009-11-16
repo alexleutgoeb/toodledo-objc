@@ -10,6 +10,7 @@
 #import "TDApi.h"
 #import "TDApiConstants.h"
 #import "GtdFolder.h"
+#import "GtdTask.h"
 #import "TDSimpleParser.h"
 #import "TDFoldersParser.h"
 
@@ -175,7 +176,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.id], @"id", nil];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.folderId], @"id", nil];
 		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteFolderURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		
@@ -256,8 +257,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								//aTask.parent, @"parent",
 								aTask.date_due, @"dueDate",
 								aTask.date_start, @"startDate",
-								aTask.time_due, @"dueTime",
-								aTask.time_start, @"startTime",
+								//aTask.time_due, @"dueTime",
+								//aTask.time_start, @"startTime",
 								aTask.reminder, @"reminder",
 								aTask.repeat, @"repeat",
 								//aTask.rep_advanced, @"rep_advanced",
@@ -317,8 +318,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								//aTask.reschedule, @"reschedule",
 								aTask.date_due, @"dueDate",
 								aTask.date_start, @"startDate",
-								aTask.time_due, @"dueTime",
-								aTask.time_start, @"startTime",
+								//aTask.time_due, @"dueTime",
+								//aTask.time_start, @"startTime",
 								aTask.reminder, @"reminder",
 								aTask.repeat, @"repeat",
 								//aTask.rep_advanced, @"rep_advanced",
