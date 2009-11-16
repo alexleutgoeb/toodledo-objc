@@ -12,21 +12,43 @@
 @interface GtdTask : NSObject {
 
 @private
+	NSInteger id;
 	NSString *title;
+	NSDate *date_created;
+	NSDate *date_modified;
+	NSDate *date_start;
+	NSDate *date_due;
 	NSArray *tags;
 	NSInteger folder;
 	NSInteger context;
 	NSInteger priority;
-	NSInteger parentId;
+	NSDate *completed;
+	NSInteger length;
 	NSString *note;
+	BOOL star;
+	NSInteger repeat;
+	NSInteger status;
+	NSInteger reminder;
+	NSInteger parentId;
 }
 
+@property (nonatomic) id;
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, retain) NSDate *date_created;
+@property (nonatomic, retain) NSDate *date_modified;
+@property (nonatomic, retain) NSDate *date_start;
+@property (nonatomic, retain) NSDate *date_due;
 @property (retain) NSArray *tags;
 @property (nonatomic) NSInteger folder;
 @property (nonatomic) NSInteger context;
 @property (nonatomic) NSInteger priority;
-@property (nonatomic) NSInteger parentId;
+@property (nonatomic, retain) NSDate *completed;
+@property (nonatomic) NSInteger length;
 @property (nonatomic, copy) NSString *note;
+@property BOOL star;
+@property (nonatomic) NSInteger repeat;
+@property (nonatomic) NSInteger status;
+@property (nonatomic) NSInteger reminder;
+@property (nonatomic) NSInteger parentId;
 
 @end

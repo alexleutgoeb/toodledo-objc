@@ -12,9 +12,21 @@
 @interface GtdNote : NSObject 
 {
 
-	NSString *note;
-	int noteId;
+@private
+	NSInteger id;
+	NSDate *date_created;
+	NSDate *date_modified;
+	NSString *title;
+	NSString *text;
+	BOOL private;
 	
 }
+
+@property (nonatomic) NSInteger id;
+@property (nonatomic, retain) NSDate *date_created;
+@property (nonatomic, retain) NSDate *date_modified;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic) BOOL private;
 
 @end

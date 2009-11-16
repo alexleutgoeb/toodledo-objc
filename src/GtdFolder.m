@@ -11,7 +11,7 @@
 
 @implementation GtdFolder
 
-@synthesize folderId;
+@synthesize id;
 @synthesize title;
 @synthesize private;
 @synthesize archived;

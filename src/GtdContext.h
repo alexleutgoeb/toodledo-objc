@@ -10,7 +10,13 @@
 
 
 @interface GtdContext : NSObject {
-
+	
+@private
+	NSInteger id;
+	NSString *title;
 }
+
+@property (nonatomic) NSInteger id;
+@property (nonatomic, copy) NSString *title;
 
 @end

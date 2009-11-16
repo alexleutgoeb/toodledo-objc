@@ -11,4 +11,7 @@
 
 @implementation GtdContext
 
+@synthesize id;
+@synthesize title;
+
 @end

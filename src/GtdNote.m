@@ -11,6 +11,12 @@
 
 @implementation GtdNote
 
+@synthesize id;
+@synthesize date_created;
+@synthesize date_modified;
+@synthesize title;
+@synthesize text;
+@synthesize private;
 
 - (void) dealloc 
 {
