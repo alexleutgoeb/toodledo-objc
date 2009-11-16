@@ -10,6 +10,7 @@
 #import "GtdApi.h"
 
 @class GtdFolder;
+@class GtdTask;
 
 
 @interface TDApi : NSObject <GtdApi> {
@@ -37,5 +38,20 @@
 
 // Deletes a remote folder
 - (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error;
+
+//Loads and returns an array with GtdTask objects.
+- (NSArray *)getTasks:(NSError **)error;
+
+//Adds a remote task
+- (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error;
+
+//Edits a remote task
+- (NSInteger)editTask(GtdTask *)aTask error:(NSError **)error;
+
+//Deletes a remote task
+- (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error;
+
+//Loads and returns an array with deleted task objects.
+- (NSArray *)getDeleted:(NSError **)error;
 
 @end

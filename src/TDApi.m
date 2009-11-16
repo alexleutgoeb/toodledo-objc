@@ -175,7 +175,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.folderId], @"id", nil];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.id], @"id", nil];
 		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteFolderURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		
@@ -210,6 +210,199 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		return -1;
 	}
 }
+
+- (NSArray *)getTasks:(NSError **)error {
+	
+	if ([self isAuthenticated]) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSURLRequest *request = [self authenticatedRequestForURLString:kGetTasksURLFormat additionalParameters:nil];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDTasksParser *parser = [[TDTasksParser alloc] initWithData:responseData];
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			return result;
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return nil;
+		}
+	}
+	else {
+		// TODO: error
+		return nil;
+	}
+}
+
+- (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error {
+	
+	// TODO: check parameters (if set)
+	
+	if ([self isAuthenticated]) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+								aTask.title, @"title",
+								aTask.tag, @"tag",
+								aTask.folder, @"folder",
+								aTask.context, @"context",
+								//aTask.goal, @"goal",
+								//aTask.parent, @"parent",
+								aTask.date_due, @"dueDate",
+								aTask.date_start, @"startDate",
+								aTask.time_due, @"dueTime",
+								aTask.time_start, @"startTime",
+								aTask.reminder, @"reminder",
+								aTask.repeat, @"repeat",
+								//aTask.rep_advanced, @"rep_advanced",
+								aTask.status, @"status",
+								aTask.length, @"length",
+								aTask.priority, @"priority",
+								aTask.star, @"star",
+								aTask.note, @"note",
+								nil
+								];
+		NSURLRequest *request = [self authenticatedRequestForURLString:kAddTaskURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"added";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			
+			if ([result count] == 1) {
+				return [[result objectAtIndex:0] intValue];
+			}
+			else {
+				return -1;
+			}
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return -1;
+		}
+	}
+	else {
+		// TODO: error
+		return -1;
+	}
+}
+
+- (NSInteger)editTask:(GtdTask *)aTask error:(NSError **)error {
+	if([self isAuthenticated]) {
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+								aTask.id, @"id",
+								aTask.title, @"title",
+								aTask.tag, @"tag",
+								aTask.folder, @"folder",
+								aTask.context, @"context",
+								//aTask.goal, @"goal",
+								//aTask.timer, @"timer", 
+								//aTask.timerval, @"timerval",
+								//aTask.parent, @"parent",
+								aTask.completed, @"completed",
+								//aTask.completed_on, @"completed_on",
+								//aTask.reschedule, @"reschedule",
+								aTask.date_due, @"dueDate",
+								aTask.date_start, @"startDate",
+								aTask.time_due, @"dueTime",
+								aTask.time_start, @"startTime",
+								aTask.reminder, @"reminder",
+								aTask.repeat, @"repeat",
+								//aTask.rep_advanced, @"rep_advanced",
+								aTask.status, @"status",
+								aTask.length, @"length",
+								aTask.priority, @"priority",
+								aTask.star, @"star",
+								aTask.note, @"note",
+								nil
+								];
+		NSURLRequest *request = [self authenticatedRequestForURLString:kEditTaskURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"success";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			
+			if ([result count] == 1) {
+				return [[result objectAtIndex:0] intValue];
+			}
+			else {
+				return -1;
+			}
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return -1;
+		}
+	}
+	else {
+		// TODO: error
+		return -1;
+	}
+}
+
+- (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error {
+	
+	// TODO: check parameters (if set)
+	
+	if ([self isAuthenticated]) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aTask.id], @"id", nil];
+		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteTaskURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"success";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			if ([result count] == 1) {
+				if ([[result objectAtIndex:0] intValue] == 1)
+					return YES;
+				else
+					return NO;
+				// TODO: error handling, task not deleted
+			}
+			else {
+				return NO;
+				// TODO: error handling, task not deleted
+			}
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return -1;
+		}
+	}
+	else {
+		// TODO: error
+		return -1;
+	}
+}
+
 
 - (void) dealloc {
 	[passwordHash release];

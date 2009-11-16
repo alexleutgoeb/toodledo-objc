@@ -9,6 +9,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // urls
 
+// toodledo basic url
+#define tdBasicUrl @"http://api.toodledo.com/api.php?method=";
+
 // authentication url
 #define kAuthenticationURLFormat @"http://api.toodledo.com/api.php?method=getToken;"
 
@@ -23,6 +26,15 @@
 
 // get tasks url
 #define kGetTasksURLFormat @"http://api.toodledo.com/api.php?method=getTasks;"
+
+// add task url
+#define kAddTaskURLFormat @"http://api.toodledo.com/api.php?method=addTask;"
+
+// edit task url
+#define kEditTaskURLFormat @"http://api.toodledo.com/api.php?method=editTask;"
+
+// delete task url
+#define kDeleteTaskURLFormat @"http://api.toodledo.com/api.php?method=deleteTask;"
 
 // get folders url
 #define kGetFoldersURLFormat @"http://api.toodledo.com/api.php?method=getFolders;"
