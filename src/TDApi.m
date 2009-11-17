@@ -177,8 +177,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			else {
 				// error in response xml
 				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:@"Api data error." forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+				[errorDetail setValue:@"Remote folder not added." forKey:NSLocalizedDescriptionKey];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotAddedError userInfo:errorDetail];
 			}
 			[parser release];
 		}
@@ -223,22 +223,14 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
 			
 			if ([result count] == 1 && parseError == nil) {
-				if ([[result objectAtIndex:0] intValue] == 1) {
-					// all ok, set return result
-					returnResult = YES;
-				}
-				else {
-					// folder not deleted
-					NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-					[errorDetail setValue:@"Remote folder not deleted." forKey:NSLocalizedDescriptionKey];
-					*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotDeletedError userInfo:errorDetail];
-				}
+				// all ok, set return result
+				returnResult = YES;
 			}
 			else {
 				// error in response xml
 				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:@"Api data error." forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+				[errorDetail setValue:@"Remote folder not deleted." forKey:NSLocalizedDescriptionKey];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotDeletedError userInfo:errorDetail];
 			}
 			[parser release];
 		}
