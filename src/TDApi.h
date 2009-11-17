@@ -55,6 +55,6 @@
 - (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error;
 
 //Loads and returns an array with deleted task objects.
-- (NSArray *)getDeleted:(NSError **)error;
+// - (NSArray *)getDeleted:(NSError **)error;
 
 @end

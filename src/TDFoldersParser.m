@@ -14,7 +14,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
 	if ([elementName isEqualToString:@"folder"]) {
 		currentFolder = [[GtdFolder alloc] init];
-		currentFolder.folderId = [[attributeDict valueForKey:@"id"] intValue];
+		currentFolder.uid = [[attributeDict valueForKey:@"id"] intValue];
 		currentFolder.private = [[attributeDict valueForKey:@"private"] isEqualToString:@"1"] ? YES : NO ;
 		currentFolder.archived = [[attributeDict valueForKey:@"archived"] isEqualToString:@"1"] ? YES : NO ;
 		currentFolder.order = [[attributeDict valueForKey:@"order"] intValue];

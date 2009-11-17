@@ -151,7 +151,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	NSInteger returnResult = -1;
 	
 	// Check parameters
-	if (aFolder.uid == -1 || aFolder.title == nil) {
+	if (aFolder == nil || aFolder.uid == -1 || aFolder.title == nil) {
 		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 		[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
@@ -204,7 +204,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	BOOL returnResult = NO;
 	
 	// Check parameters
-	if (aFolder.uid == -1 || aFolder.title == nil) {
+	if (aFolder == nil || aFolder.uid == -1 || aFolder.title == nil) {
 		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 		[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
@@ -256,7 +256,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	BOOL returnResult = NO;
 	
 	// Check parameters
-	if (aFolder.uid == -1 || aFolder.title == nil) {
+	if (aFolder == nil || aFolder.uid == -1 || aFolder.title == nil) {
 		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 		[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
@@ -315,7 +315,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 }
 
 - (NSArray *)getTasks:(NSError **)error {
-	
+	/*
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
@@ -341,6 +341,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		// TODO: error
 		return nil;
 	}
+	 */
+	return nil;
 }
 
 - (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error {
@@ -403,6 +405,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 }
 
 - (NSInteger)editTask:(GtdTask *)aTask error:(NSError **)error {
+	/*
 	if([self isAuthenticated]) {
 		NSError *requestError = nil, *parseError = nil;
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -461,6 +464,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		// TODO: error
 		return -1;
 	}
+	 */
+	return -1;
 }
 
 - (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error {
@@ -680,7 +685,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aContext.title, @"title"];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aContext.title, @"title", nil];
 		NSURLRequest *request = [self authenticatedRequestForURLString:kAddContextURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		
