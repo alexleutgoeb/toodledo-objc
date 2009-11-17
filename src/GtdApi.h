@@ -73,5 +73,6 @@ typedef enum {
 	GtdApiMissingCredentialsError = 110,
 	GtdApiWrongCredentialsError = 120,
 	GtdApiFolderNotAddedError = 210,
-	GtdApiFolderNotDeletedError = 310
+	GtdApiFolderNotDeletedError = 310,
+	GtdApiFolderNotEditedError = 410
 } GtdApiError;
