@@ -12,7 +12,7 @@
 @interface GtdTask : NSObject {
 
 @private
-	NSInteger id;
+	NSInteger taskId;
 	NSString *title;
 	NSDate *date_created;
 	NSDate *date_modified;
@@ -32,7 +32,7 @@
 	NSInteger parentId;
 }
 
-@property (nonatomic) NSInteger id;
+@property (nonatomic) NSInteger taskId;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, retain) NSDate *date_created;
 @property (nonatomic, retain) NSDate *date_modified;

@@ -27,6 +27,9 @@
 // get tasks url
 #define kGetTasksURLFormat @"http://api.toodledo.com/api.php?method=getTasks;"
 
+// get tasks url
+#define kGetDeletedTasksURLFormat @"http://api.toodledo.com/api.php?method=getDeleted;"
+
 // add task url
 #define kAddTaskURLFormat @"http://api.toodledo.com/api.php?method=addTask;"
 

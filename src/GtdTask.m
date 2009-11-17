@@ -11,7 +11,7 @@
 
 @implementation GtdTask
 
-@synthesize id;
+@synthesize taskId;
 @synthesize title;
 @synthesize date_created;
 @synthesize date_modified;

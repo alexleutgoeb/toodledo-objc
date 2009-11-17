@@ -15,7 +15,8 @@
 #import "TDSimpleParser.h"
 #import "TDFoldersParser.h"
 #import "TDContextsParser.h"
-
+#import "TDTasksParser.h"
+#import "TDDeletedTasksParser.h"
 
 @interface TDApi ()
 
@@ -345,6 +346,36 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	return nil;
 }
 
+- (NSArray *)getDeleted:(NSError **)error {
+	
+	if ([self isAuthenticated]) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSURLRequest *request = [self authenticatedRequestForURLString:kGetDeletedTasksURLFormat additionalParameters:nil];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDDeletedTasksParser *parser = [[TDDeletedTasksParser alloc] initWithData:responseData];
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			return result;
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return nil;
+		}
+	}
+	else {
+		// TODO: error
+		return nil;
+	}
+}
+
+
 - (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error {
 	
 	// TODO: check parameters (if set)
@@ -409,7 +440,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	if([self isAuthenticated]) {
 		NSError *requestError = nil, *parseError = nil;
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-								aTask.id, @"id",
+								[NSString stringWithFormat:@"%d", aTask.taskId], @"id",
+								aTask.taskId, @"id",
 								aTask.title, @"title",
 								aTask.tag, @"tag",
 								aTask.folder, @"folder",
@@ -475,7 +507,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aTask.id], @"id", nil];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aTask.taskId], @"id", nil];
 		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteTaskURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		

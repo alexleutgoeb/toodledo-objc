@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF2F62E110B30FA90057152D /* TDTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F62DF10B30FA90057152D /* TDTasksParser.h */; };
+		BF2F62E210B30FA90057152D /* TDTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F62E010B30FA90057152D /* TDTasksParser.m */; };
+		BF2F632010B32BFA0057152D /* TDDeletedTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */; };
+		BF2F632110B32BFA0057152D /* TDDeletedTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F631F10B32BFA0057152D /* TDDeletedTasksParser.m */; };
 		FA14567510A706C600EEB890 /* TDApi.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14567310A706C600EEB890 /* TDApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA14567610A706C600EEB890 /* TDApi.m in Sources */ = {isa = PBXBuildFile; fileRef = FA14567410A706C600EEB890 /* TDApi.m */; };
 		FA145CF910A85E2200EEB890 /* GtdContext.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CF710A85E2200EEB890 /* GtdContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +57,10 @@
 
 /* Begin PBXFileReference section */
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		BF2F62DF10B30FA90057152D /* TDTasksParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDTasksParser.h; sourceTree = "<group>"; };
+		BF2F62E010B30FA90057152D /* TDTasksParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTasksParser.m; sourceTree = "<group>"; };
+		BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDDeletedTasksParser.h; sourceTree = "<group>"; };
+		BF2F631F10B32BFA0057152D /* TDDeletedTasksParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDDeletedTasksParser.m; sourceTree = "<group>"; };
 		FA14567310A706C600EEB890 /* TDApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDApi.h; sourceTree = "<group>"; };
 		FA14567410A706C600EEB890 /* TDApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDApi.m; sourceTree = "<group>"; };
 		FA145CF710A85E2200EEB890 /* GtdContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdContext.h; sourceTree = "<group>"; };
@@ -163,6 +171,10 @@
 				FADA343510A8626400D1B68B /* TDFoldersParser.m */,
 				FA6E649E10A8744E004010EB /* TDContextsParser.h */,
 				FA6E649F10A8744E004010EB /* TDContextsParser.m */,
+				BF2F62DF10B30FA90057152D /* TDTasksParser.h */,
+				BF2F62E010B30FA90057152D /* TDTasksParser.m */,
+				BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */,
+				BF2F631F10B32BFA0057152D /* TDDeletedTasksParser.m */,
 			);
 			name = "Parser Classes";
 			sourceTree = "<group>";
@@ -208,6 +220,8 @@
 				FADA343610A8626400D1B68B /* TDFoldersParser.h in Headers */,
 				FA6E64A010A8744E004010EB /* TDContextsParser.h in Headers */,
 				FAA6A16E10AA0BD1002D7E2F /* TDSimpleParser.h in Headers */,
+				BF2F62E110B30FA90057152D /* TDTasksParser.h in Headers */,
+				BF2F632010B32BFA0057152D /* TDDeletedTasksParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +340,8 @@
 				FADA343710A8626400D1B68B /* TDFoldersParser.m in Sources */,
 				FA6E64A110A8744E004010EB /* TDContextsParser.m in Sources */,
 				FAA6A16F10AA0BD1002D7E2F /* TDSimpleParser.m in Sources */,
+				BF2F62E210B30FA90057152D /* TDTasksParser.m in Sources */,
+				BF2F632110B32BFA0057152D /* TDDeletedTasksParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
