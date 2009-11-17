@@ -14,7 +14,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
 	if ([elementName isEqualToString:@"task"]) {
 		currentTask = [[GtdTask alloc] init];
-		currentTask.taskId = [[attributeDict valueForKey:@"id"] intValue];
+		currentTask.uid = [[attributeDict valueForKey:@"id"] intValue];
 		currentTask.title = [[attributeDict valueForKey:@"title"] stringValue];
 		currentTask.date_created = [[attributeDict valueForKey:@"added"] dateValue];
 		currentTask.date_modified = [[attributeDict valueForKey:@"modified"] dateValue];

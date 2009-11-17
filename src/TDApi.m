@@ -316,7 +316,6 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 }
 
 - (NSArray *)getTasks:(NSError **)error {
-	/*
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
@@ -342,7 +341,6 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		// TODO: error
 		return nil;
 	}
-	 */
 	return nil;
 }
 
@@ -436,12 +434,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 }
 
 - (NSInteger)editTask:(GtdTask *)aTask error:(NSError **)error {
-	/*
 	if([self isAuthenticated]) {
 		NSError *requestError = nil, *parseError = nil;
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-								[NSString stringWithFormat:@"%d", aTask.taskId], @"id",
-								aTask.taskId, @"id",
+								[NSString stringWithFormat:@"%d", aTask.uid], @"id",
 								aTask.title, @"title",
 								aTask.tag, @"tag",
 								aTask.folder, @"folder",
@@ -496,7 +492,6 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		// TODO: error
 		return -1;
 	}
-	 */
 	return -1;
 }
 
@@ -507,7 +502,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aTask.taskId], @"id", nil];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aTask.uid], @"id", nil];
 		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteTaskURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		
