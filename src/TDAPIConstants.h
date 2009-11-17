@@ -45,6 +45,9 @@
 // delete folder url
 #define kDeleteFolderURLFormat @"http://api.toodledo.com/api.php?method=deleteFolder;"
 
+// edit folder url
+#define kEditFolderURLFormat @"http://api.toodledo.com/api.php?method=editFolder;"
+
 // add context url
 #define kAddContextURLFormat @"http://api.toodledo.com/api.php?method=addContext;"
 

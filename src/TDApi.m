@@ -105,8 +105,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 
 - (NSArray *)getFolders:(NSError **)error {
 
-	if ([self isAuthenticated]) {
-		// TODO: parse error handling
+	id returnResult = nil;
+	
+	if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
 		NSURLRequest *request = [self authenticatedRequestForURLString:kGetFoldersURLFormat additionalParameters:nil];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
@@ -115,47 +116,131 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			// all ok
 			TDFoldersParser *parser = [[TDFoldersParser alloc] initWithData:responseData];
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+
+			if (parseError != nil) {
+				// error in response xml
+				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+				[errorDetail setValue:@"Api data error." forKey:NSLocalizedDescriptionKey];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+			}
+			else {
+				// all ok, save result
+				returnResult = result;
+			}
 			[parser release];
-			return result;
 		}
 		else {
 			// error while loading request
 			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
-			return nil;
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:errorDetail];
 		}
 	}
 	else {
-		// TODO: error
-		return nil;
+		// error: no key, api error?
+		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
 	}
+	
+	return returnResult;
 }
 
 - (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error {
 	
-	// TODO: check parameters (if set)
+	NSInteger returnResult = -1;
 	
-	if ([self isAuthenticated]) {
-		// TODO: parse error handling
+	// Check parameters
+	if (aFolder.uid == -1 || aFolder.title == nil) {
+		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+		[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
+	}
+	// Check if valid key
+	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aFolder.title, @"title", (aFolder.private == NO ? 0 : 1), @"private", nil];
 		NSURLRequest *request = [self authenticatedRequestForURLString:kAddFolderURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		[params release];
 		
 		if (requestError == nil) {
 			// all ok
 			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
 			parser.tagName = @"added";
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
-			[parser release];
 			
-			if ([result count] == 1) {
-				return [[result objectAtIndex:0] intValue];
+			if ([result count] == 1 && parseError == nil) {
+				// all ok, save return value
+				returnResult = [[result objectAtIndex:0] intValue];
 			}
 			else {
-				return -1;
+				// error in response xml
+				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+				[errorDetail setValue:@"Api data error." forKey:NSLocalizedDescriptionKey];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
 			}
+			[parser release];
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+		}
+	}
+	else {
+		// error: no key, api error?
+		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+	}
+	
+	return returnResult;
+}
+
+- (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error {
+	
+	BOOL returnResult = NO;
+	
+	// Check parameters
+	if (aFolder.uid == -1 || aFolder.title == nil) {
+		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+		[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
+	}
+	// Check if valid key
+	else if (self.key != nil) {
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.uid], @"id", nil];
+		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteFolderURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"success";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			
+			if ([result count] == 1 && parseError == nil) {
+				if ([[result objectAtIndex:0] intValue] == 1) {
+					// all ok, set return result
+					returnResult = YES;
+				}
+				else {
+					// folder not deleted
+					NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+					[errorDetail setValue:@"Remote folder not deleted." forKey:NSLocalizedDescriptionKey];
+					*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotDeletedError userInfo:errorDetail];
+				}
+			}
+			else {
+				// error in response xml
+				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+				[errorDetail setValue:@"Api data error." forKey:NSLocalizedDescriptionKey];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+			}
+			[parser release];
 		}
 		else {
 			// error while loading request
@@ -166,20 +251,34 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		}
 	}
 	else {
-		// TODO: error
-		return -1;
+		// error: no key, api error?
+		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
 	}
+	
+	return returnResult;
 }
 
-- (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error {
-	
+- (BOOL)editFolder:(GtdFolder *)aFolder error:(NSError **)error {
 	// TODO: check parameters (if set)
 	
 	if ([self isAuthenticated]) {
 		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.folderId], @"id", nil];
-		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteFolderURLFormat additionalParameters:params];
+		NSDictionary *params = [[NSDictionary alloc] init];
+		
+		if (aFolder.uid == -1) {
+			// TODO: error: uid not set
+			return NO;
+		}
+		[params setValue:aFolder.title forKey:@"key"];
+		[params setValue:[NSString stringWithFormat:@"%d", aFolder.private] forKey:@"private"];
+		[params setValue:[NSString stringWithFormat:@"%d", aFolder.archived] forKey:@"archived"];
+		
+		NSURLRequest *request = [self authenticatedRequestForURLString:kEditFolderURLFormat additionalParameters:params];
+		[params release];
+		
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		
 		if (requestError == nil) {

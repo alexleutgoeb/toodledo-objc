@@ -39,6 +39,9 @@
 // Deletes a remote folder
 - (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
+// Edits a remote folder
+- (BOOL)editFolder:(GtdFolder *)aFolder error:(NSError **)error;
+
 //Loads and returns an array with GtdTask objects.
 - (NSArray *)getTasks:(NSError **)error;
 
