@@ -57,4 +57,7 @@
 //Loads and returns an array with deleted task objects.
 // - (NSArray *)getDeleted:(NSError **)error;
 
+//Get remote Notes
+- (NSArray *)getNotes:(NSError **)error;
+
 @end

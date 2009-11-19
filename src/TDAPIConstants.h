@@ -60,6 +60,9 @@
 // delete context url
 #define kDeleteContextURLFormat @"http://api.toodledo.com/api.php?method=deleteContext;"
 
+// get notes url
+#define kGetNotesURLFormat @"http://api.toodledo.com/api.php?method=getNotes;"
+//http://www.toodledo.com/info/api_doc_notebook.php
 
 // log macros
 

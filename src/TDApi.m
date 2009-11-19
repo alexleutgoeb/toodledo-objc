@@ -12,11 +12,13 @@
 #import "GtdFolder.h"
 #import "GtdTask.h"
 #import "GtdContext.h"
+#import "GtdNote.h"
 #import "TDSimpleParser.h"
 #import "TDFoldersParser.h"
 #import "TDContextsParser.h"
 #import "TDTasksParser.h"
 #import "TDDeletedTasksParser.h"
+#import "TDNotesParser.h"
 
 @interface TDApi ()
 
@@ -814,6 +816,51 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		// TODO: error
 		return -1;
 	}
+}
+
+
+- (NSArray *)getNotes:(NSError **)error {
+	
+	id returnResult = nil;
+	
+	if (self.key != nil) {
+		NSError *requestError = nil, *parseError = nil;
+		NSURLRequest *request = [self authenticatedRequestForURLString:kGetNotesURLFormat additionalParameters:nil];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			
+			TDNotesParser *parser = [[TDNotesParser alloc] initWithData:responseData];
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			
+			if (parseError != nil) {
+				// error in response xml
+				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+				[errorDetail setValue:@"Api data error." forKey:NSLocalizedDescriptionKey];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+			}
+			else {
+				// all ok, save result
+				returnResult = result;
+			}
+			[parser release]; 
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:errorDetail];
+		}
+	}
+	else {
+		// error: no key, api error?
+		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+	}
+	
+	return returnResult;
 }
 
 @end
