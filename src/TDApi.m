@@ -268,11 +268,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
 		NSDictionary *params = [[NSDictionary alloc] init];
-		
-		if (aFolder.uid == -1) {
-			// TODO: error: uid not set
-			return NO;
-		}
+
 		[params setValue:aFolder.title forKey:@"key"];
 		[params setValue:[NSString stringWithFormat:@"%d", aFolder.private] forKey:@"private"];
 		[params setValue:[NSString stringWithFormat:@"%d", aFolder.archived] forKey:@"archived"];
