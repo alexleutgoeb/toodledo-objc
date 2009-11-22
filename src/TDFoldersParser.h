@@ -6,7 +6,7 @@
 //  Copyright 2009 alexleutgoeb.com. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #import "TDParser.h"
 #import "GtdFolder.h"
 
