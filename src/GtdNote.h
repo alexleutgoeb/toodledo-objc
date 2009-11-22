@@ -18,11 +18,13 @@
 	NSDate *date_modified;
 	NSString *title;
 	NSString *text;
+	NSInteger folder;
 	BOOL private;
 	
 }
 
 @property (nonatomic) NSInteger noteId;
+@property (nonatomic) NSInteger folder;
 @property (nonatomic, retain) NSDate *date_created;
 @property (nonatomic, retain) NSDate *date_modified;
 @property (nonatomic, copy) NSString *title;

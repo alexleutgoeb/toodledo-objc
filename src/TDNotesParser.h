@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "TDParser.h"
-#import "GtdFolder.h"
+#import "GtdNote.h"
 
 
 
 @interface TDNotesParser : TDParser {
-// TODO: objekte
+	GtdNote *currentNote;
 }
 
 @end

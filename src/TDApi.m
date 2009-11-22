@@ -859,4 +859,19 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	return returnResult;
 }
 
+/*
+
+//Delete a given Note
+- (BOOL)deleteNote:(GtdNote *)aNote error:(NSError **)error
+{
+
+}
+
+
+//Adds given Note
+//- (NSInteger)addNote:(GtdNote *)aNote error:(NSError **)error;
+
+//Edits given Note
+//- (BOOL)editNote:(GtdNote *)aNote error:(NSError **)error;
+*/
 @end
