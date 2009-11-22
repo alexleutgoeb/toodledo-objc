@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0D26F510B95F55005EC715 /* TaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0D26F310B95F55005EC715 /* TaskTests.m */; };
 		BF2F62E110B30FA90057152D /* TDTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F62DF10B30FA90057152D /* TDTasksParser.h */; };
 		BF2F62E210B30FA90057152D /* TDTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F62E010B30FA90057152D /* TDTasksParser.m */; };
 		BF2F632010B32BFA0057152D /* TDDeletedTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		BF0D26F310B95F55005EC715 /* TaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTests.m; sourceTree = "<group>"; };
 		BF2F62DF10B30FA90057152D /* TDTasksParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDTasksParser.h; sourceTree = "<group>"; };
 		BF2F62E010B30FA90057152D /* TDTasksParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTasksParser.m; sourceTree = "<group>"; };
 		BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDDeletedTasksParser.h; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				FAA9E70E10A88CDD001925AB /* APITests.m */,
 				FA67DFAC10B31ACC00095567 /* FolderTests.m */,
+				BF0D26F310B95F55005EC715 /* TaskTests.m */,
 			);
 			name = "Test Classes";
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				BF2F62E210B30FA90057152D /* TDTasksParser.m in Sources */,
 				BF2F632110B32BFA0057152D /* TDDeletedTasksParser.m in Sources */,
 				CF5A9B2510B5D1BE004D3893 /* TDNotesParser.m in Sources */,
+				BF0D26F510B95F55005EC715 /* TaskTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
