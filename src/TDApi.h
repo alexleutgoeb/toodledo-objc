@@ -50,13 +50,13 @@
 - (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error;
 
 //Edits a remote task
-- (NSInteger)editTask:(GtdTask *)aTask error:(NSError **)error;
+- (BOOL)editTask:(GtdTask *)aTask error:(NSError **)error;
 
 //Deletes a remote task
 - (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error;
 
 //Loads and returns an array with deleted task objects.
-// - (NSArray *)getDeleted:(NSError **)error;
+- (NSArray *)getDeleted:(NSError **)error;
 
 //Get remote Notes
 - (NSArray *)getNotes:(NSError **)error;
@@ -69,5 +69,21 @@
 
 //Edits given Note
 - (BOOL)editNote:(GtdNote *)aNote error:(NSError **)error;
+
+/**
+ ERROR FUNCTIONS
+**/
+
+// error: no key, api error?
+- (void) noKeyError:(NSError **)error;
+
+// error while loading request
+- (void) loadingRequestError:(NSError **)error requestError:(NSError *)requestError;
+
+//error in response xml
+-(void) xmlResponseError:(NSError **)error;
+
+//parameters missing
+-(void) missingParametersError:(NSError **)error;
 
 @end

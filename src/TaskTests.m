@@ -6,7 +6,6 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "TaskTests.h"
 #import <SenTestingKit/SenTestingKit.h>
 #import "GtdApi.h"
 #import "TDApi.h"
