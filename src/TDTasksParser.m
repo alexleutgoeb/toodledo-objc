@@ -30,7 +30,7 @@
 		currentTask.completed = [inputFormatter dateFromString:[attributeDict valueForKey:@"completed"]];
 		currentTask.length = [[attributeDict valueForKey:@"length"] intValue];
 		currentTask.note = [[attributeDict valueForKey:@"note"] stringValue];
-		currentTask.star = [[attributeDict valueForKey:@"star"] isEqualToString:@"1"] ? YES : NO ;
+		currentTask.star = [[attributeDict valueForKey:@"star"] boolValue];
 		currentTask.repeat = [[attributeDict valueForKey:@"repeat"] intValue];
 		//currentTask.rep_advanced = 
 		currentTask.status = [[attributeDict valueForKey:@"status"] intValue];

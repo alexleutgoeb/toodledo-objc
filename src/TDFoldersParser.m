@@ -15,8 +15,8 @@
 	if ([elementName isEqualToString:@"folder"]) {
 		currentFolder = [[GtdFolder alloc] init];
 		currentFolder.uid = [[attributeDict valueForKey:@"id"] intValue];
-		currentFolder.private = [[attributeDict valueForKey:@"private"] isEqualToString:@"1"] ? YES : NO ;
-		currentFolder.archived = [[attributeDict valueForKey:@"archived"] isEqualToString:@"1"] ? YES : NO ;
+		currentFolder.private = [[attributeDict valueForKey:@"private"] boolValue];
+		currentFolder.archived = [[attributeDict valueForKey:@"archived"] boolValue];
 		currentFolder.order = [[attributeDict valueForKey:@"order"] intValue];
 	}
 }
