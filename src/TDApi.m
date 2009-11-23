@@ -122,9 +122,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 
 			if (parseError != nil) {
 				// error in response xml
-				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:@"Api data error." forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			}
 			else {
 				// all ok, save result
@@ -134,16 +132,12 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		}
 		else {
 			// error while loading request
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:nil];
 		}
 	}
 	else {
 		// error: no key, api error?
-		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	}
 	
 	return returnResult;
@@ -179,24 +173,18 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			}
 			else {
 				// error in response xml
-				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:@"Remote folder not added." forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotAddedError userInfo:errorDetail];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotAddedError userInfo:nil];
 			}
 			[parser release];
 		}
 		else {
 			// error while loading request
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 		}
 	}
 	else {
 		// error: no key, api error?
-		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	}
 	
 	return returnResult;
@@ -208,9 +196,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	
 	// Check parameters
 	if (aFolder == nil || aFolder.uid == -1 || aFolder.title == nil) {
-		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-		[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	}
 	// Check if valid key
 	else if (self.key != nil) {
@@ -231,24 +217,18 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			}
 			else {
 				// error in response xml
-				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:@"Remote folder not deleted." forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotDeletedError userInfo:errorDetail];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotDeletedError userInfo:nil];
 			}
 			[parser release];
 		}
 		else {
 			// error while loading request
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 		}
 	}
 	else {
 		// error: no key, api error?
-		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	}
 	
 	return returnResult;
@@ -260,9 +240,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	
 	// Check parameters
 	if (aFolder == nil || aFolder.uid == -1 || aFolder.title == nil) {
-		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-		[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	}
 	// Check if valid key
 	else if (self.key != nil) {
@@ -290,24 +268,18 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			}
 			else {
 				// error in response xml
-				NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-				[errorDetail setValue:@"Remote folder not edited." forKey:NSLocalizedDescriptionKey];
-				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotEditedError userInfo:errorDetail];
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiFolderNotEditedError userInfo:nil];
 			}
 			[parser release];
 		}
 		else {
 			// error while loading request
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 		}
 	}
 	else {
 		// error: no key, api error?
-		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	}
 	
 	return returnResult;
@@ -880,4 +852,5 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 //Edits given Note
 //- (BOOL)editNote:(GtdNote *)aNote error:(NSError **)error;
 */
+
 @end
