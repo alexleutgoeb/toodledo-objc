@@ -146,12 +146,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 - (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error {
 	
 	NSInteger returnResult = -1;
-	
+
 	// Check parameters
-	if (aFolder == nil || aFolder.uid == -1 || aFolder.title == nil) {
-		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-		[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
-		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
+	if (aFolder == nil || aFolder.title == nil) {
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	}
 	// Check if valid key
 	else if (self.key != nil) {

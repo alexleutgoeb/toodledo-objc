@@ -10,13 +10,16 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "GtdApi.h"
 #import "TDApi.h"
+#import "GtdFolder.h"
 
 
 @interface FolderTests :SenTestCase {
 	TDApi *api;
+	GtdFolder *folder;
 }
 
 - (void)testAddFolderWithoutParams;
+- (void)testAddFolderWithoutFolderTitle;
 
 @end
 
@@ -24,9 +27,12 @@
 
 - (void)setUp {
 	api = [[TDApi alloc] init];
+	folder = [[GtdFolder alloc] init];
 }
 
 - (void)tearDown {
+	[folder release];
+	folder = nil;
 	[api release];
 	api = nil;
 }
@@ -35,6 +41,13 @@
 	NSError *error = nil;
 	[api addFolder:nil error:&error];
 	STAssertTrue([error code] == GtdApiMissingParameters, @"Folder must not be added without folder argument.");
+}
+
+- (void)testAddFolderWithoutFolderTitle {
+	NSError *error = nil;
+	folder.title = nil;
+	[api addFolder:folder error:&error];
+	STAssertTrue([error code] == GtdApiMissingParameters, @"Folder must not be added without folder title argument.");
 }
 
 @end

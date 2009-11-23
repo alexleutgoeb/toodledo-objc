@@ -19,6 +19,7 @@
 
 - (id)init {
 	if (self = [super init]) {
+		title = nil;
 		uid = -1;
 		private = NO;
 		archived = NO;
