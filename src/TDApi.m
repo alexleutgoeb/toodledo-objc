@@ -835,20 +835,142 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	return returnResult;
 }
 
-/*
+
 
 //Delete a given Note
 - (BOOL)deleteNote:(GtdNote *)aNote error:(NSError **)error
 {
-
+	
+	
+	BOOL returnResult = NO;
+	
+	// Check parameters
+	if (aNote.uid == -1) [self missingParametersError:error];
+	// Check if valid key
+	else if (self.key != nil) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aNote.uid], @"id", nil];
+		NSURLRequest *request = [self authenticatedRequestForURLString:kDeleteNotesURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"success";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			
+			if ([result count] == 1 && parseError == nil) {
+				// all ok, set return result
+				returnResult = YES;
+			}
+			else [self xmlResponseError:error];
+		}
+		else [self loadingRequestError:error requestError:requestError];
+	}
+	else [self noKeyError:error];
+	return returnResult;
+	
 }
 
 
 //Adds given Note
-//- (NSInteger)addNote:(GtdNote *)aNote error:(NSError **)error;
+- (NSInteger)addNote:(GtdNote *)aNote error:(NSError **)error
+{
+	// TODO: check parameters
+	
+	if ([self isAuthenticated]) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+								
+								aNote.title, @"title",
+								aNote.text, @"text",
+								aNote.folder, @"folder",
+								aNote.private, @"private", nil ];								
+		
+		
+		
+		NSURLRequest *request = [self authenticatedRequestForURLString:kAddNotesURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"added";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			
+			if ([result count] == 1) {
+				return [[result objectAtIndex:0] intValue];
+			}
+			else {
+				return -1;
+			}
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return -1;
+		}
+	}
+	else {
+		// TODO: error
+		return -1;
+	}
+	
+}
 
 //Edits given Note
-//- (BOOL)editNote:(GtdNote *)aNote error:(NSError **)error;
-*/
+- (BOOL)editNote:(GtdNote *)aNote error:(NSError **)error
+{
+	// TODO: check parameters
+	
+	if ([self isAuthenticated]) {
+		// TODO: parse error handling
+		NSError *requestError = nil, *parseError = nil;
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+								[NSString stringWithFormat:@"%d", aNote.uid], @"id",
+								aNote.title, @"title",
+								aNote.text, @"text",
+								aNote.folder, @"folder",
+								aNote.private, @"private", nil ];								
+		
+		
+		
+		NSURLRequest *request = [self authenticatedRequestForURLString:kAddNotesURLFormat additionalParameters:params];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"success";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
+			
+			if ([result count] == 1 && parseError == nil) {
+				// all ok, set return result
+				 return YES;
+			}
+			else {
+				return -1;
+			}
+		}
+		else {
+			// error while loading request
+			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:-2 userInfo:errorDetail];
+			return NO;
+		}
+	}
+	else {
+		// TODO: error
+		return NO;
+	}
+}
+
 
 @end

@@ -11,7 +11,7 @@
 
 @implementation GtdNote
 
-@synthesize noteId;
+@synthesize uid;
 @synthesize date_created;
 @synthesize date_modified;
 @synthesize title;
@@ -20,14 +20,12 @@
 
 - (void) dealloc 
 {
-	// [title release];
-	//[note release];
 	[super dealloc];
 }
 
 - (NSString *)description 
 {
-	return [NSString stringWithFormat:@"<GtdNote noteId='%i' note='%@'>", noteId, text];
+	return [NSString stringWithFormat:@"<GtdNote uid='%i' note='%@'>", uid, text];
 }
 
 

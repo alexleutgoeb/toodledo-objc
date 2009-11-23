@@ -63,8 +63,12 @@
 // get notes url
 #define kGetNotesURLFormat @"http://api.toodledo.com/api.php?method=getNotes;"
 //http://www.toodledo.com/info/api_doc_notebook.php
-
-
+// delete note url
+#define kDeleteNotesURLFormat @"http://api.toodledo.com/api.php?method=deleteNote;"
+// add note url
+#define kAddNotesURLFormat @"http://api.toodledo.com/api.php?method=addNote;"
+// edit note url
+#define kEditNotesURLFormat @"http://api.toodledo.com/api.php?method=editNote;"
 
 ////////////////////////////////////////////////////////////////////////////////
 // log macros

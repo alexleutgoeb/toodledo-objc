@@ -18,7 +18,7 @@
 <private>1</private>
 </note>
  
- NSInteger noteId;
+ NSInteger uid;
  NSDate *date_created;
  NSDate *date_modified;
  NSString *title;
@@ -31,7 +31,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
 	if ([elementName isEqualToString:@"note"]) {
 		currentNote = [[GtdNote alloc] init];
-		currentNote.noteId = [[attributeDict valueForKey:@"id"] intValue];
+		currentNote.uid = [[attributeDict valueForKey:@"id"] intValue];
 		currentNote.private = [[attributeDict valueForKey:@"private"] isEqualToString:@"1"] ? YES : NO ;
 		currentNote.folder = [[attributeDict valueForKey:@"folder"] intValue];
 		currentNote.date_created = [[attributeDict valueForKey:@"added"] dateValue];
