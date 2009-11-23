@@ -34,6 +34,9 @@
 		FA67E02E10B31E3800095567 /* GtdContext.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145CF810A85E2200EEB890 /* GtdContext.m */; };
 		FA6E64A010A8744E004010EB /* TDContextsParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FA6E649E10A8744E004010EB /* TDContextsParser.h */; };
 		FA6E64A110A8744E004010EB /* TDContextsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E649F10A8744E004010EB /* TDContextsParser.m */; };
+		FA7CCCD910BA846600A1E2C6 /* TDTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F62E010B30FA90057152D /* TDTasksParser.m */; };
+		FA7CCCDA10BA846600A1E2C6 /* TDDeletedTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F631F10B32BFA0057152D /* TDDeletedTasksParser.m */; };
+		FA7CCCDB10BA846600A1E2C6 /* TDNotesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A9B2310B5D1BE004D3893 /* TDNotesParser.m */; };
 		FAA6A16E10AA0BD1002D7E2F /* TDSimpleParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6A16C10AA0BD1002D7E2F /* TDSimpleParser.h */; };
 		FAA6A16F10AA0BD1002D7E2F /* TDSimpleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA6A16D10AA0BD1002D7E2F /* TDSimpleParser.m */; };
 		FAA9E6F510A88CAF001925AB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA9E6F410A88CAF001925AB /* SenTestingKit.framework */; };
@@ -323,6 +326,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7CCCD910BA846600A1E2C6 /* TDTasksParser.m in Sources */,
+				FA7CCCDA10BA846600A1E2C6 /* TDDeletedTasksParser.m in Sources */,
+				FA7CCCDB10BA846600A1E2C6 /* TDNotesParser.m in Sources */,
 				FAA9E70F10A88CDD001925AB /* APITests.m in Sources */,
 				FA67DFAD10B31ACC00095567 /* FolderTests.m in Sources */,
 				FA67E02410B31E1800095567 /* TDApi.m in Sources */,

@@ -64,6 +64,9 @@
 #define kGetNotesURLFormat @"http://api.toodledo.com/api.php?method=getNotes;"
 //http://www.toodledo.com/info/api_doc_notebook.php
 
+
+
+////////////////////////////////////////////////////////////////////////////////
 // log macros
 
 // DLog is almost a drop-in replacement for NSLog for debug mode
@@ -75,3 +78,4 @@
 
 // ALog always displays output regardless of the DEBUG setting
 #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
