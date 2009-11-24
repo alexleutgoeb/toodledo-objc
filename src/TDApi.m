@@ -551,7 +551,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		[parser release];
 		
 		if ([result count] == 1) {
-			NSDate *serverDate = [[NSDate alloc] initWithTimeIntervalSince1970:[[result objectAtIndex:0] doubleValue]];
+			NSDate *serverDate = [NSDate dateWithTimeIntervalSince1970:[[result objectAtIndex:0] doubleValue]];
 			servertimeDifference = [serverDate timeIntervalSinceNow];
 			[serverDate release];
 			DLog(@"Server infos retrieved, servertime difference: %f.", servertimeDifference);
