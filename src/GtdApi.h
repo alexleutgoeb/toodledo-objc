@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GtdFolder.h"
+#import "GtdTask.h"
+#import "GtdNote.h"
+#import "GtdContext.h"
 
-@class GtdFolder;
 
 // This constant defines the GtdApi error domain.
 extern NSString *const GtdApiErrorDomain;
@@ -32,35 +35,44 @@ extern NSString *const GtdApiErrorDomain;
 // Deletes a remote folder
 - (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
-// Loads and returns an array with GtdContext objects. 
+// Edits a remote folder
+- (BOOL)editFolder:(GtdFolder *)aFolder error:(NSError **)error;
+
+//Loads and returns an array with GtdTask objects.
+- (NSArray *)getTasks:(NSError **)error;
+
+//Adds a remote task
+- (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error;
+
+//Edits a remote task
+- (BOOL)editTask:(GtdTask *)aTask error:(NSError **)error;
+
+//Deletes a remote task
+- (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error;
+
+//Loads and returns an array with deleted task objects.
+- (NSArray *)getDeleted:(NSError **)error;
+
+//Get remote Notes
+- (NSArray *)getNotes:(NSError **)error;
+
+//Delete a given Note
+- (BOOL)deleteNote:(GtdNote *)aNote error:(NSError **)error;
+
+//Adds given Note
+- (NSInteger)addNote:(GtdNote *)aNote error:(NSError **)error;
+
+//Edits given Note
+- (BOOL)editNote:(GtdNote *)aNote error:(NSError **)error;
+
+// Adds a given context
+- (NSInteger)addContext:(GtdContext *)aContext error:(NSError **)error;
+
+// Gets a list of contexts
 - (NSArray *)getContexts:(NSError **)error;
 
-
-//
-@optional
-
-// Inits an api implementation with username and password, possible auth tokens have to be saved by the implementation
-- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password;
-
-// Adds a remote task to the gtd service
-- (NSInteger)addTask:(id)aTask;
-
-// Gets a list of remote tasks matching the given prototype; if prototype is nil, all tasks are returned
-- (NSArray *)getTasksLikePrototype:(id)aPrototype;
-
-// Modifies a given remote task, returns YES if successful, otherwise NO
-- (BOOL)updateTask:(id)aTask;
-
-// Deletes a remote task permamently
-- (BOOL)deleteTask:(id)aTask;
-
-
-// Adds a folder to the gtd service
-- (NSInteger)addFolder:(id)aFolder;
-
-// Adds a context to the gtd service
-- (NSInteger)addContext:(id)aContext;
-
+// Deletes a given context
+- (BOOL)deleteContext:(GtdContext *)aContext error:(NSError **)error;
 
 @end
 

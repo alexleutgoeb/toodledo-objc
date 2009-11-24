@@ -17,6 +17,7 @@
 @synthesize title;
 @synthesize text;
 @synthesize private;
+@synthesize folder;
 
 - (void) dealloc 
 {
