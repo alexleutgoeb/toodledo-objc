@@ -12,10 +12,14 @@
 @implementation TDDeletedTasksParser
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
+	
+	NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+	[inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+	
 	if ([elementName isEqualToString:@"task"]) {
 		currentTask = [[GtdTask alloc] init];
 		currentTask.uid = [[attributeDict valueForKey:@"id"] intValue];
-		currentTask.date_modified = [[attributeDict valueForKey:@"stamp"] dateValue];
+		[inputFormatter dateFromString:[attributeDict valueForKey:@"stamp"]];
 
 	}
 }

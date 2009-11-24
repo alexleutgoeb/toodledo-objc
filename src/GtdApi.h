@@ -16,6 +16,9 @@
 // This constant defines the GtdApi error domain.
 extern NSString *const GtdApiErrorDomain;
 
+/**
+ The GtdApi Protocol.
+ */
 @protocol GtdApi
 
 @property (readonly) BOOL isAuthenticated;
@@ -38,20 +41,38 @@ extern NSString *const GtdApiErrorDomain;
 // Edits a remote folder
 - (BOOL)editFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
-//Loads and returns an array with GtdTask objects.
-- (NSArray *)getTasks:(NSError **)error;
+/**
+ Loads and returns an array with GtdTask objects.
+ @param error
+*/
+ - (NSArray *)getTasks:(NSError **)error;
 
-//Adds a remote task
-- (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error;
+/**
+ Adds a remote task
+ @param aTask
+ @param error
+*/
+ - (NSInteger)addTask:(GtdTask *)aTask error:(NSError **)error;
 
-//Edits a remote task
-- (BOOL)editTask:(GtdTask *)aTask error:(NSError **)error;
+/**
+ Edits a remote task
+ @param aTask
+ @param error
+*/
+ - (BOOL)editTask:(GtdTask *)aTask error:(NSError **)error;
 
-//Deletes a remote task
+/**
+ Deletes a remote task
+ @param aTask
+ @param error
+*/
 - (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error;
 
-//Loads and returns an array with deleted task objects.
-- (NSArray *)getDeleted:(NSError **)error;
+/**
+ Loads and returns an array with deleted task objects.
+ @param error
+*/
+ - (NSArray *)getDeleted:(NSError **)error;
 
 //Get remote Notes
 - (NSArray *)getNotes:(NSError **)error;
