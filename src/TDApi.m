@@ -9,10 +9,6 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "TDApi.h"
 #import "TDApiConstants.h"
-#import "GtdFolder.h"
-#import "GtdTask.h"
-#import "GtdContext.h"
-#import "GtdNote.h"
 #import "TDSimpleParser.h"
 #import "TDFoldersParser.h"
 #import "TDContextsParser.h"
