@@ -29,13 +29,16 @@
 
 @implementation TDNotesParser
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
+	NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+	[inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+	
 	if ([elementName isEqualToString:@"note"]) {
 		currentNote = [[GtdNote alloc] init];
 		currentNote.uid = [[attributeDict valueForKey:@"id"] intValue];
 		currentNote.private = [[attributeDict valueForKey:@"private"] isEqualToString:@"1"] ? YES : NO ;
 		currentNote.folder = [[attributeDict valueForKey:@"folder"] intValue];
-		currentNote.date_created = [[attributeDict valueForKey:@"added"] dateValue];
-		currentNote.date_modified = [[attributeDict valueForKey:@"modified"] dateValue];
+		currentNote.date_created = [inputFormatter dateFromString:[attributeDict valueForKey:@"added"]];
+		currentNote.date_modified = [inputFormatter dateFromString:[attributeDict valueForKey:@"modified"]];
 		currentNote.text = [[attributeDict valueForKey:@"text"] stringValue];
 		currentNote.title = [[attributeDict valueForKey:@"title"] stringValue];
 	}
