@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface TDParser : NSObject <NSXMLParserDelegate> {
+@interface TDParser : NSObject {
 	NSMutableArray *results;
 	NSMutableString *currentString;
 @private
