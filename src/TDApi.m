@@ -86,6 +86,14 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	return self;
 }
 
+- (void) dealloc {
+	[passwordHash release];
+	[keyValidity release];
+	[key release];
+	[userId release];
+	[super dealloc];
+}
+
 - (NSDictionary *)getLastModificationsDates:(NSError **)error {
 	
 	if ([self isAuthenticated]) {
@@ -105,6 +113,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	}
 	
 }
+
+
+#pragma mark folder actions
 
 - (NSArray *)getFolders:(NSError **)error {
 
@@ -193,7 +204,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	BOOL returnResult = NO;
 	
 	// Check parameters
-	if (aFolder == nil || aFolder.uid == -1 || aFolder.title == nil) {
+	if (aFolder == nil || aFolder.uid == -1) {
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	}
 	// Check if valid key
@@ -282,6 +293,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	
 	return returnResult;
 }
+
+
+#pragma mark task actions
 
 - (NSArray *)getTasks:(NSError **)error {
 	
@@ -483,15 +497,6 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	}
 	else [self noKeyError:error];
 	return returnResult;
-}
-
-
-- (void) dealloc {
-	[passwordHash release];
-	[keyValidity release];
-	[key release];
-	[userId release];
-	[super dealloc];
 }
 
 
