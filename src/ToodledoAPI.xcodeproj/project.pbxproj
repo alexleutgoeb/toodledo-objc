@@ -41,6 +41,9 @@
 		FAA6A16F10AA0BD1002D7E2F /* TDSimpleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA6A16D10AA0BD1002D7E2F /* TDSimpleParser.m */; };
 		FAA9E6F510A88CAF001925AB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA9E6F410A88CAF001925AB /* SenTestingKit.framework */; };
 		FAA9E70F10A88CDD001925AB /* APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9E70E10A88CDD001925AB /* APITests.m */; };
+		FABE3D5010BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE3D4F10BC4C8B000D72E9 /* TDUserInfoParser.m */; };
+		FABE3D5110BC4C8B000D72E9 /* TDUserInfoParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FABE3D4E10BC4C8A000D72E9 /* TDUserInfoParser.h */; };
+		FABE3D5210BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE3D4F10BC4C8B000D72E9 /* TDUserInfoParser.m */; };
 		FACC732F10A5B4990079598B /* GtdTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FACC732D10A5B4990079598B /* GtdTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACC733010A5B4990079598B /* GtdTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC732E10A5B4990079598B /* GtdTask.m */; };
 		FACCD7F710A0CF8D00A36C87 /* TDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FACCD7F510A0CF8D00A36C87 /* TDParser.h */; settings = {ATTRIBUTES = (); }; };
@@ -87,6 +90,8 @@
 		FAA9E6EE10A88C7C001925AB /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		FAA9E6F410A88CAF001925AB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		FAA9E70E10A88CDD001925AB /* APITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APITests.m; sourceTree = "<group>"; };
+		FABE3D4E10BC4C8A000D72E9 /* TDUserInfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUserInfoParser.h; sourceTree = "<group>"; };
+		FABE3D4F10BC4C8B000D72E9 /* TDUserInfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUserInfoParser.m; sourceTree = "<group>"; };
 		FACC732D10A5B4990079598B /* GtdTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdTask.h; sourceTree = "<group>"; };
 		FACC732E10A5B4990079598B /* GtdTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdTask.m; sourceTree = "<group>"; };
 		FACCD7F510A0CF8D00A36C87 /* TDParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDParser.h; sourceTree = "<group>"; };
@@ -187,6 +192,8 @@
 				BF2F631F10B32BFA0057152D /* TDDeletedTasksParser.m */,
 				CF5A9B2210B5D1BE004D3893 /* TDNotesParser.h */,
 				CF5A9B2310B5D1BE004D3893 /* TDNotesParser.m */,
+				FABE3D4E10BC4C8A000D72E9 /* TDUserInfoParser.h */,
+				FABE3D4F10BC4C8B000D72E9 /* TDUserInfoParser.m */,
 			);
 			name = "Parser Classes";
 			sourceTree = "<group>";
@@ -235,6 +242,7 @@
 				BF2F62E110B30FA90057152D /* TDTasksParser.h in Headers */,
 				BF2F632010B32BFA0057152D /* TDDeletedTasksParser.h in Headers */,
 				CF5A9B2410B5D1BE004D3893 /* TDNotesParser.h in Headers */,
+				FABE3D5110BC4C8B000D72E9 /* TDUserInfoParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +348,7 @@
 				FA67E02C10B31E3600095567 /* GtdNote.m in Sources */,
 				FA67E02D10B31E3700095567 /* GtdFolder.m in Sources */,
 				FA67E02E10B31E3800095567 /* GtdContext.m in Sources */,
+				FABE3D5010BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +369,7 @@
 				BF2F632110B32BFA0057152D /* TDDeletedTasksParser.m in Sources */,
 				CF5A9B2510B5D1BE004D3893 /* TDNotesParser.m in Sources */,
 				BF0D26F510B95F55005EC715 /* TaskTests.m in Sources */,
+				FABE3D5210BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

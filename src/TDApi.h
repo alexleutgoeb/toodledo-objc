@@ -21,7 +21,7 @@
 	NSDate *keyValidity;
 	NSString *passwordHash;
 	NSTimeInterval servertimeDifference;
-
+	NSDictionary *accountInfo;
 }
 
 

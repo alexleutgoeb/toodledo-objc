@@ -19,10 +19,12 @@
 #import "TDTasksParser.h"
 #import "TDDeletedTasksParser.h"
 #import "TDNotesParser.h"
+#import "TDUserInfoParser.h"
 
 @interface TDApi ()
 
 - (BOOL)loadServerInfos;
+- (BOOL)loadAccountInfo;
 - (NSString *)getUserIdForUsername:(NSString *)aUsername andPassword:(NSString *)aPassword;
 - (NSURLRequest *)requestForURLString:(NSString *)anUrlString additionalParameters:(NSDictionary *)additionalParameters;
 - (NSURLRequest *)authenticatedRequestForURLString:(NSString *)anUrlString additionalParameters:(NSDictionary *)additionalParameters;
@@ -32,6 +34,7 @@
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *passwordHash;
 @property (nonatomic, retain) NSDate *keyValidity;
+@property (nonatomic, retain) NSDictionary *accountInfo;
 
 @end
 
@@ -42,7 +45,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 
 @implementation TDApi
 
-@synthesize userId, key, keyValidity, passwordHash;
+@synthesize userId, key, keyValidity, passwordHash, accountInfo;
 
 #pragma mark -
 #pragma mark GtdApi protocol implementation
@@ -96,22 +99,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 
 - (NSDictionary *)getLastModificationsDates:(NSError **)error {
 	
-	if ([self isAuthenticated]) {
-		
-		NSDictionary *datesDict = [NSDictionary dictionary];
-		
-		// NSError *requestError = nil, *parseError = nil;
-		// NSURLRequest *request = [self authenticatedRequestForURLString:kGetFoldersURLFormat additionalParameters:nil];
-		// NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
-		
-		// TODO: implementieren
-		
-		return datesDict;
-	}
-	else {
-		return nil;
-	}
-	
+	// TODO: implement with getaccountinfo helpermethod
+	return nil;
 }
 
 
@@ -565,6 +554,30 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	else {
 		return NO;
 	}
+}
+
+- (BOOL)loadAccountInfo {
+	
+	BOOL returnResult = NO;
+	
+	if (self.key != nil) {
+		NSError *requestError = nil, *parseError = nil;
+		NSURLRequest *request = [self authenticatedRequestForURLString:kGetFoldersURLFormat additionalParameters:nil];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDUserInfoParser *parser = [[TDUserInfoParser alloc] initWithData:responseData];
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			
+			if (parseError == nil) {
+				self.accountInfo = [result objectAtIndex:0];
+				returnResult = YES;
+			}
+			[parser release];
+		}
+	}
+	return returnResult;
 }
 
 // Used for userid lookup. Warning: the pwd is sent unencrypted.
