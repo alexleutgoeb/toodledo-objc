@@ -97,10 +97,34 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	[super dealloc];
 }
 
+
+#pragma mark date actions
+
 - (NSDictionary *)getLastModificationsDates:(NSError **)error {
 	
-	// TODO: implement with getaccountinfo helpermethod
-	return nil;
+	NSDictionary *returnResult = nil;
+	
+	if ([self loadAccountInfo] != NO) {
+		returnResult = [NSDictionary dictionary];
+		
+		if ([accountInfo valueForKey:@"lastaddedit"] != nil) {
+			[returnResult setValue:[accountInfo valueForKey:@"lastaddedit"] forKey:@"lastTaskAddEdit"];
+		}
+		if ([accountInfo valueForKey:@"lastdelete"] != nil) {
+			[returnResult setValue:[accountInfo valueForKey:@"lastdelete"] forKey:@"lastTaskDelete"];
+		}
+		if ([accountInfo valueForKey:@"lastfolderedit"] != nil) {
+			[returnResult setValue:[accountInfo valueForKey:@"lastfolderedit"] forKey:@"lastFolderEdit"];
+		}
+		if ([accountInfo valueForKey:@"lastcontextedit"] != nil) {
+			[returnResult setValue:[accountInfo valueForKey:@"lastcontextedit"] forKey:@"lastContextEdit"];
+		}
+	}
+	else {
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:-1 userInfo:nil];
+	}
+	
+	return returnResult;
 }
 
 
@@ -301,16 +325,19 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			TDTasksParser *parser = [[TDTasksParser alloc] initWithData:responseData];
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
 			
-			if(parseError != nil) [self xmlResponseError:error];
+			if(parseError != nil)
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			else {
 				//all ok, save result
 				returnResult = result;
 			}
 			[parser release];
 		}
-		else [self loadingRequestError:error requestError:requestError];
+		else
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:nil];
 	}
-	else [self noKeyError:error];
+	else
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	return returnResult;
 }
 
@@ -328,16 +355,19 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			TDDeletedTasksParser *parser = [[TDDeletedTasksParser alloc] initWithData:responseData];
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
 			
-			if(parseError != nil) [self xmlResponseError:error];
+			if(parseError != nil)
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			else {
 				//all ok, save result
 				returnResult = result;
 			}
 			[parser release];
 		}
-		else [self loadingRequestError:error requestError:requestError];
+		else
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:nil];
 	}
-	else [self noKeyError:error];
+	else
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	return returnResult;
 }
 
@@ -347,7 +377,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	NSInteger returnResult = -1;
 	
 	// Check parameters
-	if (aTask == nil || aTask.uid == -1 || aTask.title == nil) [self missingParametersError:error];
+	if (aTask == nil || aTask.uid == -1 || aTask.title == nil)
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	//check if valid key
 	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
@@ -386,12 +417,15 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 				// all ok, save return value
 				returnResult = [[result objectAtIndex:0] intValue];
 			}
-			else [self xmlResponseError:error];
+			else
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			[parser release];
 		}
-		else [self loadingRequestError:error requestError:requestError];
+		else
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:nil];
 	}
-	else [self noKeyError:error];
+	else
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	return returnResult;
 }
 
@@ -400,7 +434,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	BOOL returnResult = NO;
 	
 	// Check parameters
-	if (aTask == nil || aTask.uid == -1 || aTask.title == nil) [self missingParametersError:error];
+	if (aTask == nil || aTask.uid == -1 || aTask.title == nil)
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	// Check if valid key
 	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
@@ -446,12 +481,15 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 				// all ok, set return result
 				returnResult = YES;
 			}
-			else [self xmlResponseError:error];
+			else
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			[parser release];
 		}
-		else [self loadingRequestError:error requestError:requestError];
+		else
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:nil];
 	}
-	else [self noKeyError:error];
+	else
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	return returnResult;
 }
 
@@ -461,7 +499,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	BOOL returnResult = NO;
 	
 	// Check parameters
-	if (aTask == nil || aTask.uid == -1 || aTask.title == nil) [self missingParametersError:error];
+	if (aTask == nil || aTask.uid == -1 || aTask.title == nil)
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	// Check if valid key
 	else if (self.key != nil) {
 		// TODO: parse error handling
@@ -480,11 +519,14 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 				// all ok, set return result
 				returnResult = YES;
 			}
-			else [self xmlResponseError:error];
+			else
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 		}
-		else [self loadingRequestError:error requestError:requestError];
+		else
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:nil];
 	}
-	else [self noKeyError:error];
+	else
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	return returnResult;
 }
 
@@ -496,33 +538,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		return YES;
 }
 
-// error: no key, api error?
-- (void) noKeyError:(NSError **)error {
-	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-	[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
-	*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
-}
 
-// error while loading request
-- (void) loadingRequestError:(NSError **)error requestError:(NSError *) requestError {
-	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-	[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
-	*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:errorDetail];
-}
-
-//error in response xml
--(void) xmlResponseError:(NSError **)error {
-	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-	[errorDetail setValue:@"Api data error." forKey:NSLocalizedDescriptionKey];
-	*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
-}
-
-//parameters missing
--(void) missingParametersError:(NSError **)error {
-	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-	[errorDetail setValue:@"Missing parameters in folder object." forKey:NSLocalizedDescriptionKey];
-	*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:errorDetail];
-}
 #pragma mark -
 #pragma mark helper methods
 
@@ -863,7 +879,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	BOOL returnResult = NO;
 	
 	// Check parameters
-	if (aNote.uid == -1) [self missingParametersError:error];
+	if (aNote.uid == -1)
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	// Check if valid key
 	else if (self.key != nil) {
 		// TODO: parse error handling
@@ -882,11 +899,14 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 				// all ok, set return result
 				returnResult = YES;
 			}
-			else [self xmlResponseError:error];
+			else
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 		}
-		else [self loadingRequestError:error requestError:requestError];
+		else
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:nil];
 	}
-	else [self noKeyError:error];
+	else
+		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 	return returnResult;
 	
 }
