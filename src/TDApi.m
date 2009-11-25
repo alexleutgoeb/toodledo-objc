@@ -651,7 +651,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	
 	id returnResult = nil;
 	
+	// Check if valid key
 	if (self.key != nil) {
+
 		NSError *requestError = nil, *parseError = nil;
 		NSURLRequest *request = [self authenticatedRequestForURLString:kGetNotesURLFormat additionalParameters:nil];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
@@ -678,6 +680,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			// error while loading request
 			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 			[errorDetail setValue:[requestError localizedDescription] forKey:NSLocalizedDescriptionKey];
+			
 			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiNotReachableError userInfo:errorDetail];
 		}
 	}
@@ -685,6 +688,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		// error: no key, api error?
 		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 		[errorDetail setValue:@"Api Error, no valid key." forKey:NSLocalizedDescriptionKey];
+		
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
 	}
 	
@@ -700,7 +704,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	BOOL returnResult = NO;
 	
 	// Check parameters
-	if (aNote.uid == -1)
+	if (aNote.uid == -1 || aNote.text == nil || aNote.title == nil || aNote.folder == -1)
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	// Check if valid key
 	else if (self.key != nil) {
