@@ -47,6 +47,7 @@
 		FABE3EB610BD1ED7000D72E9 /* folder_add_error_invalidkey.xml in Resources */ = {isa = PBXBuildFile; fileRef = FABE3EB310BD1ED7000D72E9 /* folder_add_error_invalidkey.xml */; };
 		FABE3EB710BD1ED7000D72E9 /* folder_add_error_no_title.xml in Resources */ = {isa = PBXBuildFile; fileRef = FABE3EB410BD1ED7000D72E9 /* folder_add_error_no_title.xml */; };
 		FABE3EB810BD1ED7000D72E9 /* folder_add_success.xml in Resources */ = {isa = PBXBuildFile; fileRef = FABE3EB510BD1ED7000D72E9 /* folder_add_success.xml */; };
+		FABE3EBF10BD1F36000D72E9 /* FolderParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE3EBE10BD1F36000D72E9 /* FolderParserTests.m */; };
 		FACC732F10A5B4990079598B /* GtdTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FACC732D10A5B4990079598B /* GtdTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACC733010A5B4990079598B /* GtdTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC732E10A5B4990079598B /* GtdTask.m */; };
 		FACCD7F710A0CF8D00A36C87 /* TDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FACCD7F510A0CF8D00A36C87 /* TDParser.h */; settings = {ATTRIBUTES = (); }; };
@@ -98,6 +99,7 @@
 		FABE3EB310BD1ED7000D72E9 /* folder_add_error_invalidkey.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = folder_add_error_invalidkey.xml; path = TestFiles/folder_add_error_invalidkey.xml; sourceTree = "<group>"; };
 		FABE3EB410BD1ED7000D72E9 /* folder_add_error_no_title.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = folder_add_error_no_title.xml; path = TestFiles/folder_add_error_no_title.xml; sourceTree = "<group>"; };
 		FABE3EB510BD1ED7000D72E9 /* folder_add_success.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = folder_add_success.xml; path = TestFiles/folder_add_success.xml; sourceTree = "<group>"; };
+		FABE3EBE10BD1F36000D72E9 /* FolderParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderParserTests.m; sourceTree = "<group>"; };
 		FACC732D10A5B4990079598B /* GtdTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdTask.h; sourceTree = "<group>"; };
 		FACC732E10A5B4990079598B /* GtdTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdTask.m; sourceTree = "<group>"; };
 		FACCD7F510A0CF8D00A36C87 /* TDParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDParser.h; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				FAA9E70E10A88CDD001925AB /* APITests.m */,
 				FA67DFAC10B31ACC00095567 /* FolderTests.m */,
+				FABE3EBE10BD1F36000D72E9 /* FolderParserTests.m */,
 				BF0D26F310B95F55005EC715 /* TaskTests.m */,
 				FABE3EA910BD1D42000D72E9 /* Other Sources */,
 			);
@@ -369,6 +372,7 @@
 				FA67E02D10B31E3700095567 /* GtdFolder.m in Sources */,
 				FA67E02E10B31E3800095567 /* GtdContext.m in Sources */,
 				FABE3D5010BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */,
+				FABE3EBF10BD1F36000D72E9 /* FolderParserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
