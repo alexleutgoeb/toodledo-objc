@@ -44,6 +44,9 @@
 		FABE3D5010BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE3D4F10BC4C8B000D72E9 /* TDUserInfoParser.m */; };
 		FABE3D5110BC4C8B000D72E9 /* TDUserInfoParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FABE3D4E10BC4C8A000D72E9 /* TDUserInfoParser.h */; };
 		FABE3D5210BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE3D4F10BC4C8B000D72E9 /* TDUserInfoParser.m */; };
+		FABE3EB610BD1ED7000D72E9 /* folder_add_error_invalidkey.xml in Resources */ = {isa = PBXBuildFile; fileRef = FABE3EB310BD1ED7000D72E9 /* folder_add_error_invalidkey.xml */; };
+		FABE3EB710BD1ED7000D72E9 /* folder_add_error_no_title.xml in Resources */ = {isa = PBXBuildFile; fileRef = FABE3EB410BD1ED7000D72E9 /* folder_add_error_no_title.xml */; };
+		FABE3EB810BD1ED7000D72E9 /* folder_add_success.xml in Resources */ = {isa = PBXBuildFile; fileRef = FABE3EB510BD1ED7000D72E9 /* folder_add_success.xml */; };
 		FACC732F10A5B4990079598B /* GtdTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FACC732D10A5B4990079598B /* GtdTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FACC733010A5B4990079598B /* GtdTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC732E10A5B4990079598B /* GtdTask.m */; };
 		FACCD7F710A0CF8D00A36C87 /* TDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FACCD7F510A0CF8D00A36C87 /* TDParser.h */; settings = {ATTRIBUTES = (); }; };
@@ -92,6 +95,9 @@
 		FAA9E70E10A88CDD001925AB /* APITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APITests.m; sourceTree = "<group>"; };
 		FABE3D4E10BC4C8A000D72E9 /* TDUserInfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDUserInfoParser.h; sourceTree = "<group>"; };
 		FABE3D4F10BC4C8B000D72E9 /* TDUserInfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDUserInfoParser.m; sourceTree = "<group>"; };
+		FABE3EB310BD1ED7000D72E9 /* folder_add_error_invalidkey.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = folder_add_error_invalidkey.xml; path = TestFiles/folder_add_error_invalidkey.xml; sourceTree = "<group>"; };
+		FABE3EB410BD1ED7000D72E9 /* folder_add_error_no_title.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = folder_add_error_no_title.xml; path = TestFiles/folder_add_error_no_title.xml; sourceTree = "<group>"; };
+		FABE3EB510BD1ED7000D72E9 /* folder_add_success.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = folder_add_success.xml; path = TestFiles/folder_add_success.xml; sourceTree = "<group>"; };
 		FACC732D10A5B4990079598B /* GtdTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdTask.h; sourceTree = "<group>"; };
 		FACC732E10A5B4990079598B /* GtdTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdTask.m; sourceTree = "<group>"; };
 		FACCD7F510A0CF8D00A36C87 /* TDParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDParser.h; sourceTree = "<group>"; };
@@ -171,8 +177,19 @@
 				FAA9E70E10A88CDD001925AB /* APITests.m */,
 				FA67DFAC10B31ACC00095567 /* FolderTests.m */,
 				BF0D26F310B95F55005EC715 /* TaskTests.m */,
+				FABE3EA910BD1D42000D72E9 /* Other Sources */,
 			);
 			name = "Test Classes";
+			sourceTree = "<group>";
+		};
+		FABE3EA910BD1D42000D72E9 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FABE3EB310BD1ED7000D72E9 /* folder_add_error_invalidkey.xml */,
+				FABE3EB410BD1ED7000D72E9 /* folder_add_error_no_title.xml */,
+				FABE3EB510BD1ED7000D72E9 /* folder_add_success.xml */,
+			);
+			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		FACCD7E010A0CECA00A36C87 /* Parser Classes */ = {
@@ -308,6 +325,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FABE3EB610BD1ED7000D72E9 /* folder_add_error_invalidkey.xml in Resources */,
+				FABE3EB710BD1ED7000D72E9 /* folder_add_error_no_title.xml in Resources */,
+				FABE3EB810BD1ED7000D72E9 /* folder_add_success.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
