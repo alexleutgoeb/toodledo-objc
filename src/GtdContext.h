@@ -12,11 +12,11 @@
 @interface GtdContext : NSObject {
 	
 @private
-	NSInteger contextId;
+	NSInteger uid;
 	NSString *title;
 }
 
-@property (nonatomic) NSInteger contextId;
+@property (nonatomic) NSInteger uid;
 @property (nonatomic, copy) NSString *title;
 
 @end

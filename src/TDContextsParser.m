@@ -13,7 +13,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
 	if ([elementName isEqualToString:@"context"]) {
 		currentContext = [[GtdContext alloc] init];
-		currentContext.contextId = [[attributeDict valueForKey:@"id"] intValue];
+		currentContext.uid = [[attributeDict valueForKey:@"id"] intValue];
 	}
 }
 

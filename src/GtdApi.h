@@ -95,6 +95,9 @@ extern NSString *const GtdApiErrorDomain;
 // Deletes a given context
 - (BOOL)deleteContext:(GtdContext *)aContext error:(NSError **)error;
 
+// Edit given context
+- (BOOL)editContext:(GtdContext *)aContext error:(NSError **)error;
+
 @end
 
 
@@ -107,5 +110,8 @@ typedef enum {
 	GtdApiWrongCredentialsError = 120,
 	GtdApiFolderNotAddedError = 210,
 	GtdApiFolderNotDeletedError = 310,
-	GtdApiFolderNotEditedError = 410
+	GtdApiFolderNotEditedError = 410,
+	GtdApiContextNotAddedError = 510,
+	GtdApiContextNotDeletedError = 520,
+	GtdApiContextNotEditedError = 530
 } GtdApiError;
