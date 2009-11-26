@@ -61,25 +61,19 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		//Check userId
 		if (self.userId == nil) {
 			// UserId unknown error (connection ? )
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:@"Unknown error." forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			[self release];
 			return nil;
 		}
 		else if ([userId isEqualToString:@"0"]) {
 			// error: empty arguments
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:@"Missing input parameters." forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingCredentialsError userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingCredentialsError userInfo:nil];
 			[self release];
 			return nil;
 		}
 		else if ([userId isEqualToString:@"1"]) {
 			// error: wrong credentials
-			NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-			[errorDetail setValue:@"User could not be found, probably wrong credentials" forKey:NSLocalizedDescriptionKey];
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiWrongCredentialsError userInfo:errorDetail];
+			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiWrongCredentialsError userInfo:nil];
 			[self release];
 			return nil;
 		}
