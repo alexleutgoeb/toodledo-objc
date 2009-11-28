@@ -34,7 +34,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"<GtdFolder folderId='%i' title='%@' private='%i' archived='%i' order='%i'>", uid, title, private, archived, order];
+	return [NSString stringWithFormat:@"<GtdFolder uid='%i' title='%@' private='%i' archived='%i' order='%i'>", uid, title, private, archived, order];
 }
 
 
