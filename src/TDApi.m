@@ -94,6 +94,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		return YES;
 }
 
+- (NSString *)identifier {
+	return @"syncservice.toodledo-objc";
+}
+
 - (NSDictionary *)getLastModificationsDates:(NSError **)error {
 	
 	NSDictionary *returnResult = nil;

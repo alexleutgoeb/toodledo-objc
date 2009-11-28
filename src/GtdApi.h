@@ -22,6 +22,7 @@ extern NSString *const GtdApiErrorDomain;
 @protocol GtdApi
 
 @property (readonly) BOOL isAuthenticated;
+@property (nonatomic, readonly) NSString *identifier;
 
 // Main initializer, performs authentication.
 - (id)initWithUsername:(NSString *)username password:(NSString *)password error:(NSError **)error;
