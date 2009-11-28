@@ -11,69 +11,77 @@
 ////////////////////////////////////////////////////////////////////////////////
 // urls
 
+// main protocol for urls
+#define kBasicUrlProtocolFormat @"http://"
+
+// pro user protocol for urls
+#define kProUserUrlProtocolFormat @"https://"
+
 // toodledo basic url
-#define tdBasicUrl @"http://api.toodledo.com/api.php?method=";
+#define tdBasicUrl @"api.toodledo.com/api.php?method=";
 
 // authentication url
-#define kAuthenticationURLFormat @"http://api.toodledo.com/api.php?method=getToken;"
+#define kAuthenticationURLFormat @"api.toodledo.com/api.php?method=getToken;"
 
 // get account info url
-#define kUserAccountInfoURLFormat @"http://api.toodledo.com/api.php?method=getAccountInfo;"
+#define kUserAccountInfoURLFormat @"api.toodledo.com/api.php?method=getAccountInfo;"
 
 // server info url
-#define kServerInfoURLFormat @"http://api.toodledo.com/api.php?method=getServerInfo;"
+#define kServerInfoURLFormat @"api.toodledo.com/api.php?method=getServerInfo;"
 
 // get userid url
-#define kUserIdURLFormat @"http://api.toodledo.com/api.php?method=getUserid;"
+#define kUserIdURLFormat @"api.toodledo.com/api.php?method=getUserid;"
 
 // get tasks url
-#define kGetTasksURLFormat @"http://api.toodledo.com/api.php?method=getTasks;"
+#define kGetTasksURLFormat @"api.toodledo.com/api.php?method=getTasks;"
 
 // get tasks url
-#define kGetDeletedTasksURLFormat @"http://api.toodledo.com/api.php?method=getDeleted;"
+#define kGetDeletedTasksURLFormat @"api.toodledo.com/api.php?method=getDeleted;"
 
 // add task url
-#define kAddTaskURLFormat @"http://api.toodledo.com/api.php?method=addTask;"
+#define kAddTaskURLFormat @"api.toodledo.com/api.php?method=addTask;"
 
 // edit task url
-#define kEditTaskURLFormat @"http://api.toodledo.com/api.php?method=editTask;"
+#define kEditTaskURLFormat @"api.toodledo.com/api.php?method=editTask;"
 
 // delete task url
-#define kDeleteTaskURLFormat @"http://api.toodledo.com/api.php?method=deleteTask;"
+#define kDeleteTaskURLFormat @"api.toodledo.com/api.php?method=deleteTask;"
 
 // get folders url
-#define kGetFoldersURLFormat @"http://api.toodledo.com/api.php?method=getFolders;"
+#define kGetFoldersURLFormat @"api.toodledo.com/api.php?method=getFolders;"
 
 // add folder url
-#define kAddFolderURLFormat @"http://api.toodledo.com/api.php?method=addFolder;"
+#define kAddFolderURLFormat @"api.toodledo.com/api.php?method=addFolder;"
 
 // delete folder url
-#define kDeleteFolderURLFormat @"http://api.toodledo.com/api.php?method=deleteFolder;"
+#define kDeleteFolderURLFormat @"api.toodledo.com/api.php?method=deleteFolder;"
 
 // edit folder url
-#define kEditFolderURLFormat @"http://api.toodledo.com/api.php?method=editFolder;"
+#define kEditFolderURLFormat @"api.toodledo.com/api.php?method=editFolder;"
 
 // add context url
-#define kAddContextURLFormat @"http://api.toodledo.com/api.php?method=addContext;"
+#define kAddContextURLFormat @"api.toodledo.com/api.php?method=addContext;"
 
 // get contexts url
-#define kGetContextsURLFormat @"http://api.toodledo.com/api.php?method=getContexts;"
+#define kGetContextsURLFormat @"api.toodledo.com/api.php?method=getContexts;"
 
 // delete context url
-#define kDeleteContextURLFormat @"http://api.toodledo.com/api.php?method=deleteContext;"
+#define kDeleteContextURLFormat @"api.toodledo.com/api.php?method=deleteContext;"
 
 // edit context url
-#define kEditContextURLFormat @"http://api.toodledo.com/api.php?method=editContext;"
+#define kEditContextURLFormat @"api.toodledo.com/api.php?method=editContext;"
 
 // get notes url
-#define kGetNotesURLFormat @"http://api.toodledo.com/api.php?method=getNotes;"
-//http://www.toodledo.com/info/api_doc_notebook.php
+#define kGetNotesURLFormat @"api.toodledo.com/api.php?method=getNotes;"
+
 // delete note url
-#define kDeleteNotesURLFormat @"http://api.toodledo.com/api.php?method=deleteNote;"
+#define kDeleteNotesURLFormat @"api.toodledo.com/api.php?method=deleteNote;"
+
 // add note url
-#define kAddNotesURLFormat @"http://api.toodledo.com/api.php?method=addNote;"
+#define kAddNotesURLFormat @"api.toodledo.com/api.php?method=addNote;"
+
 // edit note url
-#define kEditNotesURLFormat @"http://api.toodledo.com/api.php?method=editNote;"
+#define kEditNotesURLFormat @"api.toodledo.com/api.php?method=editNote;"
 
 
 

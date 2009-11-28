@@ -1054,12 +1054,18 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]] lowercaseString];
 }
 
-// Create a request and append the api key
-- (NSURLRequest *)authenticatedRequestForURLString:(NSString *)anUrlString additionalParameters:(NSDictionary *)additionalParameters 
-{
+// Creates a request and append the api key
+- (NSURLRequest *)authenticatedRequestForURLString:(NSString *)anUrlString additionalParameters:(NSDictionary *)additionalParameters {
+	
+	// Determine protocol
+	NSString *urlProtocol = kBasicUrlProtocolFormat;
+	if ([[self.accountInfo valueForKey:@"pro"] isEqualToString:@"1"]) {
+		// pro user
+		urlProtocol = kProUserUrlProtocolFormat;
+	}
 	
 	// Create parameter string
-	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@key=%@;", anUrlString, self.key];
+	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@%@key=%@;", urlProtocol, anUrlString, self.key];
 	for (NSString *paramKey in additionalParameters)
 		[params appendFormat:@"%@=%@;", paramKey, [additionalParameters objectForKey:paramKey]];
 	
@@ -1076,12 +1082,11 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
     return request;
 }
 
-// Create a request without the api key.
-- (NSURLRequest *)requestForURLString:(NSString *)anUrlString additionalParameters:(NSDictionary *)additionalParameters 
-{
+// Creates a request without the api key and the standard url protocol.
+- (NSURLRequest *)requestForURLString:(NSString *)anUrlString additionalParameters:(NSDictionary *)additionalParameters {
 
 	// Create parameter string
-	NSMutableString *params = [[NSMutableString alloc] initWithString:anUrlString];
+	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@%@", kBasicUrlProtocolFormat, anUrlString];
 	for (NSString *paramKey in additionalParameters)
 		[params appendFormat:@"%@=%@;", paramKey, [additionalParameters valueForKey:paramKey]];
 	
