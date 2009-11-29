@@ -24,6 +24,9 @@ extern NSString *const GtdApiErrorDomain;
 @property (readonly) BOOL isAuthenticated;
 @property (nonatomic, readonly) NSString *identifier;
 
+// Class method returing the identifier for the sync api
++ (NSString *)identifier;
+
 // Main initializer, performs authentication.
 - (id)initWithUsername:(NSString *)username password:(NSString *)password error:(NSError **)error;
 

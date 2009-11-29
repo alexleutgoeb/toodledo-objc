@@ -8,19 +8,19 @@
 
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "TDApi.h"
 
 @interface APITests :SenTestCase
 
-- (void)testTemplate;
+- (void)testStaticIdentifier;
 
 @end
 
 @implementation APITests
 
--(void)testTemplate {	
-	int value1 = 1;
-	int value2 = 1; //change this value to see what happens when the 
-	STAssertTrue(value1 == value2, @"Value1 != Value2. Expected %i, got %i", value1, value2);
+// Tests if the class method identifier is implemented
+-(void)testStaticIdentifier {	
+	STAssertTrue([[TDApi identifier] isEqualToString:@"syncservice.toodledo-objc"], @"Class identifier should be syncservice.toodledo-objc.");
 }
 
 @end
