@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF0D26F510B95F55005EC715 /* TaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0D26F310B95F55005EC715 /* TaskTests.m */; };
 		BF2F62E110B30FA90057152D /* TDTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F62DF10B30FA90057152D /* TDTasksParser.h */; };
 		BF2F62E210B30FA90057152D /* TDTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F62E010B30FA90057152D /* TDTasksParser.m */; };
 		BF2F632010B32BFA0057152D /* TDDeletedTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */; };
@@ -22,6 +21,35 @@
 		FA145CFE10A85E2B00EEB890 /* GtdFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145CFC10A85E2B00EEB890 /* GtdFolder.m */; };
 		FA145D0110A85E3400EEB890 /* GtdNote.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CFF10A85E3400EEB890 /* GtdNote.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA145D0210A85E3400EEB890 /* GtdNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145D0010A85E3400EEB890 /* GtdNote.m */; };
+		FA649B9810C30B250051F758 /* TDApiConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF874EE10965F5300C4C137 /* TDApiConstants.h */; settings = {ATTRIBUTES = (); }; };
+		FA649B9910C30B250051F758 /* TDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FACCD7F510A0CF8D00A36C87 /* TDParser.h */; settings = {ATTRIBUTES = (); }; };
+		FA649B9A10C30B250051F758 /* GtdApi.h in Headers */ = {isa = PBXBuildFile; fileRef = FACDE83310A2E97700A50F7A /* GtdApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA649B9B10C30B250051F758 /* GtdTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FACC732D10A5B4990079598B /* GtdTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA649B9C10C30B250051F758 /* TDApi.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14567310A706C600EEB890 /* TDApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA649B9D10C30B250051F758 /* GtdContext.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CF710A85E2200EEB890 /* GtdContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA649B9E10C30B250051F758 /* GtdFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CFB10A85E2B00EEB890 /* GtdFolder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA649B9F10C30B250051F758 /* GtdNote.h in Headers */ = {isa = PBXBuildFile; fileRef = FA145CFF10A85E3400EEB890 /* GtdNote.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA649BA010C30B250051F758 /* TDFoldersParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FADA343410A8626400D1B68B /* TDFoldersParser.h */; };
+		FA649BA110C30B250051F758 /* TDContextsParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FA6E649E10A8744E004010EB /* TDContextsParser.h */; };
+		FA649BA210C30B250051F758 /* TDSimpleParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA6A16C10AA0BD1002D7E2F /* TDSimpleParser.h */; };
+		FA649BA310C30B250051F758 /* TDTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F62DF10B30FA90057152D /* TDTasksParser.h */; };
+		FA649BA410C30B250051F758 /* TDDeletedTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */; };
+		FA649BA510C30B250051F758 /* TDNotesParser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5A9B2210B5D1BE004D3893 /* TDNotesParser.h */; };
+		FA649BA610C30B250051F758 /* TDUserInfoParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FABE3D4E10BC4C8A000D72E9 /* TDUserInfoParser.h */; };
+		FA649BA810C30B250051F758 /* TDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FACCD7F610A0CF8D00A36C87 /* TDParser.m */; };
+		FA649BA910C30B250051F758 /* GtdTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC732E10A5B4990079598B /* GtdTask.m */; };
+		FA649BAA10C30B250051F758 /* TDApi.m in Sources */ = {isa = PBXBuildFile; fileRef = FA14567410A706C600EEB890 /* TDApi.m */; };
+		FA649BAB10C30B250051F758 /* GtdContext.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145CF810A85E2200EEB890 /* GtdContext.m */; };
+		FA649BAC10C30B250051F758 /* GtdFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145CFC10A85E2B00EEB890 /* GtdFolder.m */; };
+		FA649BAD10C30B250051F758 /* GtdNote.m in Sources */ = {isa = PBXBuildFile; fileRef = FA145D0010A85E3400EEB890 /* GtdNote.m */; };
+		FA649BAE10C30B250051F758 /* TDFoldersParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FADA343510A8626400D1B68B /* TDFoldersParser.m */; };
+		FA649BAF10C30B250051F758 /* TDContextsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E649F10A8744E004010EB /* TDContextsParser.m */; };
+		FA649BB010C30B250051F758 /* TDSimpleParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA6A16D10AA0BD1002D7E2F /* TDSimpleParser.m */; };
+		FA649BB110C30B250051F758 /* TDTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F62E010B30FA90057152D /* TDTasksParser.m */; };
+		FA649BB210C30B250051F758 /* TDDeletedTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F631F10B32BFA0057152D /* TDDeletedTasksParser.m */; };
+		FA649BB310C30B250051F758 /* TDNotesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A9B2310B5D1BE004D3893 /* TDNotesParser.m */; };
+		FA649BB510C30B250051F758 /* TDUserInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE3D4F10BC4C8B000D72E9 /* TDUserInfoParser.m */; };
+		FA649BC910C30BF60051F758 /* TaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0D26F310B95F55005EC715 /* TaskTests.m */; };
 		FA67DFAD10B31ACC00095567 /* FolderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA67DFAC10B31ACC00095567 /* FolderTests.m */; };
 		FA67E02410B31E1800095567 /* TDApi.m in Sources */ = {isa = PBXBuildFile; fileRef = FA14567410A706C600EEB890 /* TDApi.m */; };
 		FA67E02710B31E3100095567 /* TDContextsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6E649F10A8744E004010EB /* TDContextsParser.m */; };
@@ -82,6 +110,7 @@
 		FA145CFC10A85E2B00EEB890 /* GtdFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdFolder.m; sourceTree = "<group>"; };
 		FA145CFF10A85E3400EEB890 /* GtdNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdNote.h; sourceTree = "<group>"; };
 		FA145D0010A85E3400EEB890 /* GtdNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdNote.m; sourceTree = "<group>"; };
+		FA649BBA10C30B250051F758 /* libToodledoAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToodledoAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA67DFAC10B31ACC00095567 /* FolderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderTests.m; sourceTree = "<group>"; };
 		FA6E649E10A8744E004010EB /* TDContextsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextsParser.h; sourceTree = "<group>"; };
 		FA6E649F10A8744E004010EB /* TDContextsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextsParser.m; sourceTree = "<group>"; };
@@ -106,6 +135,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA649BB610C30B250051F758 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAA9E6EA10A88C7C001925AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +199,7 @@
 			children = (
 				FAF874B31096478600C4C137 /* libToodledoAPI.a */,
 				FAA9E6ED10A88C7C001925AB /* UnitTests.octest */,
+				FA649BBA10C30B250051F758 /* libToodledoAPI.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,6 +264,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		FA649B9710C30B250051F758 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA649B9810C30B250051F758 /* TDApiConstants.h in Headers */,
+				FA649B9910C30B250051F758 /* TDParser.h in Headers */,
+				FA649B9A10C30B250051F758 /* GtdApi.h in Headers */,
+				FA649B9B10C30B250051F758 /* GtdTask.h in Headers */,
+				FA649B9C10C30B250051F758 /* TDApi.h in Headers */,
+				FA649B9D10C30B250051F758 /* GtdContext.h in Headers */,
+				FA649B9E10C30B250051F758 /* GtdFolder.h in Headers */,
+				FA649B9F10C30B250051F758 /* GtdNote.h in Headers */,
+				FA649BA010C30B250051F758 /* TDFoldersParser.h in Headers */,
+				FA649BA110C30B250051F758 /* TDContextsParser.h in Headers */,
+				FA649BA210C30B250051F758 /* TDSimpleParser.h in Headers */,
+				FA649BA310C30B250051F758 /* TDTasksParser.h in Headers */,
+				FA649BA410C30B250051F758 /* TDDeletedTasksParser.h in Headers */,
+				FA649BA510C30B250051F758 /* TDNotesParser.h in Headers */,
+				FA649BA610C30B250051F758 /* TDUserInfoParser.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAF874AF1096478600C4C137 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +311,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		FA649B9610C30B250051F758 /* libToodledoAPIMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA649BB710C30B250051F758 /* Build configuration list for PBXNativeTarget "libToodledoAPIMac" */;
+			buildPhases = (
+				FA649B9710C30B250051F758 /* Headers */,
+				FA649BA710C30B250051F758 /* Sources */,
+				FA649BB610C30B250051F758 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libToodledoAPIMac;
+			productName = libToodledoAPI;
+			productReference = FA649BBA10C30B250051F758 /* libToodledoAPI.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		FAA9E6EC10A88C7C001925AB /* UnitTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAA9E6F110A88C7D001925AB /* Build configuration list for PBXNativeTarget "UnitTests" */;
@@ -301,6 +377,7 @@
 			projectRoot = "";
 			targets = (
 				FAF874B21096478600C4C137 /* libToodledoAPI */,
+				FA649B9610C30B250051F758 /* libToodledoAPIMac */,
 				FAA9E6EC10A88C7C001925AB /* UnitTests */,
 			);
 		};
@@ -333,10 +410,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA649BA710C30B250051F758 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA649BA810C30B250051F758 /* TDParser.m in Sources */,
+				FA649BA910C30B250051F758 /* GtdTask.m in Sources */,
+				FA649BAA10C30B250051F758 /* TDApi.m in Sources */,
+				FA649BAB10C30B250051F758 /* GtdContext.m in Sources */,
+				FA649BAC10C30B250051F758 /* GtdFolder.m in Sources */,
+				FA649BAD10C30B250051F758 /* GtdNote.m in Sources */,
+				FA649BAE10C30B250051F758 /* TDFoldersParser.m in Sources */,
+				FA649BAF10C30B250051F758 /* TDContextsParser.m in Sources */,
+				FA649BB010C30B250051F758 /* TDSimpleParser.m in Sources */,
+				FA649BB110C30B250051F758 /* TDTasksParser.m in Sources */,
+				FA649BB210C30B250051F758 /* TDDeletedTasksParser.m in Sources */,
+				FA649BB310C30B250051F758 /* TDNotesParser.m in Sources */,
+				FA649BB510C30B250051F758 /* TDUserInfoParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAA9E6E910A88C7C001925AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA649BC910C30BF60051F758 /* TaskTests.m in Sources */,
 				FA7CCCD910BA846600A1E2C6 /* TDTasksParser.m in Sources */,
 				FA7CCCDA10BA846600A1E2C6 /* TDDeletedTasksParser.m in Sources */,
 				FA7CCCDB10BA846600A1E2C6 /* TDNotesParser.m in Sources */,
@@ -372,7 +470,6 @@
 				BF2F62E210B30FA90057152D /* TDTasksParser.m in Sources */,
 				BF2F632110B32BFA0057152D /* TDDeletedTasksParser.m in Sources */,
 				CF5A9B2510B5D1BE004D3893 /* TDNotesParser.m in Sources */,
-				BF0D26F510B95F55005EC715 /* TaskTests.m in Sources */,
 				FABE3D5210BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +494,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};
@@ -410,8 +507,44 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+		FA649BB810C30B250051F758 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(DEVELOPER_FRAMEWORKS_DIR)\\\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+				PRODUCT_NAME = ToodledoAPI;
+			};
+			name = Debug;
+		};
+		FA649BB910C30B250051F758 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(DEVELOPER_FRAMEWORKS_DIR)\\\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_GC = supported;
+				PREBINDING = NO;
+				PRODUCT_NAME = libToodledoAPI;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -479,6 +612,7 @@
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PREBINDING = NO;
 				PRODUCT_NAME = ToodledoAPI;
@@ -496,6 +630,7 @@
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_GC = unsupported;
 				PREBINDING = NO;
 				PRODUCT_NAME = libToodledoAPI;
 				ZERO_LINK = NO;
@@ -510,6 +645,15 @@
 			buildConfigurations = (
 				1DEB927908733DD40010E9CD /* Debug */,
 				1DEB927A08733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA649BB710C30B250051F758 /* Build configuration list for PBXNativeTarget "libToodledoAPIMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA649BB810C30B250051F758 /* Debug */,
+				FA649BB910C30B250051F758 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
