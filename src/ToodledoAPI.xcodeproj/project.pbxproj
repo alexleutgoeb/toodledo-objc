@@ -110,7 +110,7 @@
 		FA145CFC10A85E2B00EEB890 /* GtdFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdFolder.m; sourceTree = "<group>"; };
 		FA145CFF10A85E3400EEB890 /* GtdNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdNote.h; sourceTree = "<group>"; };
 		FA145D0010A85E3400EEB890 /* GtdNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GtdNote.m; sourceTree = "<group>"; };
-		FA649BBA10C30B250051F758 /* libToodledoAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToodledoAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA649BBA10C30B250051F758 /* libToodledoAPIMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToodledoAPIMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA67DFAC10B31ACC00095567 /* FolderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderTests.m; sourceTree = "<group>"; };
 		FA6E649E10A8744E004010EB /* TDContextsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDContextsParser.h; sourceTree = "<group>"; };
 		FA6E649F10A8744E004010EB /* TDContextsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDContextsParser.m; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 			children = (
 				FAF874B31096478600C4C137 /* libToodledoAPI.a */,
 				FAA9E6ED10A88C7C001925AB /* UnitTests.octest */,
-				FA649BBA10C30B250051F758 /* libToodledoAPI.a */,
+				FA649BBA10C30B250051F758 /* libToodledoAPIMac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 			);
 			name = libToodledoAPIMac;
 			productName = libToodledoAPI;
-			productReference = FA649BBA10C30B250051F758 /* libToodledoAPI.a */;
+			productReference = FA649BBA10C30B250051F758 /* libToodledoAPIMac.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		FAA9E6EC10A88C7C001925AB /* UnitTests */ = {
@@ -526,7 +526,7 @@
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PREBINDING = NO;
-				PRODUCT_NAME = ToodledoAPI;
+				PRODUCT_NAME = ToodledoAPIMac;
 			};
 			name = Debug;
 		};
@@ -543,7 +543,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_GC = supported;
 				PREBINDING = NO;
-				PRODUCT_NAME = libToodledoAPI;
+				PRODUCT_NAME = ToodledoAPIMac;
 				ZERO_LINK = NO;
 			};
 			name = Release;
