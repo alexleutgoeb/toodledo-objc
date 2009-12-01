@@ -6,17 +6,9 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "GtdApi.h"
-#import "TDApi.h"
 
-@interface TaskTests :SenTestCase {
-	TDApi *api;
-}
+#import "TaskTests.h"
 
-- (void)testAddTaskWithoutParams;
-
-@end
 
 @implementation TaskTests
 
@@ -34,5 +26,40 @@
 	[api addTask:nil error:&error];
 	STAssertTrue([error code] == GtdApiMissingParameters, @"Task must not be added without arguments.");
 }
+
+- (void)testAddTaskWithoutTitle {
+	NSError *error = nil;
+	task.title = nil;
+	NSInteger returnValue = [api addTask:task error:&error];
+	STAssertTrue([error code] == GtdApiMissingParameters, @"Task must not be added without task title argument.");
+	STAssertTrue(returnValue == -1, @"Return value must be -1.");
+}
+
+- (void)testDeleteTaskWithoutParams {
+	NSError *error = nil;
+	STAssertTrue([api deleteTask:nil error:&error] == NO, @"Return value must be NO.");
+	STAssertTrue([error code] == GtdApiMissingParameters, @"Task must not be deleted without arguments.");
+}
+
+- (void)testDeleteTaskWithoutUid {
+	NSError *error = nil;
+	task.uid = -1;
+	STAssertTrue([api deleteTask:task error:&error] == NO, @"Return value must be NO.");
+	STAssertTrue([error code] == GtdApiMissingParameters, @"Task must not be deleted without uid argument.");
+}
+
+- (void)testEditTaskWithoutParams {
+	NSError *error = nil;
+	STAssertTrue([api editTask:nil error:&error] == NO, @"Return value must be NO.");
+	STAssertTrue([error code] == GtdApiMissingParameters, @"Task must not be edited without arguments.");
+}
+
+- (void)testEditTaskWithoutUid {
+	NSError *error = nil;
+	task.uid = -1;
+	STAssertTrue([api editTask:task error:&error] == NO, @"Return value must be NO.");
+	STAssertTrue([error code] == GtdApiMissingParameters, @"Task must not be edited without uid argument.");
+}
+
 
 @end

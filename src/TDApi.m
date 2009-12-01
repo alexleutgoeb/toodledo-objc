@@ -384,6 +384,12 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	//check if valid key
 	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
+		
+		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+		[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
+		[timeFormatter setDateFormat:@"HH:mm:ss"];
+		
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								aTask.title, @"title",
 								aTask.tag, @"tag",
@@ -391,10 +397,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								aTask.context, @"context",
 								//aTask.goal, @"goal",
 								//aTask.parent, @"parent",
-								aTask.date_due, @"dueDate",
-								aTask.date_start, @"startDate",
-								//aTask.time_due, @"dueTime",
-								//aTask.time_start, @"startTime",
+								[dateFormatter stringFromDate:aTask.date_due], @"dueDate",
+								[dateFormatter stringFromDate:aTask.date_start], @"startDate",
+								[timeFormatter stringFromDate:aTask.date_due], @"dueTime",
+								[timeFormatter stringFromDate:aTask.date_start], @"startTime",
 								aTask.reminder, @"reminder",
 								aTask.repeat, @"repeat",
 								//aTask.rep_advanced, @"rep_advanced",
@@ -441,6 +447,12 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Check if valid key
 	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
+		
+		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+		[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
+		[timeFormatter setDateFormat:@"HH:mm:ss"];
+		
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								[NSString stringWithFormat:@"%d", aTask.uid], @"id",
 								aTask.title, @"title",
@@ -454,10 +466,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								aTask.completed, @"completed",
 								//aTask.completed_on, @"completed_on",
 								//aTask.reschedule, @"reschedule",
-								aTask.date_due, @"dueDate",
-								aTask.date_start, @"startDate",
-								//aTask.time_due, @"dueTime",
-								//aTask.time_start, @"startTime",
+								[dateFormatter stringFromDate:aTask.date_due], @"dueDate",
+								[dateFormatter stringFromDate:aTask.date_start], @"startDate",
+								[timeFormatter stringFromDate:aTask.date_due], @"dueTime",
+								[timeFormatter stringFromDate:aTask.date_start], @"startTime",
 								aTask.reminder, @"reminder",
 								aTask.repeat, @"repeat",
 								//aTask.rep_advanced, @"rep_advanced",

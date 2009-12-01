@@ -13,7 +13,7 @@
 #import "GtdContext.h"
 
 
-// This constant defines the GtdApi error domain.
+/** This constant defines the GtdApi error domain. */
 extern NSString *const GtdApiErrorDomain;
 
 /**
@@ -24,25 +24,50 @@ extern NSString *const GtdApiErrorDomain;
 @property (readonly) BOOL isAuthenticated;
 @property (nonatomic, readonly) NSString *identifier;
 
-// Class method returing the identifier for the sync api
+/**
+ Class method returing the identifier for the sync api
+*/
 + (NSString *)identifier;
 
-// Main initializer, performs authentication.
+/**
+ Main initializer, performs authentication.
+ @param username
+ @param password
+ @param error
+*/
 - (id)initWithUsername:(NSString *)username password:(NSString *)password error:(NSError **)error;
 
-// Returns the last modifications dates in a dictionary, see doc for details.
+/**
+ Returns the last modifications dates in a dictionary, see doc for details.
+ @param error
+*/
 - (NSDictionary *)getLastModificationsDates:(NSError **)error;
 
-// Loads and returns an array with GtdFolder objects.
+/**
+ Loads and returns an array with GtdFolder objects.
+ @param error
+*/
 - (NSArray *)getFolders:(NSError **)error;
 
-// Adds a remote folder
+/**
+ Adds a remote folder
+ @param aFolder
+ @param error
+*/
 - (NSInteger)addFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
-// Deletes a remote folder
+/**
+ Deletes a remote folder
+ @param aFolder
+ @param error
+*/
 - (BOOL)deleteFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
-// Edits a remote folder
+/**
+ Edits a remote folder
+ @param aFolder
+ @param error
+*/
 - (BOOL)editFolder:(GtdFolder *)aFolder error:(NSError **)error;
 
 /**
@@ -78,28 +103,58 @@ extern NSString *const GtdApiErrorDomain;
 */
  - (NSArray *)getDeleted:(NSError **)error;
 
-//Get remote Notes
+/**
+ Get remote Notes
+ @param error
+*/
 - (NSArray *)getNotes:(NSError **)error;
 
-//Delete a given Note
+/**
+ Delete a given Note
+ @param aNote
+ @param error
+*/
 - (BOOL)deleteNote:(GtdNote *)aNote error:(NSError **)error;
 
-//Adds given Note
+/**
+ Adds given Note
+ @param aNote
+ @param error
+*/
 - (NSInteger)addNote:(GtdNote *)aNote error:(NSError **)error;
 
-//Edits given Note
+/**
+ Edits given Note
+ @param aNote
+ @param error
+*/
 - (BOOL)editNote:(GtdNote *)aNote error:(NSError **)error;
 
-// Adds a given context
+/**
+ Adds a given context
+ @param aContext
+ @param error
+*/
 - (NSInteger)addContext:(GtdContext *)aContext error:(NSError **)error;
 
-// Gets a list of contexts
+/**
+ Gets a list of contexts
+ @param error
+*/
 - (NSArray *)getContexts:(NSError **)error;
 
-// Deletes a given context
+/**
+ Deletes a given context
+ @param aContext
+ @param error
+*/
 - (BOOL)deleteContext:(GtdContext *)aContext error:(NSError **)error;
 
-// Edit given context
+/**
+ Edit given context
+ @param aContext
+ @param error
+*/
 - (BOOL)editContext:(GtdContext *)aContext error:(NSError **)error;
 
 @end

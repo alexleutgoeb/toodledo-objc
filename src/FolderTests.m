@@ -63,7 +63,7 @@
 - (void)testDeleteFolderWithoutParams {
 	NSError *error = nil;
 	STAssertTrue([api deleteFolder:nil error:&error] == NO, @"Return value must be NO.");
-	STAssertTrue([error code] == GtdApiMissingParameters, @"Folder must not be added without folder argument.");
+	STAssertTrue([error code] == GtdApiMissingParameters, @"Folder must not be deleted without arguments.");
 }
 
 // Tests deleting a folder with an empty uid in the folder object
@@ -71,7 +71,7 @@
 	NSError *error = nil;
 	folder.uid = -1;
 	STAssertTrue([api deleteFolder:folder error:&error] == NO, @"Return value must be NO.");
-	STAssertTrue([error code] == GtdApiMissingParameters, @"Folder must not be added without folder uid argument.");
+	STAssertTrue([error code] == GtdApiMissingParameters, @"Folder must not be deleted without uid argument.");
 }
 
 // Tests editing a folder without a folder parameter

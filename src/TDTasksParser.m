@@ -21,8 +21,18 @@
 		currentTask.title = [[attributeDict valueForKey:@"title"] stringValue];
 		currentTask.date_created = [inputFormatter dateFromString:[attributeDict valueForKey:@"added"]];
 		currentTask.date_modified = [inputFormatter dateFromString:[attributeDict valueForKey:@"modified"]];
-		currentTask.date_start = [inputFormatter dateFromString:[attributeDict valueForKey:@"startdate"]];
-		currentTask.date_due = [inputFormatter dateFromString:[attributeDict valueForKey:@"duedate"]];
+		currentTask.date_start = [inputFormatter dateFromString:
+								  [NSString stringWithFormat:@"%@ %@",
+								   [attributeDict valueForKey:@"startdate"],
+								   [attributeDict valueForKey:@"starttime"]
+								   ]
+								  ];
+		currentTask.date_due = [inputFormatter dateFromString:
+								[NSString stringWithFormat:@"%@ %@",
+								 [attributeDict valueForKey:@"duedate"],
+								 [attributeDict valueForKey:@"duetime"]
+								]
+							   ];
 		currentTask.tag = [[attributeDict valueForKey:@"tag"] stringValue];
 		currentTask.folder = [[attributeDict valueForKey:@"folder"] intValue];
 		currentTask.context = [[attributeDict valueForKey:@"context"] intValue];
