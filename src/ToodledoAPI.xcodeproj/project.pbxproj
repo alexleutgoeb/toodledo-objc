@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		426E5EE210C57DA100D8667D /* ContestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44078E10C567A2007A3F99 /* ContestTests.m */; };
 		BF2F62E110B30FA90057152D /* TDTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F62DF10B30FA90057152D /* TDTasksParser.h */; };
 		BF2F62E210B30FA90057152D /* TDTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F62E010B30FA90057152D /* TDTasksParser.m */; };
 		BF2F632010B32BFA0057152D /* TDDeletedTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */; };
@@ -14,7 +15,6 @@
 		BF44078410C563AD007A3F99 /* NoteTests.h in Headers */ = {isa = PBXBuildFile; fileRef = BF44078310C563AD007A3F99 /* NoteTests.h */; };
 		BF44078810C563C9007A3F99 /* TaskTests.h in Headers */ = {isa = PBXBuildFile; fileRef = BF44078710C563C9007A3F99 /* TaskTests.h */; };
 		BF44078F10C567A2007A3F99 /* ContextTests.h in Headers */ = {isa = PBXBuildFile; fileRef = BF44078D10C567A2007A3F99 /* ContextTests.h */; };
-		BF44079010C567A2007A3F99 /* ContestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44078E10C567A2007A3F99 /* ContestTests.m */; };
 		BF44085A10C57A04007A3F99 /* NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44077E10C5635C007A3F99 /* NoteTests.m */; };
 		BF44085B10C57A0D007A3F99 /* NoteParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44084A10C5774C007A3F99 /* NoteParserTest.m */; };
 		BF44085C10C57A10007A3F99 /* TaskParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4407D310C56C30007A3F99 /* TaskParserTest.m */; };
@@ -482,6 +482,7 @@
 				BF44085B10C57A0D007A3F99 /* NoteParserTest.m in Sources */,
 				BF44085C10C57A10007A3F99 /* TaskParserTest.m in Sources */,
 				BF44085D10C57A15007A3F99 /* ContextParserTest.m in Sources */,
+				426E5EE210C57DA100D8667D /* ContestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +503,6 @@
 				BF2F632110B32BFA0057152D /* TDDeletedTasksParser.m in Sources */,
 				CF5A9B2510B5D1BE004D3893 /* TDNotesParser.m in Sources */,
 				FABE3D5210BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */,
-				BF44079010C567A2007A3F99 /* ContestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
