@@ -317,7 +317,6 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	id returnResult = nil;
 	
 	if (self.key != nil) {
-		// TODO: parse error handling
 		NSError *requestError = nil, *parseError = nil;
 		NSURLRequest *request = [self authenticatedRequestForURLString:kGetTasksURLFormat additionalParameters:nil];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
@@ -359,10 +358,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			
 			if(parseError != nil)
 				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
-			else {
-				//all ok, save result
+			else //all ok, save result
 				returnResult = result;
-			}
+			
 			[parser release];
 		}
 		else
@@ -704,21 +702,16 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 				// all ok, set return result
 				returnResult = YES;
 			}
-			else {
-				// error in response xml
+			else // error in response xml
 				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiContextNotEditedError userInfo:nil];
-			}
+			
 			[parser autorelease];
 		}
-		else {
-			// error while loading request
+		else // error while loading request
 			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
-		}
 	}
-	else {
-		// error: no key, api error?
+	else // error: no key, api error?
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
-	}
 
 	return returnResult;
 }
@@ -841,7 +834,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								aNote.title, @"title",
 								aNote.text, @"text",
 								aNote.folder, @"folder",
-								aNote.private, @"private", nil ];								
+								aNote.private, @"private",
+								//aNote.addedon, @"addedon",
+									nil ];								
 		
 		
 		

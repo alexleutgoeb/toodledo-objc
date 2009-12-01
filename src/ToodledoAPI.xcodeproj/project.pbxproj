@@ -11,11 +11,14 @@
 		BF2F62E210B30FA90057152D /* TDTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F62E010B30FA90057152D /* TDTasksParser.m */; };
 		BF2F632010B32BFA0057152D /* TDDeletedTasksParser.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2F631E10B32BFA0057152D /* TDDeletedTasksParser.h */; };
 		BF2F632110B32BFA0057152D /* TDDeletedTasksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2F631F10B32BFA0057152D /* TDDeletedTasksParser.m */; };
-		BF44078010C5635C007A3F99 /* NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44077E10C5635C007A3F99 /* NoteTests.m */; };
 		BF44078410C563AD007A3F99 /* NoteTests.h in Headers */ = {isa = PBXBuildFile; fileRef = BF44078310C563AD007A3F99 /* NoteTests.h */; };
 		BF44078810C563C9007A3F99 /* TaskTests.h in Headers */ = {isa = PBXBuildFile; fileRef = BF44078710C563C9007A3F99 /* TaskTests.h */; };
 		BF44078F10C567A2007A3F99 /* ContextTests.h in Headers */ = {isa = PBXBuildFile; fileRef = BF44078D10C567A2007A3F99 /* ContextTests.h */; };
 		BF44079010C567A2007A3F99 /* ContestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44078E10C567A2007A3F99 /* ContestTests.m */; };
+		BF44085A10C57A04007A3F99 /* NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44077E10C5635C007A3F99 /* NoteTests.m */; };
+		BF44085B10C57A0D007A3F99 /* NoteParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44084A10C5774C007A3F99 /* NoteParserTest.m */; };
+		BF44085C10C57A10007A3F99 /* TaskParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4407D310C56C30007A3F99 /* TaskParserTest.m */; };
+		BF44085D10C57A15007A3F99 /* ContextParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44083110C5765D007A3F99 /* ContextParserTest.m */; };
 		CF5A9B2410B5D1BE004D3893 /* TDNotesParser.h in Headers */ = {isa = PBXBuildFile; fileRef = CF5A9B2210B5D1BE004D3893 /* TDNotesParser.h */; };
 		CF5A9B2510B5D1BE004D3893 /* TDNotesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5A9B2310B5D1BE004D3893 /* TDNotesParser.m */; };
 		FA14567510A706C600EEB890 /* TDApi.h in Headers */ = {isa = PBXBuildFile; fileRef = FA14567310A706C600EEB890 /* TDApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,6 +113,9 @@
 		BF44078710C563C9007A3F99 /* TaskTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTests.h; sourceTree = "<group>"; };
 		BF44078D10C567A2007A3F99 /* ContextTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextTests.h; sourceTree = "<group>"; };
 		BF44078E10C567A2007A3F99 /* ContestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContestTests.m; sourceTree = "<group>"; };
+		BF4407D310C56C30007A3F99 /* TaskParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskParserTest.m; sourceTree = "<group>"; };
+		BF44083110C5765D007A3F99 /* ContextParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextParserTest.m; sourceTree = "<group>"; };
+		BF44084A10C5774C007A3F99 /* NoteParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteParserTest.m; sourceTree = "<group>"; };
 		CF5A9B2210B5D1BE004D3893 /* TDNotesParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDNotesParser.h; sourceTree = "<group>"; };
 		CF5A9B2310B5D1BE004D3893 /* TDNotesParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDNotesParser.m; sourceTree = "<group>"; };
 		FA14567310A706C600EEB890 /* TDApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDApi.h; sourceTree = "<group>"; };
@@ -226,6 +232,9 @@
 				BF44077E10C5635C007A3F99 /* NoteTests.m */,
 				BF44078D10C567A2007A3F99 /* ContextTests.h */,
 				BF44078E10C567A2007A3F99 /* ContestTests.m */,
+				BF4407D310C56C30007A3F99 /* TaskParserTest.m */,
+				BF44084A10C5774C007A3F99 /* NoteParserTest.m */,
+				BF44083110C5765D007A3F99 /* ContextParserTest.m */,
 			);
 			name = "Test Classes";
 			sourceTree = "<group>";
@@ -469,6 +478,10 @@
 				FA67E02E10B31E3800095567 /* GtdContext.m in Sources */,
 				FABE3D5010BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */,
 				FABE3EBF10BD1F36000D72E9 /* FolderParserTests.m in Sources */,
+				BF44085A10C57A04007A3F99 /* NoteTests.m in Sources */,
+				BF44085B10C57A0D007A3F99 /* NoteParserTest.m in Sources */,
+				BF44085C10C57A10007A3F99 /* TaskParserTest.m in Sources */,
+				BF44085D10C57A15007A3F99 /* ContextParserTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +502,6 @@
 				BF2F632110B32BFA0057152D /* TDDeletedTasksParser.m in Sources */,
 				CF5A9B2510B5D1BE004D3893 /* TDNotesParser.m in Sources */,
 				FABE3D5210BC4C8B000D72E9 /* TDUserInfoParser.m in Sources */,
-				BF44078010C5635C007A3F99 /* NoteTests.m in Sources */,
 				BF44079010C567A2007A3F99 /* ContestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
