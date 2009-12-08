@@ -7,15 +7,23 @@
 //
 
 #import "TDTasksParser.h"
+#import "TDApiConstants.h"
 
 
 @implementation TDTasksParser
 
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
+- (void)parser:(NSXMLParser *)parser
+	didStartElement:(NSString *)elementName
+	namespaceURI:(NSString *)namespaceURI
+	qualifiedName:(NSString *)qualifiedName
+	attributes:(NSDictionary *)attributeDict
+	accountInfo:(NSDictionary *)accountInfo {
+	
 	NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
 	[inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 	
 	if ([elementName isEqualToString:@"task"]) {
+		
 		currentTask = [[GtdTask alloc] init];
 		currentTask.uid = [[attributeDict valueForKey:@"id"] intValue];
 		currentTask.title = [[attributeDict valueForKey:@"title"] stringValue];
@@ -33,7 +41,7 @@
 								 [attributeDict valueForKey:@"duetime"]
 								]
 							   ];
-		currentTask.tag = [[attributeDict valueForKey:@"tag"] stringValue];
+		currentTask.tags = [[[attributeDict valueForKey:@"tag"] stringValue] componentsSeparatedByString:tagSeparator];
 		currentTask.folder = [[attributeDict valueForKey:@"folder"] intValue];
 		currentTask.context = [[attributeDict valueForKey:@"context"] intValue];
 		currentTask.priority = [[attributeDict valueForKey:@"priority"] intValue];
@@ -45,7 +53,12 @@
 		//currentTask.rep_advanced = 
 		currentTask.status = [[attributeDict valueForKey:@"status"] intValue];
 		currentTask.reminder = [[attributeDict valueForKey:@"reminder"] intValue];
-		currentTask.parentId = [[attributeDict valueForKey:@"parent"] intValue];
+		
+		//wenn pro account nimm apiwert fuer parentId
+		if ([[accountInfo objectForKey:@"pro"] intValue] == 1)
+			 currentTask.parentId = [[attributeDict valueForKey:@"parent"] intValue];
+		else
+			 currentTask.parentId = -1;
 	}
 }
 

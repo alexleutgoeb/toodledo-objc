@@ -323,6 +323,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		
 		if (requestError == nil) {
 			// all ok
+			//TODO das muss irgendwo rein: accountInfo:self.accountInfo
 			TDTasksParser *parser = [[TDTasksParser alloc] initWithData:responseData];
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
 			
@@ -388,13 +389,17 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
 		[timeFormatter setDateFormat:@"HH:mm:ss"];
 		
+		//pro account check
+		if([[accountInfo objectForKey:@"pro"] intValue] != 1)
+			aTask.parentId = 0;
+		
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								aTask.title, @"title",
-								aTask.tag, @"tag",
+								[aTask.tags componentsJoinedByString:tagSeparator], @"tag",
 								aTask.folder, @"folder",
 								aTask.context, @"context",
 								//aTask.goal, @"goal",
-								//aTask.parent, @"parent",
+								aTask.parentId, @"parent",
 								[dateFormatter stringFromDate:aTask.date_due], @"dueDate",
 								[dateFormatter stringFromDate:aTask.date_start], @"startDate",
 								[timeFormatter stringFromDate:aTask.date_due], @"dueTime",
@@ -451,16 +456,20 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
 		[timeFormatter setDateFormat:@"HH:mm:ss"];
 		
+		//pro account check
+		if([[accountInfo objectForKey:@"pro"] intValue] != 1)
+			aTask.parentId = 0;
+		
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								[NSString stringWithFormat:@"%d", aTask.uid], @"id",
 								aTask.title, @"title",
-								aTask.tag, @"tag",
+								[aTask.tags componentsJoinedByString:tagSeparator], @"tag",
 								aTask.folder, @"folder",
 								aTask.context, @"context",
 								//aTask.goal, @"goal",
 								//aTask.timer, @"timer", 
 								//aTask.timerval, @"timerval",
-								//aTask.parent, @"parent",
+								aTask.parentId, @"parent",
 								aTask.completed, @"completed",
 								//aTask.completed_on, @"completed_on",
 								//aTask.reschedule, @"reschedule",

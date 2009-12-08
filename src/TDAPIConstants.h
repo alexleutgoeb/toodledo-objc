@@ -83,7 +83,10 @@
 // edit note url
 #define kEditNotesURLFormat @"api.toodledo.com/api.php?method=editNote;"
 
+// TD specific
 
+//tagSeperator
+#define tagSeparator @","
 
 ////////////////////////////////////////////////////////////////////////////////
 // log macros

@@ -17,7 +17,7 @@
 @synthesize date_modified;
 @synthesize date_start;
 @synthesize date_due;
-@synthesize tag;
+@synthesize tags;
 @synthesize folder;
 @synthesize context;
 @synthesize priority;
