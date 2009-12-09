@@ -329,7 +329,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			if(parseError != nil)
 				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			else {
-				//all ok, save result, if no pro account set parentIds to -1
+				//all ok, save result, if no pro account set parentIds of tasks to -1
 				if (![[self.accountInfo valueForKey:@"pro"] isEqualToString:@"1"]) {
 					for (GtdTask *task in returnResult)
 						task.parentId = -1;
