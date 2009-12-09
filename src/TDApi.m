@@ -399,7 +399,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								aTask.title, @"title",
-								[aTask.tags componentsJoinedByString:tagSeparator], @"tag",
+								[aTask.tags componentsJoinedByString:kTagSeparator], @"tag",
 								aTask.folder, @"folder",
 								aTask.context, @"context",
 								//aTask.goal, @"goal",
@@ -467,7 +467,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								[NSString stringWithFormat:@"%d", aTask.uid], @"id",
 								aTask.title, @"title",
-								[aTask.tags componentsJoinedByString:tagSeparator], @"tag",
+								[aTask.tags componentsJoinedByString:kTagSeparator], @"tag",
 								aTask.folder, @"folder",
 								aTask.context, @"context",
 								//aTask.goal, @"goal",

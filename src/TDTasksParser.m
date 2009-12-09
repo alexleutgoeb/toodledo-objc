@@ -40,7 +40,7 @@
 								 [attributeDict valueForKey:@"duetime"]
 								]
 							   ];
-		currentTask.tags = [[[attributeDict valueForKey:@"tag"] stringValue] componentsSeparatedByString:tagSeparator];
+		currentTask.tags = [[[attributeDict valueForKey:@"tag"] stringValue] componentsSeparatedByString:kTagSeparator];
 		currentTask.folder = [[attributeDict valueForKey:@"folder"] intValue];
 		currentTask.context = [[attributeDict valueForKey:@"context"] intValue];
 		currentTask.priority = [[attributeDict valueForKey:@"priority"] intValue];
