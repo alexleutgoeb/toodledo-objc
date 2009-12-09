@@ -520,7 +520,6 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 
 - (BOOL)deleteTask:(GtdTask *)aTask error:(NSError **)error {
 	
-	// TODO: check parameters (if set)
 	BOOL returnResult = NO;
 	
 	// Check parameters
@@ -1005,62 +1004,83 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 // Used for userid lookup. Warning: the pwd is sent unencrypted.
 - (NSString *)getUserIdForUsername:(NSString *)aUsername andPassword:(NSString *)aPassword {
 
-	// TODO: parse error handling
-	NSError *parseError = nil;
+	NSString * returnResult = nil;
+	NSError *requestError = nil, *parseError = nil;
+
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aUsername, @"email", aPassword, @"pass", nil];
 	NSURLRequest *request = [self requestForURLString:kUserIdURLFormat additionalParameters:params];
 	[params release];
-	NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+	NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 	
-	TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
-	parser.tagName = @"userid";
-	NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
-	[parser release];
-	
-	if ([result count] == 1) {
-		DLog(@"Got user id: %@", [result objectAtIndex:0]);
-		return [result objectAtIndex:0];
+	if (requestError == nil) {
+		// all ok
+		TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+		parser.tagName = @"userid";
+		NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+		
+		if (parseError != nil) {
+			// error in response xml
+			DLog(@"Error while parsing userId.");
+		}
+		else {
+			// all ok, save result
+			if ([result count] == 1) {
+				DLog(@"Got user id: %@", [result objectAtIndex:0]);
+				returnResult = [result objectAtIndex:0];
+			}
+			else {
+				DLog(@"Could not fetch user id.");
+			}
+		}
+		[parser release];
 	}
 	else {
-		DLog(@"Could not fetch user id.");
-		return nil;
+		// error while loading request
+		DLog(@"Error while loading request for userId.");
 	}
-	
+	return returnResult;
 }
 
 // Custom getter for key; if key is not set or invalid, the getter loads a new one.
 - (NSString *)key {
 	if (key == nil || keyValidity == nil | [keyValidity compare:[NSDate date]] == NSOrderedDescending) {
-		// TODO: parse error handling
-		NSError *parseError = nil;
+		
+		NSError *requestError = nil, *parseError = nil;
 		
 		// If no key exists or key is invalid
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:userId, @"userid", @"welldone", @"appid", nil];
 		NSURLRequest *request = [self requestForURLString:kAuthenticationURLFormat additionalParameters:params];
 		[params release];
 		
-		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		
-		TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
-		parser.tagName = @"token";
-		NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
-		[parser release];
-		
-		if ([result count] == 1) {
-			NSString *token = [result objectAtIndex:0];
-			DLog(@"New token: %@", token);
+		if (requestError == nil) {
+			// all ok
+			TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+			parser.tagName = @"token";
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			[parser release];
 			
-			const char *cStr = [[NSString stringWithFormat:@"%@%@%@", passwordHash, token, userId] UTF8String];
-			unsigned char result[CC_MD5_DIGEST_LENGTH];
-			
-			CC_MD5(cStr, strlen(cStr), result);
-			
-			self.key = [[NSString stringWithFormat: @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
-								  result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]] lowercaseString];
-			self.keyValidity = [NSDate date];
-			DLog(@"Loaded new key: %@", key);
+			if ([result count] == 1) {
+				NSString *token = [result objectAtIndex:0];
+				DLog(@"New token: %@", token);
+				
+				const char *cStr = [[NSString stringWithFormat:@"%@%@%@", passwordHash, token, userId] UTF8String];
+				unsigned char result[CC_MD5_DIGEST_LENGTH];
+				
+				CC_MD5(cStr, strlen(cStr), result);
+				
+				self.key = [[NSString stringWithFormat: @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
+							 result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]] lowercaseString];
+				self.keyValidity = [NSDate date];
+				DLog(@"Loaded new key: %@", key);
+			}
+			else {
+				self.key = nil;
+			}
 		}
 		else {
+			// error while loading request
 			self.key = nil;
 		}
 	}
