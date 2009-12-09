@@ -323,14 +323,18 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		
 		if (requestError == nil) {
 			// all ok
-			//TODO das muss irgendwo rein: accountInfo:self.accountInfo
 			TDTasksParser *parser = [[TDTasksParser alloc] initWithData:responseData];
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
 			
 			if(parseError != nil)
 				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			else {
-				//all ok, save result
+				//all ok, save result, if no pro account set parentIds to -1
+				if (![[self.accountInfo valueForKey:@"pro"] isEqualToString:@"1"]) {
+					for (GtdTask *task in returnResult)
+						task.parentId = -1;
+				}
+					
 				returnResult = result;
 			}
 			[parser release];

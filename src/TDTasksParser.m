@@ -16,8 +16,7 @@
 	didStartElement:(NSString *)elementName
 	namespaceURI:(NSString *)namespaceURI
 	qualifiedName:(NSString *)qualifiedName
-	attributes:(NSDictionary *)attributeDict
-	accountInfo:(NSDictionary *)accountInfo {
+	attributes:(NSDictionary *)attributeDict {
 	
 	NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
 	[inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -53,12 +52,7 @@
 		//currentTask.rep_advanced = 
 		currentTask.status = [[attributeDict valueForKey:@"status"] intValue];
 		currentTask.reminder = [[attributeDict valueForKey:@"reminder"] intValue];
-		
-		//wenn pro account nimm apiwert fuer parentId
-		if ([[accountInfo objectForKey:@"pro"] intValue] == 1)
-			 currentTask.parentId = [[attributeDict valueForKey:@"parent"] intValue];
-		else
-			 currentTask.parentId = -1;
+		currentTask.parentId = [[attributeDict valueForKey:@"parent"] intValue];
 	}
 }
 
