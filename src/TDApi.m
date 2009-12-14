@@ -331,7 +331,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			else {
 				//all ok, save result, if no pro account set parentIds of tasks to -1
 				if (![[self.accountInfo valueForKey:@"pro"] isEqualToString:@"1"]) {
-					for (GtdTask *task in returnResult)
+					for (GtdTask *task in result)
 						task.parentId = -1;
 				}
 					
