@@ -397,6 +397,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		if([[accountInfo objectForKey:@"pro"] intValue] != 1)
 			aTask.parentId = 0;
 		
+		//whitespace von tags trimmen
+		for (NSString *tag in aTask.tags)
+			tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								aTask.title, @"title",
 								[aTask.tags componentsJoinedByString:kTagSeparator], @"tag",
@@ -463,6 +467,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		//pro account check
 		if([[accountInfo objectForKey:@"pro"] intValue] != 1)
 			aTask.parentId = 0;
+		
+		//whitespace von tags trimmen
+		for (NSString *tag in aTask.tags)
+			tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								[NSString stringWithFormat:@"%d", aTask.uid], @"id",

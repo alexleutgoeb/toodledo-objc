@@ -54,6 +54,11 @@
 		currentTask.reminder = [[attributeDict valueForKey:@"reminder"] intValue];
 		currentTask.parentId = [[attributeDict valueForKey:@"parent"] intValue];
 	}
+	
+	//whitespace von tags trimmen
+	for (NSString *tag in currentTask.tags)
+		tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
