@@ -42,6 +42,7 @@
 		currentNote.text = [[attributeDict valueForKey:@"text"] stringValue];
 		currentNote.title = [[attributeDict valueForKey:@"title"] stringValue];
 	}
+	
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {

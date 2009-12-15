@@ -331,8 +331,16 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			else {
 				//all ok, save result, if no pro account set parentIds of tasks to -1
 				if (![[self.accountInfo valueForKey:@"pro"] isEqualToString:@"1"]) {
-					for (GtdTask *task in result)
+					for (GtdTask *task in result) {
 						task.parentId = -1;
+						
+						//whitespace von tags trimmen
+						for (NSString *tag in task.tags)
+							tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+						
+						//serverTimeDifference adden
+						task.date_modified = [task.date_modified addTimeInterval:servertimeDifference];
+					}
 				}
 					
 				returnResult = result;
@@ -758,6 +766,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			
 			TDNotesParser *parser = [[TDNotesParser alloc] initWithData:responseData];
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			
+			for(GtdNote *note in result)
+				note.date_modified = [note.date_modified addTimeInterval:servertimeDifference];
 			
 			if (parseError != nil) 
 			{
