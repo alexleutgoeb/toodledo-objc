@@ -767,6 +767,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			TDNotesParser *parser = [[TDNotesParser alloc] initWithData:responseData];
 			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
 			
+			//add servertimeDifference to date_modified
 			for(GtdNote *note in result)
 				note.date_modified = [note.date_modified addTimeInterval:servertimeDifference];
 			
