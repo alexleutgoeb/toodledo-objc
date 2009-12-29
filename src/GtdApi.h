@@ -19,7 +19,7 @@ extern NSString *const GtdApiErrorDomain;
 /**
  The GtdApi Protocol.
  */
-@protocol GtdApi
+@protocol GtdApi<NSObject>
 
 @property (readonly) BOOL isAuthenticated;
 @property (nonatomic, readonly) NSString *identifier;
