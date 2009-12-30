@@ -56,32 +56,42 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 
 - (id)initWithUsername:(NSString *)username password:(NSString *)password error:(NSError **)error {
 	if (self = [super init]) {
-		self.userId = [self getUserIdForUsername:username andPassword:password];
 		
-		//Check userId
-		if (self.userId == nil) {
-			// UserId unknown error (connection ? )
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
-			[self release];
-			return nil;
-		}
-		else if ([userId isEqualToString:@"0"]) {
+		// Check if username and password is set
+		if (username == nil || password == nil || [username length] == 0 || [password length] == 0) {
 			// error: empty arguments
 			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingCredentialsError userInfo:nil];
 			[self release];
 			return nil;
 		}
-		else if ([userId isEqualToString:@"1"]) {
-			// error: wrong credentials
-			*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiWrongCredentialsError userInfo:nil];
-			[self release];
-			return nil;
-		}
 		else {
-			[self setPasswordHashWithPassword:password];
-			// auth
-			[self key];
-			[self loadServerInfos];
+			self.userId = [self getUserIdForUsername:username andPassword:password];
+			
+			//Check userId
+			if (self.userId == nil) {
+				// UserId unknown error (connection ? )
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
+				[self release];
+				return nil;
+			}
+			else if ([userId isEqualToString:@"0"]) {
+				// error: empty arguments, redundant
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingCredentialsError userInfo:nil];
+				[self release];
+				return nil;
+			}
+			else if ([userId isEqualToString:@"1"]) {
+				// error: wrong credentials
+				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiWrongCredentialsError userInfo:nil];
+				[self release];
+				return nil;
+			}
+			else {
+				[self setPasswordHashWithPassword:password];
+				// auth
+				[self key];
+				[self loadServerInfos];
+			}
 		}
 	}
 	return self;
