@@ -112,12 +112,11 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	return [TDApi identifier];
 }
 
-- (NSDictionary *)getLastModificationsDates:(NSError **)error {
-	
-	NSDictionary *returnResult = nil;
+- (NSMutableDictionary *)getLastModificationsDates:(NSError **)error {
+	NSMutableDictionary *returnResult = nil;
 	
 	if ([self loadAccountInfo] != NO) {
-		returnResult = [NSDictionary dictionary];
+		returnResult = [NSMutableDictionary dictionary];
 		
 		if ([accountInfo valueForKey:@"lastaddedit"] != nil) {
 			[returnResult setValue:[accountInfo valueForKey:@"lastaddedit"] forKey:@"lastTaskAddEdit"];
@@ -1013,7 +1012,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	
 	if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
-		NSURLRequest *request = [self authenticatedRequestForURLString:kGetFoldersURLFormat additionalParameters:nil];
+		NSURLRequest *request = [self authenticatedRequestForURLString:kUserAccountInfoURLFormat additionalParameters:nil];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		
 		if (requestError == nil) {

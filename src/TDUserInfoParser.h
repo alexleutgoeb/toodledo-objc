@@ -12,7 +12,7 @@
 
 @interface TDUserInfoParser : TDParser {
 @private
-	NSDictionary *userInfos;
+	NSMutableDictionary *userInfos;
 }
 
 @end
