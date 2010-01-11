@@ -1143,9 +1143,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	for (NSString *paramKey in additionalParameters)
 		[params appendFormat:@"%@=%@;", paramKey, [additionalParameters objectForKey:paramKey]];
 	
+	NSString *paramsString = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)params, NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1);
 	
 	// Create rest url
-	NSURL *url = [[NSURL alloc] initWithString:params];
+	NSURL *url = [[NSURL alloc] initWithString:paramsString];
 	[params release];
 	
 	NSURLRequest *request = [[[NSURLRequest alloc] initWithURL:url] autorelease];
@@ -1164,9 +1165,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	for (NSString *paramKey in additionalParameters)
 		[params appendFormat:@"%@=%@;", paramKey, [additionalParameters valueForKey:paramKey]];
 	
+	NSString *paramsString = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)params, NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1);
 	
 	// Create rest url
-	NSURL *url = [[NSURL alloc] initWithString:params];
+	NSURL *url = [[NSURL alloc] initWithString:paramsString];
 	[params release];
 	NSURLRequest *request = [[[NSURLRequest alloc] initWithURL:url] autorelease];
 	[url release];
