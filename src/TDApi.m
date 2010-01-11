@@ -1140,12 +1140,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Create parameter string
 	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@%@key=%@;", urlProtocol, anUrlString, self.key];
 	for (NSString *paramKey in additionalParameters)
-		[params appendFormat:@"%@=%@;", paramKey, [additionalParameters objectForKey:paramKey]];
-	
-	NSString *paramsString = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)params, NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1);
+		[params appendFormat:@"%@=%@;", paramKey, (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[additionalParameters objectForKey:paramKey], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1)];
 	
 	// Create rest url
-	NSURL *url = [[NSURL alloc] initWithString:paramsString];
+	NSURL *url = [[NSURL alloc] initWithString:params];
 	[params release];
 	
 	NSURLRequest *request = [[[NSURLRequest alloc] initWithURL:url] autorelease];
@@ -1162,12 +1160,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Create parameter string
 	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@%@", kBasicUrlProtocolFormat, anUrlString];
 	for (NSString *paramKey in additionalParameters)
-		[params appendFormat:@"%@=%@;", paramKey, [additionalParameters valueForKey:paramKey]];
-	
-	NSString *paramsString = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)params, NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1);
-	
+		[params appendFormat:@"%@=%@;", paramKey, (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[additionalParameters objectForKey:paramKey], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1)];
+		
 	// Create rest url
-	NSURL *url = [[NSURL alloc] initWithString:paramsString];
+	NSURL *url = [[NSURL alloc] initWithString:params];
 	[params release];
 	NSURLRequest *request = [[[NSURLRequest alloc] initWithURL:url] autorelease];
 	[url release];
