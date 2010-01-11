@@ -41,7 +41,7 @@ extern NSString *const GtdApiErrorDomain;
  Returns the last modifications dates in a dictionary, see doc for details.
  @param error
 */
-- (NSDictionary *)getLastModificationsDates:(NSError **)error;
+- (NSMutableDictionary *)getLastModificationsDates:(NSError **)error;
 
 /**
  Loads and returns an array with GtdFolder objects.

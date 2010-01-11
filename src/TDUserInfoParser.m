@@ -13,7 +13,7 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
 	if ([elementName isEqualToString:@"account"]) {
-		userInfos = [[NSDictionary alloc] init];
+		userInfos = [[NSMutableDictionary alloc] init];
 		[results addObject:userInfos];
 	}
 }
@@ -33,7 +33,6 @@
 			 [elementName isEqualToString:@"lastgoaledit"]) {
 		[userInfos setValue:currentString forKey:elementName];
 	}
-	
 	[currentString release];
 	currentString = nil;
 }
