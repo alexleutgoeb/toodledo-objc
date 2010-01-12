@@ -278,11 +278,11 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Check if valid key
 	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] init];
-
-		[params setValue:aFolder.title forKey:@"key"];
-		[params setValue:[NSString stringWithFormat:@"%d", aFolder.private] forKey:@"private"];
-		[params setValue:[NSString stringWithFormat:@"%d", aFolder.archived] forKey:@"archived"];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.uid], @"id",
+																			aFolder.title, @"title",
+																			(aFolder.private == NO ? 0 : 1), @"private",
+																			(aFolder.private == NO ? 0 : 1), @"archived",
+																			nil];
 		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kEditFolderURLFormat additionalParameters:params];
 		[params release];
@@ -721,9 +721,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// check if valid key
 	else if(self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] init];
-		
-		[params setValue:aContext.title forKey:@"key"];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aContext.title, @"key", nil];
 		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kEditContextURLFormat additionalParameters:params];
 		[params release];
