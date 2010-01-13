@@ -280,8 +280,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		NSError *requestError = nil, *parseError = nil;
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.uid], @"id",
 																			aFolder.title, @"title",
-																			(aFolder.private == NO ? 0 : 1), @"private",
-																			(aFolder.private == NO ? 0 : 1), @"archived",
+																			(aFolder.private == NO ? @"0" : @"1"), @"private",
+																			(aFolder.private == NO ? @"0" : @"1"), @"archived",
 																			nil];
 		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kEditFolderURLFormat additionalParameters:params];
@@ -721,7 +721,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// check if valid key
 	else if(self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aContext.title, @"key", nil];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aContext.uid], @"id",aContext.title, @"title", nil];
 		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kEditContextURLFormat additionalParameters:params];
 		[params release];
@@ -868,15 +868,18 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	{
 		if ([self isAuthenticated]) 
 		{
+			NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+			[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+			
 			NSError *requestError = nil, *parseError = nil;
 			NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								aNote.title, @"title",
 								aNote.text, @"text",
 								[NSString stringWithFormat:@"%d", aNote.folder], @"folder",
 								[NSString stringWithFormat:@"%d", aNote.private], @"private",
-								//aNote.addedon, @"addedon",
+								// [dateFormater stringFromDate:aNote.addedon], @"addedon",
 									nil ];								
-		
+			// TODO: addedon ?
 		
 		
 			NSURLRequest *request = [self authenticatedRequestForURLString:kAddNotesURLFormat additionalParameters:params];
