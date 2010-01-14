@@ -55,6 +55,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 #pragma mark GtdApi protocol implementation
 
 - (id)initWithUsername:(NSString *)username password:(NSString *)password error:(NSError **)error {
+	*error = nil;
 	if (self = [super init]) {
 		
 		// Check if username and password is set
@@ -721,7 +722,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// check if valid key
 	else if(self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aContext.title, @"key", nil];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aContext.uid], @"id",
+																			aContext.title, @"title", nil];
 		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kEditContextURLFormat additionalParameters:params];
 		[params release];
