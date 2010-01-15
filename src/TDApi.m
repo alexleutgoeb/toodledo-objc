@@ -55,6 +55,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 #pragma mark GtdApi protocol implementation
 
 - (id)initWithUsername:(NSString *)username password:(NSString *)password error:(NSError **)error {
+	*error = nil;
 	if (self = [super init]) {
 		
 		// Check if username and password is set
@@ -189,7 +190,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Check if valid key
 	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aFolder.title, @"title", (aFolder.private == NO ? 0 : 1), @"private", nil];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:aFolder.title, @"title", (aFolder.private == NO ? @"0" : @"1"), @"private", nil];
 		NSURLRequest *request = [self authenticatedRequestForURLString:kAddFolderURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		[params release];
@@ -278,11 +279,11 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Check if valid key
 	else if (self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] init];
-
-		[params setValue:aFolder.title forKey:@"key"];
-		[params setValue:[NSString stringWithFormat:@"%d", aFolder.private] forKey:@"private"];
-		[params setValue:[NSString stringWithFormat:@"%d", aFolder.archived] forKey:@"archived"];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aFolder.uid], @"id",
+																			aFolder.title, @"title",
+																			(aFolder.private == NO ? @"0" : @"1"), @"private",
+																			(aFolder.private == NO ? @"0" : @"1"), @"archived",
+																			nil];
 		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kEditFolderURLFormat additionalParameters:params];
 		[params release];
@@ -421,21 +422,21 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								aTask.title, @"title",
 								[aTask.tags componentsJoinedByString:kTagSeparator], @"tag",
-								aTask.folder, @"folder",
-								aTask.context, @"context",
+								[NSString stringWithFormat:@"%d", aTask.folder], @"folder",
+								[NSString stringWithFormat:@"%d", aTask.context], @"context",
 								//aTask.goal, @"goal",
-								aTask.parentId, @"parent",
+								[NSString stringWithFormat:@"%d", aTask.parentId], @"parent",
 								[dateFormatter stringFromDate:aTask.date_due], @"dueDate",
 								[dateFormatter stringFromDate:aTask.date_start], @"startDate",
 								[timeFormatter stringFromDate:aTask.date_due], @"dueTime",
 								[timeFormatter stringFromDate:aTask.date_start], @"startTime",
-								aTask.reminder, @"reminder",
-								aTask.repeat, @"repeat",
+								[NSString stringWithFormat:@"%d", aTask.reminder], @"reminder",
+								[NSString stringWithFormat:@"%d", aTask.repeat], @"repeat",
 								//aTask.rep_advanced, @"rep_advanced",
-								aTask.status, @"status",
-								aTask.length, @"length",
-								aTask.priority, @"priority",
-								aTask.star, @"star",
+								[NSString stringWithFormat:@"%d", aTask.status], @"status",
+								[NSString stringWithFormat:@"%d", aTask.length], @"length",
+								[NSString stringWithFormat:@"%d", aTask.priority], @"priority",
+								[NSString stringWithFormat:@"%d", aTask.star], @"star",
 								aTask.note, @"note",
 								nil
 								];
@@ -493,26 +494,26 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								[NSString stringWithFormat:@"%d", aTask.uid], @"id",
 								aTask.title, @"title",
 								[aTask.tags componentsJoinedByString:kTagSeparator], @"tag",
-								aTask.folder, @"folder",
-								aTask.context, @"context",
+								[NSString stringWithFormat:@"%d", aTask.folder], @"folder",
+								[NSString stringWithFormat:@"%d", aTask.context], @"context",
 								//aTask.goal, @"goal",
 								//aTask.timer, @"timer", 
 								//aTask.timerval, @"timerval",
-								aTask.parentId, @"parent",
-								aTask.completed, @"completed",
+								[NSString stringWithFormat:@"%d", aTask.parentId], @"parent",
+								[dateFormatter stringFromDate:aTask.completed], @"completed",
 								//aTask.completed_on, @"completed_on",
 								//aTask.reschedule, @"reschedule",
 								[dateFormatter stringFromDate:aTask.date_due], @"dueDate",
 								[dateFormatter stringFromDate:aTask.date_start], @"startDate",
 								[timeFormatter stringFromDate:aTask.date_due], @"dueTime",
 								[timeFormatter stringFromDate:aTask.date_start], @"startTime",
-								aTask.reminder, @"reminder",
-								aTask.repeat, @"repeat",
+								[NSString stringWithFormat:@"%d", aTask.reminder], @"reminder",
+								[NSString stringWithFormat:@"%d", aTask.repeat], @"repeat",
 								//aTask.rep_advanced, @"rep_advanced",
-								aTask.status, @"status",
-								aTask.length, @"length",
-								aTask.priority, @"priority",
-								aTask.star, @"star",
+								[NSString stringWithFormat:@"%d", aTask.status], @"status",
+								[NSString stringWithFormat:@"%d", aTask.length], @"length",
+								[NSString stringWithFormat:@"%d", aTask.priority], @"priority",
+								[NSString stringWithFormat:@"%d", aTask.star], @"star",
 								aTask.note, @"note",
 								nil
 								];
@@ -721,9 +722,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// check if valid key
 	else if(self.key != nil) {
 		NSError *requestError = nil, *parseError = nil;
-		NSDictionary *params = [[NSDictionary alloc] init];
-		
-		[params setValue:aContext.title forKey:@"key"];
+		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%d", aContext.uid], @"id",aContext.title, @"title", nil];
 		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kEditContextURLFormat additionalParameters:params];
 		[params release];
@@ -870,15 +869,18 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	{
 		if ([self isAuthenticated]) 
 		{
+			NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+			[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+			
 			NSError *requestError = nil, *parseError = nil;
 			NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 								aNote.title, @"title",
 								aNote.text, @"text",
-								aNote.folder, @"folder",
-								aNote.private, @"private",
-								//aNote.addedon, @"addedon",
+								[NSString stringWithFormat:@"%d", aNote.folder], @"folder",
+								[NSString stringWithFormat:@"%d", aNote.private], @"private",
+								// [dateFormater stringFromDate:aNote.addedon], @"addedon",
 									nil ];								
-		
+			// TODO: addedon ?
 		
 		
 			NSURLRequest *request = [self authenticatedRequestForURLString:kAddNotesURLFormat additionalParameters:params];
@@ -933,8 +935,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								[NSString stringWithFormat:@"%d", aNote.uid], @"id",
 								aNote.title, @"title",
 								aNote.text, @"text",
-								aNote.folder, @"folder",
-								aNote.private, @"private", nil ];								
+								[NSString stringWithFormat:@"%d", aNote.folder], @"folder",
+								[NSString stringWithFormat:@"%d", aNote.private], @"private", nil ];								
 		
 		
 		
@@ -992,7 +994,6 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		if ([result count] == 1) {
 			NSDate *serverDate = [NSDate dateWithTimeIntervalSince1970:[[result objectAtIndex:0] doubleValue]];
 			servertimeDifference = [serverDate timeIntervalSinceNow];
-			[serverDate release];
 			DLog(@"Server infos retrieved, servertime difference: %f.", servertimeDifference);
 			return YES;
 		}
@@ -1140,8 +1141,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Create parameter string
 	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@%@key=%@;", urlProtocol, anUrlString, self.key];
 	for (NSString *paramKey in additionalParameters)
-		[params appendFormat:@"%@=%@;", paramKey, [additionalParameters objectForKey:paramKey]];
-	
+		[params appendFormat:@"%@=%@;", paramKey, (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[additionalParameters objectForKey:paramKey], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1)];
 	
 	// Create rest url
 	NSURL *url = [[NSURL alloc] initWithString:params];
@@ -1161,9 +1161,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Create parameter string
 	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@%@", kBasicUrlProtocolFormat, anUrlString];
 	for (NSString *paramKey in additionalParameters)
-		[params appendFormat:@"%@=%@;", paramKey, [additionalParameters valueForKey:paramKey]];
-	
-	
+		[params appendFormat:@"%@=%@;", paramKey, (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[additionalParameters objectForKey:paramKey], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1)];
+		
 	// Create rest url
 	NSURL *url = [[NSURL alloc] initWithString:params];
 	[params release];
