@@ -17,7 +17,7 @@
 		BF44078F10C567A2007A3F99 /* ContextTests.h in Headers */ = {isa = PBXBuildFile; fileRef = BF44078D10C567A2007A3F99 /* ContextTests.h */; };
 		BF44085A10C57A04007A3F99 /* NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44077E10C5635C007A3F99 /* NoteTests.m */; };
 		BF44085B10C57A0D007A3F99 /* NoteParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44084A10C5774C007A3F99 /* NoteParserTest.m */; };
-		BF44085C10C57A10007A3F99 /* TaskParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4407D310C56C30007A3F99 /* TaskParserTest.m */; };
+		BF44085C10C57A10007A3F99 /* TaskParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4407D310C56C30007A3F99 /* TaskParserTests.m */; };
 		BF44085D10C57A15007A3F99 /* ContextParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BF44083110C5765D007A3F99 /* ContextParserTest.m */; };
 		CF04582210E2F64800DED3CF /* TDApiConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF874EE10965F5300C4C137 /* TDApiConstants.h */; };
 		CF04582310E2F64800DED3CF /* TDParser.h in Headers */ = {isa = PBXBuildFile; fileRef = FACCD7F510A0CF8D00A36C87 /* TDParser.h */; };
@@ -141,7 +141,7 @@
 		BF44078710C563C9007A3F99 /* TaskTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskTests.h; sourceTree = "<group>"; };
 		BF44078D10C567A2007A3F99 /* ContextTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextTests.h; sourceTree = "<group>"; };
 		BF44078E10C567A2007A3F99 /* ContestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContestTests.m; sourceTree = "<group>"; };
-		BF4407D310C56C30007A3F99 /* TaskParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskParserTest.m; sourceTree = "<group>"; };
+		BF4407D310C56C30007A3F99 /* TaskParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskParserTests.m; sourceTree = "<group>"; };
 		BF44083110C5765D007A3F99 /* ContextParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextParserTest.m; sourceTree = "<group>"; };
 		BF44084A10C5774C007A3F99 /* NoteParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteParserTest.m; sourceTree = "<group>"; };
 		CF04581710E2F5C400DED3CF /* liblibToodledoAPIiPhone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibToodledoAPIiPhone.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,11 +265,11 @@
 				FABE3EBE10BD1F36000D72E9 /* FolderParserTests.m */,
 				BF44078710C563C9007A3F99 /* TaskTests.h */,
 				BF0D26F310B95F55005EC715 /* TaskTests.m */,
+				BF4407D310C56C30007A3F99 /* TaskParserTests.m */,
 				BF44078310C563AD007A3F99 /* NoteTests.h */,
 				BF44077E10C5635C007A3F99 /* NoteTests.m */,
 				BF44078D10C567A2007A3F99 /* ContextTests.h */,
 				BF44078E10C567A2007A3F99 /* ContestTests.m */,
-				BF4407D310C56C30007A3F99 /* TaskParserTest.m */,
 				BF44084A10C5774C007A3F99 /* NoteParserTest.m */,
 				BF44083110C5765D007A3F99 /* ContextParserTest.m */,
 			);
@@ -577,7 +577,7 @@
 				FABE3EBF10BD1F36000D72E9 /* FolderParserTests.m in Sources */,
 				BF44085A10C57A04007A3F99 /* NoteTests.m in Sources */,
 				BF44085B10C57A0D007A3F99 /* NoteParserTest.m in Sources */,
-				BF44085C10C57A10007A3F99 /* TaskParserTest.m in Sources */,
+				BF44085C10C57A10007A3F99 /* TaskParserTests.m in Sources */,
 				BF44085D10C57A15007A3F99 /* ContextParserTest.m in Sources */,
 				426E5EE210C57DA100D8667D /* ContestTests.m in Sources */,
 			);
