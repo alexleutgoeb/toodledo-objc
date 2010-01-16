@@ -421,28 +421,30 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		for (NSString *tag in aTask.tags)
 			tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-								aTask.title, @"title",
-								[aTask.tags componentsJoinedByString:kTagSeparator], @"tag",
-								[NSString stringWithFormat:@"%d", aTask.folder], @"folder",
-								[NSString stringWithFormat:@"%d", aTask.context], @"context",
-								//aTask.goal, @"goal",
-								[NSString stringWithFormat:@"%d", aTask.parentId], @"parent",
-								[dateFormatter stringFromDate:aTask.date_due], @"duedate",
-								[dateFormatter stringFromDate:aTask.date_start], @"startdate",
-								[timeFormatter stringFromDate:aTask.date_due], @"duetime",
-								[timeFormatter stringFromDate:aTask.date_start], @"starttime",
-								[NSString stringWithFormat:@"%d", aTask.reminder], @"reminder",
-								[NSString stringWithFormat:@"%d", aTask.repeat], @"repeat",
-								//aTask.rep_advanced, @"rep_advanced",
-								[NSString stringWithFormat:@"%d", aTask.status], @"status",
-								[NSString stringWithFormat:@"%d", aTask.length], @"length",
-								[NSString stringWithFormat:@"%d", aTask.priority], @"priority",
-								[NSString stringWithFormat:@"%d", aTask.star], @"star",
-								aTask.note, @"note",
-								nil
-								];
-		DLog(@"Params des: %@", [params description]);
+		NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+		[params setObject:aTask.title forKey:@"title"];
+		if (aTask.tags != nil)
+			[params setObject:[aTask.tags componentsJoinedByString:kTagSeparator] forKey:@"tag"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.folder] forKey:@"folder"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.context] forKey:@"context"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.parentId] forKey:@"parent"];
+		if (aTask.date_due != nil) {
+			[params setObject:[dateFormatter stringFromDate:aTask.date_due] forKey:@"duedate"];
+			[params setObject:[timeFormatter stringFromDate:aTask.date_due] forKey:@"duetime"];
+		}
+		if (aTask.date_start != nil) {
+			[params setObject:[dateFormatter stringFromDate:aTask.date_start] forKey:@"startdate"];
+			[params setObject:[timeFormatter stringFromDate:aTask.date_start] forKey:@"starttime"];
+		}
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.reminder] forKey:@"reminder"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.repeat] forKey:@"repeat"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.status] forKey:@"status"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.length] forKey:@"length"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.priority] forKey:@"priority"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.star] forKey:@"star"];
+		if (aTask.note != nil && [aTask.note length] > 0)
+			[params setObject:aTask.note forKey:@"note"];
+		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kAddTaskURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		[params release];
@@ -495,33 +497,34 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		for (NSString *tag in aTask.tags)
 			tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		
-		NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-								[NSString stringWithFormat:@"%d", aTask.uid], @"id",
-								aTask.title, @"title",
-								[aTask.tags componentsJoinedByString:kTagSeparator], @"tag",
-								[NSString stringWithFormat:@"%d", aTask.folder], @"folder",
-								[NSString stringWithFormat:@"%d", aTask.context], @"context",
-								//aTask.goal, @"goal",
-								//aTask.timer, @"timer", 
-								//aTask.timerval, @"timerval",
-								[NSString stringWithFormat:@"%d", aTask.parentId], @"parent",
-								[dateFormatter stringFromDate:aTask.completed], @"completed",
-								//aTask.completed_on, @"completed_on",
-								//aTask.reschedule, @"reschedule",
-								[dateFormatter stringFromDate:aTask.date_due], @"duedate",
-								[dateFormatter stringFromDate:aTask.date_start], @"startdate",
-								[timeFormatter stringFromDate:aTask.date_due], @"duetime",
-								[timeFormatter stringFromDate:aTask.date_start], @"starttime",
-								[NSString stringWithFormat:@"%d", aTask.reminder], @"reminder",
-								[NSString stringWithFormat:@"%d", aTask.repeat], @"repeat",
-								//aTask.rep_advanced, @"rep_advanced",
-								[NSString stringWithFormat:@"%d", aTask.status], @"status",
-								[NSString stringWithFormat:@"%d", aTask.length], @"length",
-								[NSString stringWithFormat:@"%d", aTask.priority], @"priority",
-								[NSString stringWithFormat:@"%d", aTask.star], @"star",
-								aTask.note, @"note",
-								nil
-								];
+		NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+		[params setObject:aTask.title forKey:@"title"];
+		if (aTask.tags != nil)
+			[params setObject:[aTask.tags componentsJoinedByString:kTagSeparator] forKey:@"tag"];
+		else
+			[params setObject:@"" forKey:@"tag"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.folder] forKey:@"folder"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.context] forKey:@"context"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.parentId] forKey:@"parent"];
+		if (aTask.date_due != nil) {
+			[params setObject:[dateFormatter stringFromDate:aTask.date_due] forKey:@"duedate"];
+			[params setObject:[timeFormatter stringFromDate:aTask.date_due] forKey:@"duetime"];
+		}
+		if (aTask.date_start != nil) {
+			[params setObject:[dateFormatter stringFromDate:aTask.date_start] forKey:@"startdate"];
+			[params setObject:[timeFormatter stringFromDate:aTask.date_start] forKey:@"starttime"];
+		}
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.reminder] forKey:@"reminder"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.repeat] forKey:@"repeat"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.status] forKey:@"status"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.length] forKey:@"length"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.priority] forKey:@"priority"];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.star] forKey:@"star"];
+		if (aTask.note != nil)
+			[params setObject:aTask.note forKey:@"note"];
+		else
+			[params setObject:@"" forKey:@"note"];
+		
 		NSURLRequest *request = [self authenticatedRequestForURLString:kEditTaskURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		
