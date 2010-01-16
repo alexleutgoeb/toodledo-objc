@@ -497,6 +497,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		
 		NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+		[params setObject:[NSString stringWithFormat:@"%d", aTask.uid] forKey:@"id"];
 		[params setObject:aTask.title forKey:@"title"];
 		if (aTask.tags != nil)
 			[params setObject:[aTask.tags componentsJoinedByString:kTagSeparator] forKey:@"tag"];
