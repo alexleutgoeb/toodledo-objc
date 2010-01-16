@@ -400,7 +400,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	NSInteger returnResult = -1;
 	
 	// Check parameters
-	if (aTask == nil || aTask.uid == -1 || aTask.title == nil)
+	if (aTask == nil || aTask.title == nil)
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	//check if valid key
 	else if (self.key != nil) {
