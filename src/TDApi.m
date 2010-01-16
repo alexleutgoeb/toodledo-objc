@@ -409,7 +409,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 		[dateFormatter setDateFormat:@"yyyy-MM-dd"];
 		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
-		[timeFormatter setDateFormat:@"HH:mm:ss"];
+		[timeFormatter setDateFormat:@"hh:mm a"];
+		[timeFormatter setAMSymbol:@"am"];
+		[timeFormatter setPMSymbol:@"pm"];
 		
 		//pro account check
 		if([[accountInfo objectForKey:@"pro"] intValue] != 1)
@@ -426,10 +428,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								[NSString stringWithFormat:@"%d", aTask.context], @"context",
 								//aTask.goal, @"goal",
 								[NSString stringWithFormat:@"%d", aTask.parentId], @"parent",
-								[dateFormatter stringFromDate:aTask.date_due], @"dueDate",
-								[dateFormatter stringFromDate:aTask.date_start], @"startDate",
-								[timeFormatter stringFromDate:aTask.date_due], @"dueTime",
-								[timeFormatter stringFromDate:aTask.date_start], @"startTime",
+								[dateFormatter stringFromDate:aTask.date_due], @"duedate",
+								[dateFormatter stringFromDate:aTask.date_start], @"startdate",
+								[timeFormatter stringFromDate:aTask.date_due], @"duetime",
+								[timeFormatter stringFromDate:aTask.date_start], @"starttime",
 								[NSString stringWithFormat:@"%d", aTask.reminder], @"reminder",
 								[NSString stringWithFormat:@"%d", aTask.repeat], @"repeat",
 								//aTask.rep_advanced, @"rep_advanced",
@@ -440,6 +442,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								aTask.note, @"note",
 								nil
 								];
+		DLog(@"Params des: %@", [params description]);
 		NSURLRequest *request = [self authenticatedRequestForURLString:kAddTaskURLFormat additionalParameters:params];
 		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
 		[params release];
@@ -480,7 +483,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 		[dateFormatter setDateFormat:@"yyyy-MM-dd"];
 		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
-		[timeFormatter setDateFormat:@"HH:mm:ss"];
+		[timeFormatter setDateFormat:@"hh:mm a"];
+		[timeFormatter setAMSymbol:@"am"];
+		[timeFormatter setPMSymbol:@"pm"];
 		
 		//pro account check
 		if([[accountInfo objectForKey:@"pro"] intValue] != 1)
@@ -503,10 +508,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 								[dateFormatter stringFromDate:aTask.completed], @"completed",
 								//aTask.completed_on, @"completed_on",
 								//aTask.reschedule, @"reschedule",
-								[dateFormatter stringFromDate:aTask.date_due], @"dueDate",
-								[dateFormatter stringFromDate:aTask.date_start], @"startDate",
-								[timeFormatter stringFromDate:aTask.date_due], @"dueTime",
-								[timeFormatter stringFromDate:aTask.date_start], @"startTime",
+								[dateFormatter stringFromDate:aTask.date_due], @"duedate",
+								[dateFormatter stringFromDate:aTask.date_start], @"startdate",
+								[timeFormatter stringFromDate:aTask.date_due], @"duetime",
+								[timeFormatter stringFromDate:aTask.date_start], @"starttime",
 								[NSString stringWithFormat:@"%d", aTask.reminder], @"reminder",
 								[NSString stringWithFormat:@"%d", aTask.repeat], @"repeat",
 								//aTask.rep_advanced, @"rep_advanced",
