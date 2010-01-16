@@ -349,8 +349,8 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 						tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 					
 					//serverTimeDifference adden
-					task.date_modified = [task.date_modified addTimeInterval:servertimeDifference];
-					task.date_created = [task.date_created addTimeInterval:servertimeDifference];
+					task.date_modified = [task.date_modified addTimeInterval:-servertimeDifference];
+					task.date_created = [task.date_created addTimeInterval:-servertimeDifference];
 				}
 				returnResult = result;
 			}
