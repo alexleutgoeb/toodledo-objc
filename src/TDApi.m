@@ -1015,28 +1015,41 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	}
 }
 
-- (BOOL)loadAccountInfo {
+// Gets server infos for api
+- (BOOL)loadServerInfos {
 	
-	BOOL returnResult = NO;
-	
-	if (self.key != nil) {
-		NSError *requestError = nil, *parseError = nil;
-		NSURLRequest *request = [self authenticatedRequestForURLString:kUserAccountInfoURLFormat additionalParameters:nil];
-		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+	if ([self isAuthenticated]) {
+		NSError *parseError = nil;
+		NSURLRequest *request = [self authenticatedRequestForURLString:kServerInfoURLFormat additionalParameters:nil];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 		
-		if (requestError == nil) {
-			// all ok
-			TDUserInfoParser *parser = [[TDUserInfoParser alloc] initWithData:responseData];
-			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+		TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
+		parser.tagName = @"date";
+		NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+		[parser release];
+		
+		if ([result count] == 1) {
+			NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+			NSLocale *enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+			[formatter setLocale:enUS];
+			[enUS release];
+			[formatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss"];
 			
-			if (parseError == nil) {
-				self.accountInfo = [result objectAtIndex:0];
-				returnResult = YES;
-			}
-			[parser release];
+			NSDate *serverDate = [formatter dateFromString:[result objectAtIndex:0]];
+			servertimeDifference = [serverDate timeIntervalSinceNow];
+			
+			[formatter release];
+			DLog(@"Server infos retrieved, servertime difference: %f.", servertimeDifference);
+			return YES;
 		}
+		else {
+			DLog(@"Could not fetch server infos.");
+			return NO;
+		}	
 	}
-	return returnResult;
+	else {
+		return NO;
+	}
 }
 
 // Used for userid lookup. Warning: the pwd is sent unencrypted.
