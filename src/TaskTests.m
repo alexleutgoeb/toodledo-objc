@@ -61,5 +61,4 @@
 	STAssertTrue([error code] == GtdApiMissingParameters, @"Task must not be edited without uid argument.");
 }
 
-
 @end

@@ -46,9 +46,9 @@
 @property (nonatomic) NSInteger length;
 @property (nonatomic, copy) NSString *note;
 @property BOOL star;
-@property (nonatomic) NSInteger repeat;
-@property (nonatomic) NSInteger status;
-@property (nonatomic) NSInteger reminder;
-@property (nonatomic) NSInteger parentId;
+@property NSInteger repeat;
+@property NSInteger status;
+@property NSInteger reminder;
+@property NSInteger parentId;
 
 @end

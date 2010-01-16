@@ -10,63 +10,155 @@
 #import "TDApiConstants.h"
 
 
+@interface TDTasksParser ()
+
+@property (nonatomic, copy) NSString *startTime;
+@property (nonatomic, copy) NSString *startDate;
+@property (nonatomic, copy) NSString *dueTime;
+@property (nonatomic, copy) NSString *dueDate;
+
+@end
+
+
 @implementation TDTasksParser
 
-- (void)parser:(NSXMLParser *)parser
-	didStartElement:(NSString *)elementName
-	namespaceURI:(NSString *)namespaceURI
-	qualifiedName:(NSString *)qualifiedName
-	attributes:(NSDictionary *)attributeDict {
+@synthesize startTime, startDate, dueDate, dueTime;
+
+- (void)parserDidStartDocument:(NSXMLParser *)parser {
+	[super parserDidStartDocument:parser];
+	dateTime24Formatter = [[NSDateFormatter alloc] init];
+	[dateTime24Formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+	dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+	dateTime12Formatter = [[NSDateFormatter alloc] init];
+	[dateTime12Formatter setDateFormat:@"yyyy-MM-dd hh:mma"];
+	[dateTime12Formatter setAMSymbol:@"am"];
+	[dateTime12Formatter setPMSymbol:@"pm"];
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
+	qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
 	
-	NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-	[inputFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-	
-	if ([elementName isEqualToString:@"task"]) {
-		
+	if ([elementName isEqualToString:@"task"]) {		
 		currentTask = [[GtdTask alloc] init];
-		currentTask.uid = [[attributeDict valueForKey:@"id"] intValue];
-		currentTask.title = [[attributeDict valueForKey:@"title"] stringValue];
-		currentTask.date_created = [inputFormatter dateFromString:[attributeDict valueForKey:@"added"]];
-		currentTask.date_modified = [inputFormatter dateFromString:[attributeDict valueForKey:@"modified"]];
-		currentTask.date_start = [inputFormatter dateFromString:
-								  [NSString stringWithFormat:@"%@ %@",
-								   [attributeDict valueForKey:@"startdate"],
-								   [attributeDict valueForKey:@"starttime"]
-								   ]
-								  ];
-		currentTask.date_due = [inputFormatter dateFromString:
-								[NSString stringWithFormat:@"%@ %@",
-								 [attributeDict valueForKey:@"duedate"],
-								 [attributeDict valueForKey:@"duetime"]
-								]
-							   ];
-		currentTask.tags = [[[attributeDict valueForKey:@"tag"] stringValue] componentsSeparatedByString:kTagSeparator];
-		currentTask.folder = [[attributeDict valueForKey:@"folder"] intValue];
-		currentTask.context = [[attributeDict valueForKey:@"context"] intValue];
-		currentTask.priority = [[attributeDict valueForKey:@"priority"] intValue];
-		currentTask.completed = [inputFormatter dateFromString:[attributeDict valueForKey:@"completed"]];
-		currentTask.length = [[attributeDict valueForKey:@"length"] intValue];
-		currentTask.note = [[attributeDict valueForKey:@"note"] stringValue];
-		currentTask.star = [[attributeDict valueForKey:@"star"] boolValue];
-		currentTask.repeat = [[attributeDict valueForKey:@"repeat"] intValue];
-		//currentTask.rep_advanced = 
-		currentTask.status = [[attributeDict valueForKey:@"status"] intValue];
-		currentTask.reminder = [[attributeDict valueForKey:@"reminder"] intValue];
-		currentTask.parentId = [[attributeDict valueForKey:@"parent"] intValue];
+	}
+	
+	else if ([elementName isEqualToString:@"context"]) {
+		currentTask.context = [[attributeDict valueForKey:@"id"] intValue];
 	}
 
 }
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI 
+	qualifiedName:(NSString *)qName {
 	if ([elementName isEqualToString:@"task"]) {
-		currentTask.title = currentString;
 		[results addObject:currentTask];
 		[currentTask release];
 		currentTask = nil;
+		self.startDate = nil;
+		self.startTime = nil;
+		self.dueDate = nil;
+		self.dueTime = nil;
+	}
+	
+	else if ([elementName isEqualToString:@"id"]) {
+		currentTask.uid = [currentString intValue];
+	}
+	else if ([elementName isEqualToString:@"parent"]) {
+		currentTask.parentId = [currentString intValue];
+	}
+	else if ([elementName isEqualToString:@"title"]) {
+		currentTask.title = currentString;
+	}
+	else if ([elementName isEqualToString:@"tag"]) {
+		currentTask.tags = [currentString componentsSeparatedByString:kTagSeparator];
+	}
+	else if ([elementName isEqualToString:@"folder"]) {
+		currentTask.folder = [currentString intValue];
+	}
+	else if ([elementName isEqualToString:@"added"]) {
+		currentTask.date_created = [dateFormatter dateFromString:currentString];
+	}
+	else if ([elementName isEqualToString:@"modified"]) {
+		currentTask.date_modified = [dateTime24Formatter dateFromString:currentString];
+	}
+	else if ([elementName isEqualToString:@"reminder"]) {
+		currentTask.reminder = [currentString intValue];
+	}
+	else if ([elementName isEqualToString:@"completed"]) {
+		if ([currentString length] > 1) {
+			currentTask.completed = [dateFormatter dateFromString:currentString];
+		}
+	}
+	else if ([elementName isEqualToString:@"repeat"]) {
+		currentTask.repeat = [currentString intValue];
+	}
+	else if ([elementName isEqualToString:@"status"]) {
+		currentTask.status = [currentString intValue];
+	}
+	else if ([elementName isEqualToString:@"star"]) {
+		currentTask.star = [currentString boolValue];
+	}
+	else if ([elementName isEqualToString:@"priority"]) {
+		currentTask.priority = [currentString intValue];
+	}
+	else if ([elementName isEqualToString:@"length"]) {
+		currentTask.length = [currentString intValue];
+	}
+	else if ([elementName isEqualToString:@"note"]) {
+		currentTask.note = currentString;
+	}
+	
+	else if ([elementName isEqualToString:@"startdate"]) {		
+		self.startDate = (currentString == nil) ? @"" : currentString;
+		if (startTime != nil && [startDate length] > 0) {
+			if ([startTime length] == 0)
+				currentTask.date_start = [dateFormatter dateFromString:startDate];
+			else
+				currentTask.date_start = [dateTime12Formatter dateFromString:[NSString stringWithFormat:@"%@ %@", startDate, startTime]];
+		}
+	}
+	else if ([elementName isEqualToString:@"starttime"]) {
+		self.startTime = (currentString == nil) ? @"" : currentString;
+		if (startDate != nil && [startTime length] > 0) {
+			currentTask.date_start = [dateTime12Formatter dateFromString:[NSString stringWithFormat:@"%@ %@", startDate, startTime]];
+		}
+		else if (startDate != nil) {
+			currentTask.date_start = [dateFormatter dateFromString:startDate];
+		}
+	}
+	else if ([elementName isEqualToString:@"duedate"]) {		
+		self.dueDate = (currentString == nil) ? @"" : currentString;
+		if (dueTime != nil && [dueDate length] > 0) {
+			if ([dueTime length] == 0)
+				currentTask.date_due = [dateFormatter dateFromString:dueDate];
+			else
+				currentTask.date_due = [dateTime12Formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dueDate, dueTime]];
+		}
+	}
+	else if ([elementName isEqualToString:@"duetime"]) {
+		self.dueTime = (currentString == nil) ? @"" : currentString;
+		if (dueDate != nil && [dueTime length] > 0) {
+			currentTask.date_due = [dateTime12Formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dueDate, dueTime]];
+		}
+		else if (dueDate != nil) {
+			currentTask.date_due = [dateFormatter dateFromString:dueDate];
+		}
 	}
 	
 	[currentString release];
 	currentString = nil;
+}
+
+- (void)dealloc {
+	[startTime release];
+	[startDate release];
+	[dueTime release];
+	[dueDate release];
+	[dateTime24Formatter release];
+	[dateFormatter release];
+	[dateTime12Formatter release];
+	[super dealloc];
 }
 
 @end

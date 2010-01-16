@@ -14,6 +14,15 @@
 @interface TDTasksParser : TDParser {
 @private
 	GtdTask *currentTask;
+	
+	NSDateFormatter *dateTime24Formatter;
+	NSDateFormatter *dateFormatter;
+	NSDateFormatter *dateTime12Formatter;
+	
+	NSString *startTime;
+	NSString *startDate;
+	NSString *dueTime;
+	NSString *dueDate;
 }
 
 @end

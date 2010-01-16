@@ -30,4 +30,31 @@
 @synthesize reminder;
 @synthesize parentId;
 
+- (id)init {
+	if (self = [super init]) {
+		title = nil;
+		tags = nil;
+		uid = -1;
+		parentId = -1;
+	}
+	return self;
+}
+
+- (void) dealloc {
+	[title release];
+	[date_created release];
+	[date_due release];
+	[date_start release];
+	[date_modified release];
+	[tags release];
+	[completed release];
+	[note release];
+	[super dealloc];
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<GtdTask uid='%i' title='%@' modified='%@' date_due='%@' date_start='%@'>", uid, title, date_modified, date_due, date_start];
+}
+
+
 @end
