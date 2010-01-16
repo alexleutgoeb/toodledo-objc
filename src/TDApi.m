@@ -339,20 +339,19 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			if(parseError != nil)
 				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			else {
-				//all ok, save result, if no pro account set parentIds of tasks to -1
-				if (![[self.accountInfo valueForKey:@"pro"] isEqualToString:@"1"]) {
-					for (GtdTask *task in result) {
+				//all ok, save result, if no pro account set parentIds of tasks to -1 and change dates
+				for (GtdTask *task in result) {
+					if (![[self.accountInfo valueForKey:@"pro"] isEqualToString:@"1"])
 						task.parentId = -1;
-						
-						//whitespace von tags trimmen
-						for (NSString *tag in task.tags)
-							tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-						
-						//serverTimeDifference adden
-						task.date_modified = [task.date_modified addTimeInterval:servertimeDifference];
-					}
-				}
 					
+					//whitespace von tags trimmen
+					for (NSString *tag in task.tags)
+						tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+					
+					//serverTimeDifference adden
+					task.date_modified = [task.date_modified addTimeInterval:servertimeDifference];
+					task.date_created = [task.date_created addTimeInterval:servertimeDifference];
+				}
 				returnResult = result;
 			}
 			[parser release];
@@ -986,36 +985,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 #pragma mark -
 #pragma mark helper methods
 
-// Gets server infos for api
-- (BOOL)loadServerInfos {
-	
-	if ([self isAuthenticated]) {
-		NSError *parseError = nil;
-		NSURLRequest *request = [self authenticatedRequestForURLString:kServerInfoURLFormat additionalParameters:nil];
-		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-		
-		TDSimpleParser *parser = [[TDSimpleParser alloc] initWithData:responseData];
-		parser.tagName = @"unixtime";
-		NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
-		[parser release];
-		
-		if ([result count] == 1) {
-			NSDate *serverDate = [NSDate dateWithTimeIntervalSince1970:[[result objectAtIndex:0] doubleValue]];
-			servertimeDifference = [serverDate timeIntervalSinceNow];
-			DLog(@"Server infos retrieved, servertime difference: %f.", servertimeDifference);
-			return YES;
-		}
-		else {
-			DLog(@"Could not fetch server infos.");
-			return NO;
-		}	
-	}
-	else {
-		return NO;
-	}
-}
-
-// Gets server infos for api
+// Get server infos for api
 - (BOOL)loadServerInfos {
 	
 	if ([self isAuthenticated]) {
@@ -1050,6 +1020,30 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	else {
 		return NO;
 	}
+}
+
+- (BOOL)loadAccountInfo {
+	
+	BOOL returnResult = NO;
+	
+	if (self.key != nil) {
+		NSError *requestError = nil, *parseError = nil;
+		NSURLRequest *request = [self authenticatedRequestForURLString:kUserAccountInfoURLFormat additionalParameters:nil];
+		NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&requestError];
+		
+		if (requestError == nil) {
+			// all ok
+			TDUserInfoParser *parser = [[TDUserInfoParser alloc] initWithData:responseData];
+			NSArray *result = [[[parser parseResults:&parseError] retain] autorelease];
+			
+			if (parseError == nil) {
+				self.accountInfo = [result objectAtIndex:0];
+				returnResult = YES;
+			}
+			[parser release];
+		}
+	}
+	return returnResult;
 }
 
 // Used for userid lookup. Warning: the pwd is sent unencrypted.
