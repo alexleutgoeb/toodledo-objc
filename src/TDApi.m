@@ -345,8 +345,12 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 						task.parentId = -1;
 					
 					//whitespace von tags trimmen
-					for (NSString *tag in task.tags)
-						tag = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+					if ([task.tags count] > 0) {
+						NSMutableArray *trimmedTags = [NSMutableArray arrayWithCapacity:[task.tags count]];
+						for (NSString *tag in task.tags)
+							[trimmedTags addObject:[tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+						task.tags = trimmedTags;
+					}
 					
 					//serverTimeDifference adden
 					task.date_modified = [task.date_modified addTimeInterval:-servertimeDifference];
