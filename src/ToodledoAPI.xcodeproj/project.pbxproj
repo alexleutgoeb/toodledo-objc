@@ -175,7 +175,7 @@
 		FACDE83310A2E97700A50F7A /* GtdApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtdApi.h; sourceTree = "<group>"; };
 		FADA343410A8626400D1B68B /* TDFoldersParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFoldersParser.h; sourceTree = "<group>"; };
 		FADA343510A8626400D1B68B /* TDFoldersParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFoldersParser.m; sourceTree = "<group>"; };
-		FAF874B31096478600C4C137 /* liblibToodledoAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibToodledoAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAF874B31096478600C4C137 /* libToodledoAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libToodledoAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF874EE10965F5300C4C137 /* TDApiConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDApiConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,7 +249,7 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAF874B31096478600C4C137 /* liblibToodledoAPI.a */,
+				FAF874B31096478600C4C137 /* libToodledoAPI.a */,
 				FAA9E6ED10A88C7C001925AB /* UnitTests.octest */,
 				FA649BBA10C30B250051F758 /* libToodledoAPIMac.a */,
 				CF04581710E2F5C400DED3CF /* liblibToodledoAPIiPhone.a */,
@@ -464,7 +464,7 @@
 			);
 			name = libToodledoAPI;
 			productName = libToodledoAPI;
-			productReference = FAF874B31096478600C4C137 /* liblibToodledoAPI.a */;
+			productReference = FAF874B31096478600C4C137 /* libToodledoAPI.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
