@@ -439,6 +439,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			[params setObject:[dateFormatter stringFromDate:aTask.date_start] forKey:@"startdate"];
 			[params setObject:[timeFormatter stringFromDate:aTask.date_start] forKey:@"starttime"];
 		}
+		if(aTask.completed != nil) {
+			[params setObject:[NSString stringWithFormat:@"%d", (NSInteger)1] forKey:@"completed"];
+		}
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.reminder] forKey:@"reminder"];
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.repeat] forKey:@"repeat"];
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.status] forKey:@"status"];
@@ -517,6 +520,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		if (aTask.date_start != nil) {
 			[params setObject:[dateFormatter stringFromDate:aTask.date_start] forKey:@"startdate"];
 			[params setObject:[timeFormatter stringFromDate:aTask.date_start] forKey:@"starttime"];
+		}
+		if(aTask.completed != nil) {
+			[params setObject:[NSString stringWithFormat:@"%d", (NSInteger)1] forKey:@"completed"];
 		}
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.reminder] forKey:@"reminder"];
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.repeat] forKey:@"repeat"];
