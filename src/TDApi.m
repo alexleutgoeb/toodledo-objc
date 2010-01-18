@@ -574,7 +574,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	BOOL returnResult = NO;
 	
 	// Check parameters
-	if (aTask == nil || aTask.uid == -1 || aTask.title == nil)
+	if (aTask == nil || aTask.uid == -1)
 		*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiMissingParameters userInfo:nil];
 	// Check if valid key
 	else if (self.key != nil) {
@@ -1174,7 +1174,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Create parameter string
 	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@%@key=%@;", urlProtocol, anUrlString, self.key];
 	for (NSString *paramKey in additionalParameters)
-		[params appendFormat:@"%@=%@;", paramKey, (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[additionalParameters objectForKey:paramKey], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1)];
+		[params appendFormat:@"%@=%@;", paramKey, (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[additionalParameters objectForKey:paramKey], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingUTF8)];
 	
 	// Create rest url
 	NSURL *url = [[NSURL alloc] initWithString:params];
