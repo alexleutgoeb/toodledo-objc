@@ -385,7 +385,13 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 			if(parseError != nil)
 				*error = [NSError errorWithDomain:GtdApiErrorDomain code:GtdApiDataError userInfo:nil];
 			else //all ok, save result
+			{
+				for (GtdTask *task in result) {
+					//serverTimeDifference adden
+					task.date_deleted = [task.date_deleted addTimeInterval:-servertimeDifference];
+				}
 				returnResult = result;
+			}
 			
 			[parser release];
 		}

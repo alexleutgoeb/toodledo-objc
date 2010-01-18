@@ -18,6 +18,7 @@
 	NSDate *date_modified;
 	NSDate *date_start;
 	NSDate *date_due;
+	NSDate *date_deleted;
 	NSArray *tags;
 	NSInteger folder;
 	NSInteger context;
@@ -38,6 +39,7 @@
 @property (nonatomic, retain) NSDate *date_modified;
 @property (nonatomic, retain) NSDate *date_start;
 @property (nonatomic, retain) NSDate *date_due;
+@property (nonatomic, retain) NSDate *date_deleted;
 @property (nonatomic, copy) NSArray *tags;
 @property (nonatomic) NSInteger folder;
 @property (nonatomic) NSInteger context;

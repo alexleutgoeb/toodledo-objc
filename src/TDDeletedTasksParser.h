@@ -13,6 +13,7 @@
 @interface TDDeletedTasksParser : TDParser {
 @private
 	GtdTask *currentTask;
+	NSDateFormatter *dateTime24Formatter;
 }
 
 @end

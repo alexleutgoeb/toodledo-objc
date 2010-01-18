@@ -329,12 +329,17 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A3B5AFF811051072003783B0</string>
+										<string>A3B5B0B411051ED8003783B0</string>
 										<key>history</key>
 										<array>
-											<string>A3B5AFCB11050738003783B0</string>
-											<string>A3B5AFDD11050A5D003783B0</string>
-											<string>A3B5AFDE11050A5D003783B0</string>
+											<string>A3B5B004110510CE003783B0</string>
+											<string>A3B5B04411051978003783B0</string>
+											<string>A3B5B04511051978003783B0</string>
+											<string>A3B5B07111051B7E003783B0</string>
+											<string>A3B5B07211051B7E003783B0</string>
+											<string>A3B5B09011051DBD003783B0</string>
+											<string>A3B5B09111051DBD003783B0</string>
+											<string>A3B5B09211051DBD003783B0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -348,18 +353,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1089, 578}}</string>
+								<string>{{0, 0}, {1089, 573}}</string>
 								<key>RubberWindowFrame</key>
 								<string>51 55 1389 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>578pt</string>
+							<string>573pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>199pt</string>
+							<string>204pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -373,7 +378,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1089, 172}}</string>
+										<string>{{10, 27}, {1089, 177}}</string>
 										<key>RubberWindowFrame</key>
 										<string>51 55 1389 823 0 0 1440 878 </string>
 									</dict>
@@ -457,11 +462,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A3B5AFCE11050738003783B0</string>
+				<string>A3B5B006110510CE003783B0</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>A3B5AFCF11050738003783B0</string>
+				<string>A3B5B007110510CE003783B0</string>
 				<string>A34830ED10F212A500F4BA37</string>
-				<string>A3B5AFD011050738003783B0</string>
+				<string>A3B5B008110510CE003783B0</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -610,14 +615,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A31F623A10FFAAC500D0D3D0</string>
+				<string>A3B5B053110519AA003783B0</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>A31F623B10FFAAC500D0D3D0</string>
-				<string>A31F623C10FFAAC500D0D3D0</string>
-				<string>A31F623D10FFAAC500D0D3D0</string>
-				<string>A31F623E10FFAAC500D0D3D0</string>
-				<string>A34830ED10F212A500F4BA37</string>
+				<string>A3B5B054110519AA003783B0</string>
+				<string>A3B5B055110519AA003783B0</string>
+				<string>A3B5B056110519AA003783B0</string>
+				<string>A3B5B057110519AA003783B0</string>
+				<string>A3B5B058110519AA003783B0</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>

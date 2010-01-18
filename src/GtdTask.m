@@ -17,6 +17,7 @@
 @synthesize date_modified;
 @synthesize date_start;
 @synthesize date_due;
+@synthesize date_deleted;
 @synthesize tags;
 @synthesize folder;
 @synthesize context;
@@ -46,6 +47,7 @@
 	[date_due release];
 	[date_start release];
 	[date_modified release];
+	[date_deleted release];
 	[tags release];
 	[completed release];
 	[note release];
