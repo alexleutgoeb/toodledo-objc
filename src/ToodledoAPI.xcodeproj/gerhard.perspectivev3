@@ -329,11 +329,10 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A30A37331102072A0006B3BC</string>
+										<string>A3B5AFB61105025D003783B0</string>
 										<key>history</key>
 										<array>
-											<string>A30A372A110206CF0006B3BC</string>
-											<string>A30A372B110206CF0006B3BC</string>
+											<string>A3B5AFB51105025D003783B0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -347,18 +346,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1089, 588}}</string>
+								<string>{{0, 0}, {1089, 583}}</string>
 								<key>RubberWindowFrame</key>
 								<string>51 55 1389 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>588pt</string>
+							<string>583pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>189pt</string>
+							<string>194pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -372,7 +371,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1089, 162}}</string>
+										<string>{{10, 27}, {1089, 167}}</string>
 										<key>RubberWindowFrame</key>
 										<string>51 55 1389 823 0 0 1440 878 </string>
 									</dict>
@@ -456,11 +455,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A30A372D110206CF0006B3BC</string>
+				<string>A3B5AFB71105025D003783B0</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>A30A372E110206CF0006B3BC</string>
+				<string>A3B5AFB81105025D003783B0</string>
 				<string>A34830ED10F212A500F4BA37</string>
-				<string>A30A372F110206CF0006B3BC</string>
+				<string>A3B5AFB91105025D003783B0</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -650,7 +649,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/gerhard/Develop/objc/Less-2-Do/toodledo-objc/src/ToodledoAPI.xcodeproj</string>
+		<string>/Users/gerhard/Develop/ObjC/Less-2-Do/toodledo-objc/src/ToodledoAPI.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>51 55 1389 823 0 0 1440 878 </string>

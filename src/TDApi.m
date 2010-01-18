@@ -442,6 +442,10 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		if(aTask.completed != nil) {
 			[params setObject:[NSString stringWithFormat:@"%d", (NSInteger)1] forKey:@"completed"];
 		}
+		else {
+			[params setObject:[NSString stringWithFormat:@"%d", (NSInteger)0] forKey:@"completed"];
+		}
+
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.reminder] forKey:@"reminder"];
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.repeat] forKey:@"repeat"];
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.status] forKey:@"status"];
@@ -523,6 +527,9 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		}
 		if(aTask.completed != nil) {
 			[params setObject:[NSString stringWithFormat:@"%d", (NSInteger)1] forKey:@"completed"];
+		}
+		else {
+			[params setObject:[NSString stringWithFormat:@"%d", (NSInteger)0] forKey:@"completed"];
 		}
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.reminder] forKey:@"reminder"];
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.repeat] forKey:@"repeat"];
