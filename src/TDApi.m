@@ -1194,7 +1194,7 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 	// Create parameter string
 	NSMutableString *params = [[NSMutableString alloc] initWithFormat:@"%@%@", kBasicUrlProtocolFormat, anUrlString];
 	for (NSString *paramKey in additionalParameters)
-		[params appendFormat:@"%@=%@;", paramKey, (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[additionalParameters objectForKey:paramKey], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingISOLatin1)];
+		[params appendFormat:@"%@=%@;", paramKey, (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)[additionalParameters objectForKey:paramKey], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"),kCFStringEncodingUTF8)];
 		
 	// Create rest url
 	NSURL *url = [[NSURL alloc] initWithString:params];
