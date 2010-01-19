@@ -439,8 +439,13 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.parentId] forKey:@"parent"];
 		if (aTask.date_due != nil) {
 			[params setObject:[dateFormatter stringFromDate:aTask.date_due] forKey:@"duedate"];
-			[params setObject:[timeFormatter stringFromDate:aTask.date_due] forKey:@"duetime"];
+			if(aTask.hasDueTime)
+				[params setObject:[timeFormatter stringFromDate:aTask.date_due] forKey:@"duetime"];
+			else
+				[params setObject:@"0" forKey:@"duetime"]; // unset the time
 		}
+		else
+			[params setObject:@"0000-00-00" forKey:@"duedate"]; // unset the date
 		if (aTask.date_start != nil) {
 			[params setObject:[dateFormatter stringFromDate:aTask.date_start] forKey:@"startdate"];
 			[params setObject:[timeFormatter stringFromDate:aTask.date_start] forKey:@"starttime"];
@@ -525,8 +530,13 @@ NSString *const GtdApiErrorDomain = @"GtdApiErrorDomain";
 		[params setObject:[NSString stringWithFormat:@"%d", aTask.parentId] forKey:@"parent"];
 		if (aTask.date_due != nil) {
 			[params setObject:[dateFormatter stringFromDate:aTask.date_due] forKey:@"duedate"];
-			[params setObject:[timeFormatter stringFromDate:aTask.date_due] forKey:@"duetime"];
+			if(aTask.hasDueTime)
+				[params setObject:[timeFormatter stringFromDate:aTask.date_due] forKey:@"duetime"];
+			else
+				[params setObject:@"0" forKey:@"duetime"]; // unset the time
 		}
+		else
+			[params setObject:@"0000-00-00" forKey:@"duedate"]; // unset the date
 		if (aTask.date_start != nil) {
 			[params setObject:[dateFormatter stringFromDate:aTask.date_start] forKey:@"startdate"];
 			[params setObject:[timeFormatter stringFromDate:aTask.date_start] forKey:@"starttime"];

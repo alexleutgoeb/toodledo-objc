@@ -39,6 +39,8 @@
 		tags = nil;
 		uid = -1;
 		parentId = -1;
+		hasDueDate = NO;
+		hasDueTime = NO;
 	}
 	return self;
 }
