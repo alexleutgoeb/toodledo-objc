@@ -41,6 +41,8 @@
 	
 	if ([elementName isEqualToString:@"task"]) {		
 		currentTask = [[GtdTask alloc] init];
+		currentTask.hasDueDate = NO;
+		currentTask.hasDueTime = NO;
 	}
 	
 	else if ([elementName isEqualToString:@"context"]) {
@@ -130,18 +132,31 @@
 	else if ([elementName isEqualToString:@"duedate"]) {		
 		self.dueDate = (currentString == nil) ? @"" : currentString;
 		if (dueTime != nil && [dueDate length] > 0) {
+			currentTask.hasDueDate = YES;
 			if ([dueTime length] == 0)
+			{	
+				currentTask.hasDueTime = NO;
 				currentTask.date_due = [dateFormatter dateFromString:dueDate];
+			}
 			else
+			{
+				currentTask.hasDueTime = YES;
 				currentTask.date_due = [dateTime12Formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dueDate, dueTime]];
+			}
 		}
+		else
+			currentTask.hasDueDate = NO;
 	}
 	else if ([elementName isEqualToString:@"duetime"]) {
 		self.dueTime = (currentString == nil) ? @"" : currentString;
 		if (dueDate != nil && [dueTime length] > 0) {
+			currentTask.hasDueTime = YES;
+			currentTask.hasDueDate = YES;
 			currentTask.date_due = [dateTime12Formatter dateFromString:[NSString stringWithFormat:@"%@ %@", dueDate, dueTime]];
 		}
 		else if (dueDate != nil) {
+			currentTask.hasDueTime = NO;
+			currentTask.hasDueDate = YES;
 			currentTask.date_due = [dateFormatter dateFromString:dueDate];
 		}
 	}

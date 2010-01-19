@@ -19,6 +19,8 @@
 	NSDate *date_start;
 	NSDate *date_due;
 	NSDate *date_deleted;
+	BOOL hasDueDate;
+	BOOL hasDueTime;
 	NSArray *tags;
 	NSInteger folder;
 	NSInteger context;
@@ -40,6 +42,8 @@
 @property (nonatomic, retain) NSDate *date_start;
 @property (nonatomic, retain) NSDate *date_due;
 @property (nonatomic, retain) NSDate *date_deleted;
+@property BOOL hasDueDate;
+@property BOOL hasDueTime;
 @property (nonatomic, copy) NSArray *tags;
 @property (nonatomic) NSInteger folder;
 @property (nonatomic) NSInteger context;

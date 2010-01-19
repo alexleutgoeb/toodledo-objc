@@ -18,6 +18,8 @@
 @synthesize date_start;
 @synthesize date_due;
 @synthesize date_deleted;
+@synthesize hasDueDate;
+@synthesize hasDueTime;
 @synthesize tags;
 @synthesize folder;
 @synthesize context;
