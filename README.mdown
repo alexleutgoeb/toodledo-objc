@@ -2,3 +2,13 @@ toodledo-objc
 =============
 
 An _unofficial_ toodledo-API implementation in ObjectiveC.
+
+This library currently uses [version 1.0 of the API][http://www.toodledo.com/info/api_doc.php].
+
+Supported:
+ * Tasks, Folders, Contexts, and Notebooks
+ * Username/Password authentication
+
+Unsupported:
+ * Goals and Locations
+ * SSL for Pro accounts
